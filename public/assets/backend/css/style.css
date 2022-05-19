@@ -1,0 +1,101 @@
+.c-red{
+	color:red;
+}
+
+body, html {
+  font-family: 'Roboto', 'Prompt', sans-serif;
+
+  color: #666;
+  padding:0px !important;
+ 
+}
+
+/* Backoffice */
+.modal-lg {
+  max-width: 1300px !important;
+}  
+
+.modal { 
+  overflow: auto !important; 
+}   
+.td_colum{
+  column-width:300px ; 
+  white-space: normal; 
+}   
+
+.select2-container--open{
+  z-index:10000;         
+} 
+
+ 
+.modal{
+  z-index:5000
+}
+
+.sweet-overlay {
+  background-color: black;
+  /* IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  /* IE8 */
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  z-index: 20000; }
+
+@media only screen and (max-width: 575px){
+.card .card-header .card-header-right {
+    display: block !important;
+}
+    
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+
+    line-height: 18px;
+}
+
+
+.page-item.active .page-link {
+  z-index: 2;
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  background: linear-gradient(to bottom, #23272b 0%, #23272b 100%) !important;
+}
+
+
+
+.pcoded .pcoded-header[header-theme="theme1"]{
+  background: linear-gradient(to right, #333333, #333333);
+}
+
+.btn_waitA{
+  background-color: #F49C9C;
+  color: #000000;
+}  
+.btn_waitB{
+  background-color: #6CBEF7;
+  color: #000000;
+}
+.btn_waitC{
+  background-color: #9CF4B5;
+  color: #000000;
+}
+.btn_waitD{
+  background-color: #FA0606;
+  color: #FFFFFF;
+} 
+.btn_waitF{
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+
+

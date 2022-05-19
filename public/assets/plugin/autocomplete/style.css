@@ -1,0 +1,161 @@
+.showorder{
+ 
+    width: 100%;
+    height: 400px;
+    overflow-x: scroll;
+    white-space: nowrap !important;
+    
+}
+
+.showorder div.wid_productcode{
+    display:inline-block;
+    width:300px;
+}
+
+.showorder div.wid_productname{
+    display:inline-block;
+    width:400px;
+}
+
+.showorder div.wid_price{
+    display:inline-block;
+    width:100px;
+}
+
+.showorder div.wid_qty{
+    display:inline-block;
+    width:120px;
+}
+
+.showorder div.wid_discount{
+    display:inline-block;
+    width:100px;
+}
+
+.showorder div.wid_total{
+    display:inline-block;
+    width:120px;
+}
+
+.showorder div.wid_joint{
+    display:inline-block;
+    width:120px;
+}
+
+.showorder div.wid_remark{
+    display:inline-block;
+    width:200px;
+}
+
+.showorder div.wid_del{
+    display:inline-block;
+    width:20px;
+}
+
+
+
+
+
+
+/* body{
+  background-color:#F5FFFA;
+}
+#sidebar-wrapper { old
+  top: 52px;
+  left: -200px;
+  width: 200px;
+  background-color: #000033;
+  color: white;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+
+#sidebar-wrapper {
+  top: 52px;
+  left: -200px;
+  width: 200px;
+  background-color: #000033;
+  color: white;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  list-style: none;
+}
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 50px;
+}
+.sidebar-nav li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-nav li a:hover {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  text-decoration: none;
+}
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+#sidebar-wrapper.sidebar-toggle {
+  transition: all 0.3s ease-out;
+  margin-left: -200px;
+}
+
+a.tab-menu{
+  padding-left:15px;
+}
+
+.navbar-toggle.navbar-left {
+  float: left;
+  margin-left: 10px;
+}
+
+i.fa{
+    display:inline;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper.sidebar-toggle {
+    transition: 0s;
+    left: 200px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #sidebar-wrapper.sidebar-toggle {
+    transition: 0s;
+    left: -200px;
+    width:300px;
+  }
+    
+    ul.navbar-right{
+        float:right;
+    }
+    
+    .navbar-right li.dropdown{
+        position:absolute;
+        right:10px;
+        top:5px;
+    }
+    ul.dropdown-menu li{
+        background:white;
+        border:1px solid grey;
+    }
+    
+    nav.navbar-default{
+    	height:50px;
+    }
+}
+ */

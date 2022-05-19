@@ -1,0 +1,1473 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Yonta
+ Source Server Type    : MySQL
+ Source Server Version : 100135
+ Source Host           : localhost:3306
+ Source Schema         : erp_hr
+
+ Target Server Type    : MySQL
+ Target Server Version : 100135
+ File Encoding         : 65001
+
+ Date: 09/06/2020 15:31:39
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tb_branch_department
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_branch_department`;
+CREATE TABLE `tb_branch_department`  (
+  `id_branch_department` int(255) NOT NULL AUTO_INCREMENT,
+  `name_branch` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `color_div` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `province_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_branch_department`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_branch_department
+-- ----------------------------
+INSERT INTO `tb_branch_department` VALUES (1, 'Bangkok', 'orange', '1');
+INSERT INTO `tb_branch_department` VALUES (2, 'Rayong', 'red', '7');
+INSERT INTO `tb_branch_department` VALUES (3, 'Nakornpathom', 'blue', '1');
+INSERT INTO `tb_branch_department` VALUES (4, 'Khonkhen', 'purple', '1');
+INSERT INTO `tb_branch_department` VALUES (6, 'China', 'black', '1');
+INSERT INTO `tb_branch_department` VALUES (8, 'orange', 'green', '1');
+
+-- ----------------------------
+-- Table structure for tb_case
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_case`;
+CREATE TABLE `tb_case`  (
+  `id_case` int(255) NOT NULL AUTO_INCREMENT,
+  `id_department_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name_case` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fte` int(255) NULL DEFAULT NULL,
+  `wl` int(255) NULL DEFAULT NULL,
+  `select` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_case`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 82 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_case
+-- ----------------------------
+INSERT INTO `tb_case` VALUES (40, '124', 'case', 25000, 21, '1');
+INSERT INTO `tb_case` VALUES (41, '124', 'case', 1, 1, '0');
+INSERT INTO `tb_case` VALUES (42, '124', 'case', 0, 1, '0');
+INSERT INTO `tb_case` VALUES (43, '125', 'case', 3648000, 176, '1');
+INSERT INTO `tb_case` VALUES (44, '125', 'case', 1, 1, '0');
+INSERT INTO `tb_case` VALUES (45, '125', 'case', 0, 1, '0');
+INSERT INTO `tb_case` VALUES (46, '126', 'case', 205320, 176, '1');
+INSERT INTO `tb_case` VALUES (47, '126', 'case', 1, 0, '0');
+INSERT INTO `tb_case` VALUES (48, '126', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (52, '128', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (53, '128', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (54, '128', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (55, '129', 'case', 650000, 554, '1');
+INSERT INTO `tb_case` VALUES (56, '129', 'case', 0, 1, '0');
+INSERT INTO `tb_case` VALUES (57, '129', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (58, '130', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (59, '130', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (60, '130', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (61, '131', 'case', 1999980, 1705, '1');
+INSERT INTO `tb_case` VALUES (62, '131', 'case', 1, 1, '0');
+INSERT INTO `tb_case` VALUES (63, '131', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (64, '132', 'case', 3750000, 3197, '1');
+INSERT INTO `tb_case` VALUES (65, '132', 'case', 1, 1, '0');
+INSERT INTO `tb_case` VALUES (66, '132', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (67, '133', 'case', 540000, 460, '1');
+INSERT INTO `tb_case` VALUES (68, '133', 'case', 1, 1, '0');
+INSERT INTO `tb_case` VALUES (69, '133', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (70, '134', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (71, '134', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (72, '134', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (73, '135', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (74, '135', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (75, '135', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (76, '136', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (77, '136', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (78, '136', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (79, '137', 'case', 0, 0, '0');
+INSERT INTO `tb_case` VALUES (80, '137', 'case', 1, 1, '1');
+INSERT INTO `tb_case` VALUES (81, '137', 'case', 0, 0, '0');
+
+-- ----------------------------
+-- Table structure for tb_company_information
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_company_information`;
+CREATE TABLE `tb_company_information`  (
+  `id_company_information` int(255) NOT NULL AUTO_INCREMENT,
+  `logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name_company` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_company_information`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_company_information
+-- ----------------------------
+INSERT INTO `tb_company_information` VALUES (1, NULL, '111', '11', '111');
+
+-- ----------------------------
+-- Table structure for tb_department
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_department`;
+CREATE TABLE `tb_department`  (
+  `id_department` int(255) NOT NULL AUTO_INCREMENT,
+  `name_department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_leader` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `color_div` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `branch_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `openposition` int(255) NULL DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_department`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 138 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_department
+-- ----------------------------
+INSERT INTO `tb_department` VALUES (124, 'orange', NULL, 'aqua', '2', 2, '1');
+INSERT INTO `tb_department` VALUES (125, 'ทดสอบFX', NULL, 'red', '3', 2, '2');
+INSERT INTO `tb_department` VALUES (126, 'IT', NULL, 'blue', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (128, 'orange', NULL, 'red', '6', 2, '2');
+INSERT INTO `tb_department` VALUES (129, 'ทดสอบ', NULL, 'red', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (130, 'orangetest', NULL, 'black', '4', 2, '2');
+INSERT INTO `tb_department` VALUES (131, 'orangeddd', NULL, 'blue', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (132, 'programmer', NULL, 'blue', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (133, 'icon', NULL, 'blue', '2', 2, '2');
+INSERT INTO `tb_department` VALUES (134, 'ไฟฟ้า', NULL, 'black', '1', 2, '2');
+INSERT INTO `tb_department` VALUES (135, '888', NULL, 'purple', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (136, 'orange', NULL, 'blue', '1', 2, '1');
+INSERT INTO `tb_department` VALUES (137, 'iT', NULL, 'red', '8', 2, '1');
+
+-- ----------------------------
+-- Table structure for tb_department_case
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_department_case`;
+CREATE TABLE `tb_department_case`  (
+  `id_department_case` int(255) NOT NULL AUTO_INCREMENT,
+  `id_case_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `amount` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_department_work_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_department_case`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_department_case
+-- ----------------------------
+INSERT INTO `tb_department_case` VALUES (31, '10', '16', '11');
+INSERT INTO `tb_department_case` VALUES (32, '11', '0', '11');
+INSERT INTO `tb_department_case` VALUES (33, '12', '0', '11');
+INSERT INTO `tb_department_case` VALUES (34, '10', '9', '12');
+INSERT INTO `tb_department_case` VALUES (35, '11', '0', '12');
+INSERT INTO `tb_department_case` VALUES (36, '12', '0', '12');
+INSERT INTO `tb_department_case` VALUES (40, '16', '14', '14');
+INSERT INTO `tb_department_case` VALUES (41, '17', '10', '14');
+INSERT INTO `tb_department_case` VALUES (42, '18', '9', '14');
+INSERT INTO `tb_department_case` VALUES (43, '16', '0', '15');
+INSERT INTO `tb_department_case` VALUES (44, '17', '0', '15');
+INSERT INTO `tb_department_case` VALUES (45, '18', '0', '15');
+INSERT INTO `tb_department_case` VALUES (46, '1', '200', '16');
+INSERT INTO `tb_department_case` VALUES (47, '2', '0', '16');
+INSERT INTO `tb_department_case` VALUES (48, '3', '0', '16');
+INSERT INTO `tb_department_case` VALUES (49, '1', '300', '17');
+INSERT INTO `tb_department_case` VALUES (50, '2', '2', '17');
+INSERT INTO `tb_department_case` VALUES (51, '3', '3', '17');
+INSERT INTO `tb_department_case` VALUES (70, '1', '90000', '24');
+INSERT INTO `tb_department_case` VALUES (71, '2', '0', '24');
+INSERT INTO `tb_department_case` VALUES (72, '3', '0', '24');
+INSERT INTO `tb_department_case` VALUES (73, '13', '0', '25');
+INSERT INTO `tb_department_case` VALUES (74, '14', '0', '25');
+INSERT INTO `tb_department_case` VALUES (75, '15', '0', '25');
+INSERT INTO `tb_department_case` VALUES (76, '34', '900000', '26');
+INSERT INTO `tb_department_case` VALUES (77, '35', '77777', '26');
+INSERT INTO `tb_department_case` VALUES (78, '36', '0', '26');
+INSERT INTO `tb_department_case` VALUES (79, '22', '4000', '27');
+INSERT INTO `tb_department_case` VALUES (80, '23', '0', '27');
+INSERT INTO `tb_department_case` VALUES (81, '24', '0', '27');
+INSERT INTO `tb_department_case` VALUES (82, '10', '41', '28');
+INSERT INTO `tb_department_case` VALUES (83, '11', '0', '28');
+INSERT INTO `tb_department_case` VALUES (84, '12', '0', '28');
+INSERT INTO `tb_department_case` VALUES (85, '10', '1000', '29');
+INSERT INTO `tb_department_case` VALUES (86, '11', '0', '29');
+INSERT INTO `tb_department_case` VALUES (87, '12', '0', '29');
+INSERT INTO `tb_department_case` VALUES (88, '40', '2500', '30');
+INSERT INTO `tb_department_case` VALUES (89, '41', '0', '30');
+INSERT INTO `tb_department_case` VALUES (90, '42', '0', '30');
+INSERT INTO `tb_department_case` VALUES (94, '46', '8555', '32');
+INSERT INTO `tb_department_case` VALUES (95, '47', '0', '32');
+INSERT INTO `tb_department_case` VALUES (96, '48', '0', '32');
+INSERT INTO `tb_department_case` VALUES (97, '49', '7777', '33');
+INSERT INTO `tb_department_case` VALUES (98, '50', '0', '33');
+INSERT INTO `tb_department_case` VALUES (99, '51', '0', '33');
+INSERT INTO `tb_department_case` VALUES (100, '61', '90', '34');
+INSERT INTO `tb_department_case` VALUES (101, '62', '0', '34');
+INSERT INTO `tb_department_case` VALUES (102, '63', '0', '34');
+INSERT INTO `tb_department_case` VALUES (103, '43', '8000', '35');
+INSERT INTO `tb_department_case` VALUES (104, '44', '0', '35');
+INSERT INTO `tb_department_case` VALUES (105, '45', '0', '35');
+INSERT INTO `tb_department_case` VALUES (106, '55', '5000', '36');
+INSERT INTO `tb_department_case` VALUES (107, '56', '0', '36');
+INSERT INTO `tb_department_case` VALUES (108, '57', '0', '36');
+INSERT INTO `tb_department_case` VALUES (109, '64', '2500', '37');
+INSERT INTO `tb_department_case` VALUES (110, '65', '0', '37');
+INSERT INTO `tb_department_case` VALUES (111, '66', '0', '37');
+INSERT INTO `tb_department_case` VALUES (112, '67', '900', '38');
+INSERT INTO `tb_department_case` VALUES (113, '68', '0', '38');
+INSERT INTO `tb_department_case` VALUES (114, '69', '0', '38');
+
+-- ----------------------------
+-- Table structure for tb_department_work
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_department_work`;
+CREATE TABLE `tb_department_work`  (
+  `id_department_work` int(255) NOT NULL AUTO_INCREMENT,
+  `id_department_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name_activity` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `time_activity` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_department_work`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_department_work
+-- ----------------------------
+INSERT INTO `tb_department_work` VALUES (11, '114', 'orange', '24');
+INSERT INTO `tb_department_work` VALUES (12, '114', 'orange', '8');
+INSERT INTO `tb_department_work` VALUES (14, '116', 'งานออกแบบ', '4');
+INSERT INTO `tb_department_work` VALUES (15, '116', 'งานออกแบบ', '13');
+INSERT INTO `tb_department_work` VALUES (16, '1', 'ออกแบบงานขนาดเล็ก', '1');
+INSERT INTO `tb_department_work` VALUES (17, '1', 'ออกแบบงานขนาดเล็ก', '2');
+INSERT INTO `tb_department_work` VALUES (19, '2', 'ออกแบบงานขนาดเล็ก', '4');
+INSERT INTO `tb_department_work` VALUES (20, '2', 'ออกแบบงานขนาดใหญ่', '5');
+INSERT INTO `tb_department_work` VALUES (21, '2', 'ออกแบบงานขนาดใหญ่', '6');
+INSERT INTO `tb_department_work` VALUES (24, '1', 'orange', '6');
+INSERT INTO `tb_department_work` VALUES (25, '115', 'yontakhet khaekeaw', '6');
+INSERT INTO `tb_department_work` VALUES (26, '120', 'orange', '21');
+INSERT INTO `tb_department_work` VALUES (27, '118', 'orange', '12');
+INSERT INTO `tb_department_work` VALUES (28, '114', 'ทดสอบ', '15');
+INSERT INTO `tb_department_work` VALUES (29, '114', 'ทดสอบ', '15');
+INSERT INTO `tb_department_work` VALUES (30, '124', 'orange', '10');
+INSERT INTO `tb_department_work` VALUES (32, '126', 'orange', '24');
+INSERT INTO `tb_department_work` VALUES (33, '127', 'orange', '99999');
+INSERT INTO `tb_department_work` VALUES (34, '131', 'yiu', '22222');
+INSERT INTO `tb_department_work` VALUES (35, '125', 'iii', '456');
+INSERT INTO `tb_department_work` VALUES (36, '129', 'ออกแบบ', '130');
+INSERT INTO `tb_department_work` VALUES (37, '132', 'orange', '1500');
+INSERT INTO `tb_department_work` VALUES (38, '133', 'ออกแบบ', '600');
+
+-- ----------------------------
+-- Table structure for tb_employee
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_employee`;
+CREATE TABLE `tb_employee`  (
+  `id_employee` int(11) NOT NULL AUTO_INCREMENT,
+  `dpm_id` int(11) NULL DEFAULT NULL,
+  `emp_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname_eng` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lname_eng` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `company_id` int(11) NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `work_age` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salary` decimal(10, 2) NULL DEFAULT NULL,
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `IDcard` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `img_proflie` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `religion` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `IDline` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `education` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marital_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ability_default` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ability_other` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname_emergency` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone_emergency` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `start_job` date NULL DEFAULT NULL,
+  `socialsecurity` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tax` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `howtopaysalary` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `certificate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `professionallicense` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `identificationcard` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `houseregistration` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `applicationform` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `employmentcontract` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `type_employee` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_employee`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 242 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_employee
+-- ----------------------------
+INSERT INTO `tb_employee` VALUES (172, 1, NULL, NULL, '0', 'yontakhet', 'fsdf', NULL, NULL, '0827968249', 's58122202083@ssru.ac.th', NULL, NULL, NULL, 22222.00, NULL, 'fdsfdsf', 'images/profile/fileName6987122001588147690.jpg', '1', NULL, NULL, 'พุทธ', 'fdsfs', 'fsdf', 'fdsfds', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-29 08:08:10', '2020-05-15 04:34:59', '2020-05-15 04:34:59', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (178, 1, NULL, NULL, '0', 'ดกหด', 'กหดกหดกหดก', NULL, NULL, 'ดกหด', 'yontakhet@gmail.com', NULL, NULL, NULL, 22222.00, NULL, 'ดกหดก', 'images/nopicture.jpg', '2', NULL, NULL, 'พุทธ', 'ดกหด', 'หกดหก', 'ดกห', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-29 08:17:47', '2020-04-29 08:23:21', '2020-04-29 08:23:21', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (179, 1, NULL, NULL, '0', 'fdsfdsf', 'sdfdsf', NULL, NULL, 'fsdfdsf', 'yontakhe@gmail.com', NULL, NULL, NULL, 22222.00, '1', 'fdsfds', 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-29 08:29:43', '2020-05-15 04:34:59', '2020-05-15 04:34:59', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (188, 1, NULL, NULL, '1', 'yontakhet', 'fsdf', NULL, NULL, NULL, 's58122202083sss@ssru.ac.th', NULL, NULL, NULL, 22222.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 02:42:52', '2020-05-08 02:44:50', '2020-05-08 02:44:50', NULL, NULL, NULL, NULL, NULL, '1');
+INSERT INTO `tb_employee` VALUES (189, 1, NULL, NULL, '1', 'fdsfdsf', 'sdfdsf', NULL, NULL, NULL, 'yontakhefffff@gmail.com', NULL, NULL, NULL, 22222.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 02:43:51', '2020-05-08 02:44:29', '2020-05-08 02:44:29', NULL, NULL, NULL, NULL, NULL, '1');
+INSERT INTO `tb_employee` VALUES (193, 1, NULL, NULL, '1', 'ยนตเขต', 'yontakhet', NULL, NULL, NULL, 'erpyontakhet@.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 03:04:52', '2020-05-15 04:34:59', '2020-05-15 04:34:59', NULL, NULL, NULL, NULL, NULL, '1');
+INSERT INTO `tb_employee` VALUES (195, 114, NULL, NULL, '0', 'สมปอง', 'สมปอง', '', NULL, '0827968249', 'usa555@ssru.ac.th', NULL, NULL, NULL, 900000.00, '1', '123456', 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 05:32:46', '2020-05-15 04:34:56', '2020-05-15 04:34:56', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (196, 1, NULL, NULL, '1', 'ยนตเขต', 'yontakhet', NULL, NULL, NULL, 'erpyontakhet@hrjs.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 06:33:49', '2020-05-15 04:34:59', '2020-05-15 04:34:59', NULL, NULL, NULL, NULL, NULL, '1');
+INSERT INTO `tb_employee` VALUES (203, 115, NULL, NULL, '0', '11', '111', NULL, NULL, '0827968249', 'yontakhevvvvt@gmail.com', NULL, NULL, NULL, 1111111.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', '111', '111', '111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-11 04:14:31', '2020-05-15 04:34:50', '2020-05-15 04:34:50', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (204, 118, NULL, NULL, '0', 'vcxv', 'cxvcxcx', NULL, NULL, 'c', 'yontakhecccct@gmail.com', NULL, NULL, NULL, NULL, NULL, 'vcxv', 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-11 04:16:47', '2020-05-15 04:34:47', '2020-05-15 04:34:47', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (205, 124, NULL, NULL, '0', 'ยนตเขต', 'yontakhet', NULL, NULL, NULL, 'yontakhetดดด@gmail.com', NULL, NULL, NULL, 1100000.00, '1', '555', 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-15 04:59:13', '2020-06-08 17:48:11', '2020-06-08 17:48:11', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (206, 124, NULL, NULL, '0', 'สมชาย', 'somsom', NULL, NULL, '0827968249', 's5812220208dd@ssru.ac.th', NULL, NULL, NULL, NULL, '1', '55555', 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-15 05:00:49', '2020-06-08 17:48:16', '2020-06-08 17:48:16', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (210, 124, NULL, NULL, '0', 'ทดสอบ', 'cccc', NULL, NULL, '0827968249', 'yontakhetvvv@gmail.com', NULL, NULL, NULL, NULL, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-15 05:03:02', '2020-06-08 17:48:21', '2020-06-08 17:48:21', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (211, 125, NULL, NULL, '0', 'สมบูรณ์', 'somboon', NULL, NULL, '0827968249', 's58122202083fff@ssru.ac.th', NULL, NULL, NULL, 12358.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-17 18:07:37', '2020-06-09 06:33:49', NULL, 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (212, 126, NULL, NULL, '0', '11', 'dddd', NULL, NULL, '0827968249', 's5812220208ddd3@ssru.ac.th', NULL, NULL, NULL, 77777.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-17 18:08:41', '2020-06-08 17:44:49', '2020-06-08 17:44:49', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (213, 129, NULL, NULL, '0', 'เอกลักษณ์', 'aekaluk', NULL, NULL, '0827968249', 'aekaluk@ss.ac.th', NULL, NULL, NULL, 70000.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-18 03:33:17', '2020-06-08 17:45:07', '2020-06-08 17:45:07', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (214, 131, NULL, NULL, '0', 'ลัลดา', 'ladda', NULL, NULL, '0827968249', 'ladda@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-18 03:34:53', '2020-06-08 17:47:19', '2020-06-08 17:47:19', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (215, 132, NULL, NULL, '0', 'yontakhet', '1111', NULL, NULL, '0827968249', 'yontakhet111@gmail.com', NULL, NULL, NULL, 22222.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-26 06:43:38', '2020-06-08 17:47:41', '2020-06-08 17:47:41', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (216, 137, NULL, NULL, '0', 'ทดสอบ', 'yonttakhet', NULL, NULL, '0827968249', 'yontakhetdd@gmail.com', NULL, NULL, NULL, 2222.00, '1', NULL, 'images/nopicture.jpg', '1', NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-26 08:00:59', '2020-05-26 08:01:14', NULL, 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (217, 126, '20200608001', NULL, '0', 'fff', 'ff', NULL, NULL, 'fdsfds', 'u@222.com', NULL, NULL, NULL, NULL, NULL, 'ff', 'images/nopicture.jpg', '2', NULL, NULL, 'พุทธ', 'dsfdsf', 'dsfd', 'sf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-07 17:53:28', '2020-06-08 17:44:43', '2020-06-08 17:44:43', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (218, 126, '20200608002', NULL, '0', '123', '12345', NULL, NULL, '12345678', 'yontakhedt@gmail.com', NULL, NULL, NULL, 123456.00, NULL, '1234', 'images/nopicture.jpg', '1', NULL, '2020-06-04', 'พุทธ', '123', '12345', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 17:41:12', '2020-06-08 17:44:35', '2020-06-08 17:44:35', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (219, 126, '20200608003', NULL, '0', '123', '12345', NULL, NULL, '12345678', 'yontakhedt@gmail.com', NULL, NULL, NULL, 123456.00, NULL, '1234', 'images/nopicture.jpg', '1', NULL, '2020-06-04', 'พุทธ', '123', '12345', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 17:41:28', '2020-06-08 17:44:29', '2020-06-08 17:44:29', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (220, 126, '20200608004', NULL, '0', '123', '12345', NULL, NULL, '12345678', 'yontakheddddddt@gmail.com', NULL, NULL, NULL, 123456.00, NULL, '1234', 'images/nopicture.jpg', '1', NULL, '2020-06-04', 'พุทธ', '123', '12345', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 17:41:57', '2020-06-08 17:44:24', '2020-06-08 17:44:24', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (221, 126, '20200608005', NULL, '0', 'yontakhet', 'fdfdf', NULL, NULL, 'fdsf', 's5812220ffffffffffff2083@ssru.ac.th', NULL, NULL, NULL, 123456.00, NULL, 'fdf', 'images/nopicture.jpg', '1', NULL, NULL, 'คริสต์', 'ffdsfds', 'fdsf', 'dsf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 17:43:59', '2020-06-08 17:44:16', '2020-06-08 17:44:16', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (222, 126, '20200609001', NULL, '0', 'ดกหด', 'yyyy', NULL, NULL, '0827968249', 's581222020855553@ssru.ac.th', NULL, NULL, NULL, 111111.00, NULL, '123456', 'images/profile/fileName21133119431591671742.jpg', NULL, NULL, '2020-06-11', 'ฮินดู', '77777', 'uuuuu', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:02:22', '2020-06-09 03:05:40', '2020-06-09 03:05:40', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '1');
+INSERT INTO `tb_employee` VALUES (223, 126, '20200609001', NULL, '0', 'ยนนน', 'ddd', NULL, NULL, '0827968249', 's5812220208www3@ssru.ac.th', NULL, NULL, NULL, 111111.00, NULL, '2222222222', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', 'www', 'www', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:06:48', '2020-06-09 03:11:00', '2020-06-09 03:11:00', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (224, 126, '20200609002', NULL, '0', 'ยนนน', 'ddd', NULL, NULL, '0827968249', 's5812220208wwvvw3@ssru.ac.th', NULL, NULL, NULL, 111111.00, NULL, '2222222222', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', 'www', 'www', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:07:15', '2020-06-09 03:10:55', '2020-06-09 03:10:55', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (225, 126, '20200609003', NULL, '0', 'ยนนน', 'ddd', NULL, NULL, '0827968249', 's5812220208wwddvvw3@ssru.ac.th', NULL, NULL, NULL, 111111.00, NULL, '2222222222', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', 'www', 'www', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:09:04', '2020-06-09 03:10:49', '2020-06-09 03:10:49', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (226, 126, '20200609004', NULL, '0', 'ดกหด', 'eeeeee', NULL, NULL, '0827968249', 's5812220208dddd3@ssru.ac.th', NULL, NULL, NULL, 2222.00, '5', '11111', 'images/nopicture.jpg', NULL, NULL, '2020-06-19', 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:10:26', '2020-06-09 03:10:44', '2020-06-09 03:10:44', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (227, 126, '20200609001', NULL, '0', 'ดกหด', 'eeeeee', NULL, NULL, '0827968249', 's5812220208dddd3@ssru.ac.th', NULL, NULL, NULL, 2222.00, '5', '11111', 'images/nopicture.jpg', NULL, NULL, '2020-06-19', 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:11:29', '2020-06-09 03:15:37', '2020-06-09 03:15:37', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (228, 126, '20200609002', NULL, '0', 'ดกหด', 'eeeeee', NULL, NULL, '0827968249', 's5812220208dggddd3@ssru.ac.th', NULL, NULL, NULL, 2222.00, '5', '11111', 'images/nopicture.jpg', NULL, NULL, '2020-06-19', 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:11:36', '2020-06-09 03:15:32', '2020-06-09 03:15:32', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (229, 126, '20200609003', NULL, '0', 'ดกหด', 'eeeeee', NULL, NULL, '0827968249', 's5812220208dggdddoo3@ssru.ac.th', NULL, NULL, NULL, 2222.00, '5', '11111', 'images/nopicture.jpg', NULL, NULL, '2020-06-19', 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:14:19', '2020-06-09 03:15:42', '2020-06-09 03:15:42', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (230, 126, '20200609004', NULL, '0', 'ดกหด', 'fff', NULL, NULL, '0827968249', 's58122202083@ssru.ac.th', NULL, NULL, NULL, 12345.00, '3', '1234567', 'images/profile/fileName15261579621591672851.jpg', NULL, NULL, '2020-06-18', 'พุทธ', 'www', 'ww', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:20:51', '2020-06-09 03:21:22', '2020-06-09 03:21:22', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (231, 126, '20200609005', NULL, '0', 'ดกหด', 'fff', NULL, NULL, '0827968249', 's581222g02083@ssru.ac.thg', NULL, NULL, NULL, 12345.00, '3', '1234567', 'images/profile/fileName12668311521591672859.jpg', NULL, NULL, '2020-06-18', 'พุทธ', 'www', 'ww', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:20:59', '2020-06-09 06:39:26', NULL, 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (233, 126, '20200609006', NULL, '0', 'ดกหด', 'fff', NULL, NULL, '0827968249', 's58122202083@ssru.ac.th', NULL, NULL, NULL, 12345.00, '3', '1234567', 'images/profile/fileName19375384621591673451.jpg', NULL, NULL, '2020-06-18', 'พุทธ', 'www', 'ww', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 03:30:51', '2020-06-09 07:13:06', '2020-06-09 07:13:06', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (234, 126, '20200609007', NULL, '0', 'ดกหด', 'yyyy', NULL, NULL, '0827968249', 's5812220208hh3@ssru.ac.th', NULL, NULL, NULL, NULL, NULL, '5555', 'images/nopicture.jpg', NULL, NULL, '2020-06-26', 'คริสต์', 'hhh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:05:47', '2020-06-09 07:13:00', '2020-06-09 07:13:00', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (235, 126, '20200609008', NULL, '0', 'ดกหด', 'yyyy', NULL, NULL, '0827968249', 's5812220208hhhh@ssru.ac.th', NULL, NULL, NULL, 66666.00, NULL, '5555', 'images/nopicture.jpg', NULL, NULL, '2020-06-26', 'คริสต์', 'hhh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:06:18', '2020-06-09 07:19:37', '2020-06-09 07:19:37', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (236, 126, '20200609009', NULL, '0', '44', '444', NULL, NULL, '0827968249', 's58122202083444@ssru.ac.th', NULL, NULL, NULL, 66666.00, NULL, '44444', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', '444', '444', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:15:46', '2020-06-09 07:17:29', '2020-06-09 07:17:29', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+INSERT INTO `tb_employee` VALUES (237, 126, '20200609010', NULL, '0', 'ีีีรรรรร', 'ีัััyyyy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 66666.00, '1', '12345678', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:17:54', '2020-06-09 07:19:27', '2020-06-09 07:19:27', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (238, 126, '20200609011', NULL, '0', 'ีีีรรรรร', 'ีัััyyyy', NULL, NULL, '0827968249', 's58122202083hh@ssru.ac.th', NULL, NULL, NULL, 66666.00, '1', '12345678', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:18:12', '2020-06-09 07:19:32', '2020-06-09 07:19:32', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (239, 126, '20200609012', NULL, '0', 'ีีีรรรรร', 'ีัััyyyy', NULL, NULL, '0827968249', 's58122202083hhhh@ssru.ac.th', NULL, NULL, NULL, 66666.00, '1', '12345678', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:18:42', '2020-06-09 07:19:23', '2020-06-09 07:19:23', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (240, 126, '20200609013', NULL, '0', 'ีีีรรรรร', 'ีัััyyyy', NULL, NULL, '0827968249', 's5812220208nnn3hhhh@ssru.ac.th', NULL, NULL, NULL, 66666.00, '1', '12345678', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:19:04', '2020-06-09 07:19:18', '2020-06-09 07:19:18', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', '2');
+INSERT INTO `tb_employee` VALUES (241, 126, '20200609014', NULL, '0', 'ดกหด', 'fdfdfd', NULL, NULL, '0827968249', 's58122202083fdfd@ssru.ac.th', NULL, NULL, NULL, 234.00, NULL, 'fdfd', 'images/nopicture.jpg', NULL, NULL, NULL, 'พุทธ', 'fdfdf', 'dfdfdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-09 07:21:28', '2020-06-09 07:21:28', NULL, 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', 'images/nopicture.jpg', NULL);
+
+-- ----------------------------
+-- Table structure for tb_employee_position
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_employee_position`;
+CREATE TABLE `tb_employee_position`  (
+  `id_employee_position` int(11) NOT NULL AUTO_INCREMENT,
+  `name_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `department_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_employee_position`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_employee_position
+-- ----------------------------
+INSERT INTO `tb_employee_position` VALUES (1, 'ดกดกด', '126');
+INSERT INTO `tb_employee_position` VALUES (2, 'fdsfdsf', NULL);
+INSERT INTO `tb_employee_position` VALUES (3, 'sdsds', '126');
+INSERT INTO `tb_employee_position` VALUES (4, 'gdfgdfgdfg', '126');
+INSERT INTO `tb_employee_position` VALUES (5, 'กหกหกfff', '126');
+INSERT INTO `tb_employee_position` VALUES (6, 'test2', '126');
+INSERT INTO `tb_employee_position` VALUES (7, 'ผู้จัดการ', '137');
+INSERT INTO `tb_employee_position` VALUES (8, 'รองผู้จัดการ', '137');
+INSERT INTO `tb_employee_position` VALUES (9, 'วิศวกร', '137');
+INSERT INTO `tb_employee_position` VALUES (10, 'หัวหน้าช่าง', '137');
+INSERT INTO `tb_employee_position` VALUES (11, 'ช่าง', '137');
+
+-- ----------------------------
+-- Table structure for tb_event
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_event`;
+CREATE TABLE `tb_event`  (
+  `id_event` int(255) NOT NULL AUTO_INCREMENT,
+  `date_start` date NULL DEFAULT NULL,
+  `time_start` time(0) NULL DEFAULT NULL,
+  `date_end` date NULL DEFAULT NULL,
+  `time_end` time(0) NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `id_event_category_f` int(255) NULL DEFAULT NULL,
+  `title_event` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_event`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_event
+-- ----------------------------
+INSERT INTO `tb_event` VALUES (82, '2020-05-23', '02:04:00', '2020-03-27', '00:00:00', '2020-03-20 15:49:32', '2020-03-20 15:49:32', 2, 'workformhome', 'orange');
+INSERT INTO `tb_event` VALUES (83, '2020-05-25', '12:00:00', '2020-03-26', '13:00:00', '2020-03-25 08:17:07', '2020-03-25 08:17:07', 1, 'test', 'test');
+INSERT INTO `tb_event` VALUES (84, '2020-05-25', '07:05:00', '2020-05-08', '04:02:00', '2020-05-25 10:51:07', '2020-05-26 06:36:20', 3, 'ทดสอบ', 'ffff');
+INSERT INTO `tb_event` VALUES (85, '2020-05-25', NULL, '1970-01-01', NULL, '2020-05-25 10:58:01', '2020-05-26 06:36:27', 4, 'ทดสอบ', NULL);
+INSERT INTO `tb_event` VALUES (86, '2020-05-15', NULL, NULL, NULL, '2020-05-25 10:59:15', '2020-05-25 10:59:15', 8, 'gggg', NULL);
+INSERT INTO `tb_event` VALUES (87, '2020-05-28', NULL, '2020-05-28', NULL, '2020-05-25 17:38:06', '2020-05-28 07:41:30', 6, 'coviddd', 'ddddd');
+INSERT INTO `tb_event` VALUES (88, '2020-05-27', NULL, '2020-05-27', NULL, '2020-05-25 17:40:26', '2020-05-28 07:39:09', 7, 'coviddd', 'ddddd');
+INSERT INTO `tb_event` VALUES (89, '2020-05-29', NULL, '2020-05-28', NULL, '2020-05-25 17:40:26', '2020-05-25 17:40:26', 5, 'coviddd', 'ddddd');
+INSERT INTO `tb_event` VALUES (90, '2020-05-28', NULL, '2020-05-28', NULL, '2020-05-26 04:27:42', '2020-05-28 07:42:01', 2, 'workformhome', 'home');
+INSERT INTO `tb_event` VALUES (91, '2020-05-26', NULL, '2020-05-26', NULL, '2020-05-26 06:30:58', '2020-05-26 06:30:58', 2, 'ทดสอบ', 'ทดสอบ');
+INSERT INTO `tb_event` VALUES (92, '2020-05-26', '10:10:00', '2020-05-26', '20:10:00', '2020-05-26 08:37:47', '2020-05-26 08:37:47', 1, 'ทดสอบ', 'ทดสอบ');
+INSERT INTO `tb_event` VALUES (93, '2020-06-03', '16:04:00', '2020-06-03', '17:03:00', '2020-06-02 09:03:28', '2020-06-02 09:03:28', 2, '555555', '555555');
+INSERT INTO `tb_event` VALUES (94, '2020-06-02', '16:04:00', '2020-06-02', '17:03:00', '2020-06-02 09:04:06', '2020-06-02 09:04:06', 8, '555555', '555555');
+
+-- ----------------------------
+-- Table structure for tb_event_category
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_event_category`;
+CREATE TABLE `tb_event_category`  (
+  `id_event_category` int(255) NOT NULL AUTO_INCREMENT,
+  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bg_color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_event_category`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_event_category
+-- ----------------------------
+INSERT INTO `tb_event_category` VALUES (1, '#5b6392', NULL, 'กิจกรรมบริษัท', 'bg-purple-darker');
+INSERT INTO `tb_event_category` VALUES (2, '#727cb6', NULL, 'อบรม', 'bg-purple');
+INSERT INTO `tb_event_category` VALUES (3, '#2a72b5', NULL, 'วันเกิด', 'bg-blue-darker');
+INSERT INTO `tb_event_category` VALUES (4, '#348fe2', NULL, 'งานเลี้ยง', 'bg-blue');
+INSERT INTO `tb_event_category` VALUES (5, '#49b6d6', NULL, 'Outing', 'bg-aqua');
+INSERT INTO `tb_event_category` VALUES (6, '#00acac', NULL, 'ประชุม', 'bg-green');
+INSERT INTO `tb_event_category` VALUES (7, '#f59c1a', NULL, 'นัดสัมภาษณ์', 'bg-orange');
+INSERT INTO `tb_event_category` VALUES (8, '#ff5b57', NULL, 'วันหยุด', 'bg-red');
+
+-- ----------------------------
+-- Table structure for tb_geographies
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_geographies`;
+CREATE TABLE `tb_geographies`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = 'InnoDB free: 8192 kB' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_geographies
+-- ----------------------------
+INSERT INTO `tb_geographies` VALUES (1, 'ภาคเหนือ');
+INSERT INTO `tb_geographies` VALUES (2, 'ภาคกลาง');
+INSERT INTO `tb_geographies` VALUES (3, 'ภาคตะวันออกเฉียงเหนือ');
+INSERT INTO `tb_geographies` VALUES (4, 'ภาคตะวันตก');
+INSERT INTO `tb_geographies` VALUES (5, 'ภาคตะวันออก');
+INSERT INTO `tb_geographies` VALUES (6, 'ภาคใต้');
+
+-- ----------------------------
+-- Table structure for tb_holiday
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_holiday`;
+CREATE TABLE `tb_holiday`  (
+  `id_holiday` int(255) NOT NULL AUTO_INCREMENT,
+  `date` date NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_holiday`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_holiday
+-- ----------------------------
+INSERT INTO `tb_holiday` VALUES (1, '2020-02-29', 'วันปีใหม่');
+INSERT INTO `tb_holiday` VALUES (2, '1970-01-18', 'gggg');
+INSERT INTO `tb_holiday` VALUES (3, '2020-01-17', 'test');
+INSERT INTO `tb_holiday` VALUES (4, '2015-01-16', 'test');
+INSERT INTO `tb_holiday` VALUES (5, '1970-01-01', 'test');
+INSERT INTO `tb_holiday` VALUES (6, '1970-01-01', 'orange');
+INSERT INTO `tb_holiday` VALUES (7, '1970-01-01', 'test');
+
+-- ----------------------------
+-- Table structure for tb_leave
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_leave`;
+CREATE TABLE `tb_leave`  (
+  `id_leave` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `subject_leave_id` int(11) NOT NULL,
+  `detail_leave` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+  `type_leave` enum('single','multiple','haft') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `compensate_status` enum('yes','no') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `haft_detail` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `haft_date` date NULL DEFAULT NULL,
+  `single_date` date NULL DEFAULT NULL,
+  `compensate_single` date NULL DEFAULT NULL,
+  `multiple_start` date NULL DEFAULT NULL,
+  `multiple_end` date NULL DEFAULT NULL,
+  `compensate_multiple_start` date NULL DEFAULT NULL,
+  `compensate_multiple_end` date NULL DEFAULT NULL,
+  `file_leave` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `status_leave` enum('waiting','yes','no') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `comment_boss` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_leave`) USING BTREE,
+  INDEX `id_leave`(`id_leave`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 405 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_leave
+-- ----------------------------
+INSERT INTO `tb_leave` VALUES (1, 17, 1, 'ไปหาหมอ', 'haft', 'no', 'เช้า', '2019-07-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', '', '2019-07-10 07:28:50', '2019-07-10 09:56:26', NULL);
+INSERT INTO `tb_leave` VALUES (2, 10, 3, 'มีประชุม ที่พิษณุโลก วันที่ 17 พอดีตรงกับวันหยุดกลับบ้านพอดี  เพื่อจะได้เดินทางไปประชุมไม่ไกลมาก', 'single', 'no', NULL, NULL, '2019-07-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', '', '2019-07-11 03:32:56', '2019-07-11 04:55:25', NULL);
+INSERT INTO `tb_leave` VALUES (3, 32, 2, 'ลาไปทำใบขับขี่ครับ', 'single', 'yes', NULL, NULL, '2019-07-12', '2019-07-20', NULL, NULL, NULL, NULL, 'fileName13976979471562816060.jpg', 'yes', '', '2019-07-11 03:34:22', '2019-07-12 07:53:36', NULL);
+INSERT INTO `tb_leave` VALUES (4, 22, 3, 'วันหยุดยาวเดินทางกลับบ้านครับ เสาร์ที่13ถึงอังคารที่16 กลับมาทำงานวันพุธ17 ระหว่างวันหยุดขอโอทีกลับไปทำที่บ้านด้วย', 'single', 'no', NULL, NULL, '2019-07-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', '', '2019-07-11 03:40:42', '2019-07-12 07:52:47', NULL);
+INSERT INTO `tb_leave` VALUES (5, 12, 3, 'ลาพักผ่อนครับ', 'single', 'no', NULL, NULL, '2019-07-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-11 03:41:45', '2019-07-15 10:56:00', NULL);
+INSERT INTO `tb_leave` VALUES (6, 46, 3, 'วันจันทร์ไปหาหมอหัวเฉียว คุยเรื่องลงประวัติรักษาโรคหัวใจต่อที่นั่นและนัดวันตรวจ และ ขูดหินปูนกับปรึกษาเรื่องฟันที่ผุ', 'single', 'no', NULL, NULL, '2019-07-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', '', '2019-07-11 09:11:13', '2019-07-12 07:53:08', NULL);
+INSERT INTO `tb_leave` VALUES (7, 11, 1, 'หมอนัดตรวจอาการในวันที่ 18/07/2019', 'single', 'no', NULL, NULL, '2019-07-18', NULL, NULL, NULL, NULL, NULL, 'fileName10430136671563160885.jpg', 'yes', NULL, '2019-07-15 03:21:25', '2019-07-15 10:55:45', NULL);
+INSERT INTO `tb_leave` VALUES (8, 15, 2, 'สอบใบขับขี่', 'single', 'no', NULL, NULL, '2019-07-24', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-15 09:33:11', '2019-07-15 10:55:49', NULL);
+INSERT INTO `tb_leave` VALUES (9, 49, 2, 'อาเสีย ที่ต่างจังหวัด จะขออนุญาตลากิจ 1 วัน', 'single', 'no', NULL, NULL, '2019-07-19', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-17 06:02:07', '2019-07-17 06:17:14', NULL);
+INSERT INTO `tb_leave` VALUES (10, 10, 2, 'รถจอดเฉยๆ มีรถขับมาชน กระจกมองขวาหัก รอเรียกประกัน รอ เเจ้งความเลยกลับไม่ทัน มาทำงานวันที่ 18 \r\nผมเลยต้องการลา งานวันที่ 18 เเล้วมาทำชดวันอาทิตย์ 21', 'single', 'no', NULL, NULL, '2019-07-18', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-19 03:09:55', '2019-07-19 21:34:38', NULL);
+INSERT INTO `tb_leave` VALUES (29, 50, 3, 'กลับบ้านที่จังหวัดกาญจนบุรี ไปทำบุญวันเกิด / ไปเยี่ยมแม่', 'single', 'no', NULL, NULL, '2019-07-22', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-19 10:12:07', '2019-07-19 21:34:25', NULL);
+INSERT INTO `tb_leave` VALUES (30, 34, 2, 'ทำใบขับขี่ค่ะ', 'single', 'no', NULL, NULL, '2019-07-26', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-20 09:11:09', '2019-07-21 07:04:57', NULL);
+INSERT INTO `tb_leave` VALUES (31, 48, 1, 'ท้องเสียกลางดึดและ​เข้าห้องน้ำบ่อยและนอนไม่พอ', 'single', 'no', NULL, NULL, '2019-07-18', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-21 08:50:58', '2019-07-22 07:29:00', NULL);
+INSERT INTO `tb_leave` VALUES (32, 12, 2, 'ทำ Passport ไปต่างประเทศครับ และทำ OT ชดในวันที่ 22/07/2019 เป็นเวลา 4 ชั่วโมง', 'haft', 'yes', 'เช้า', '2019-07-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-22 12:06:39', '2019-07-22 14:02:19', NULL);
+INSERT INTO `tb_leave` VALUES (33, 48, 3, 'ใช้ลาพักร้อน พาลูกไปทำฟัน และก็พ่วงตัวเองและแฟนไปทำด้วยในวันเดี่ยวกัน', 'single', 'no', NULL, NULL, '2019-07-26', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-23 03:14:37', '2019-07-23 21:44:35', NULL);
+INSERT INTO `tb_leave` VALUES (34, 17, 2, 'ไปทำพาสปอร์ต', 'single', 'no', NULL, NULL, '2019-07-23', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลงวันผิด', '2019-07-23 05:31:58', '2019-07-23 05:40:44', NULL);
+INSERT INTO `tb_leave` VALUES (35, 17, 2, 'ไปทำพาสปอร์ต', 'single', 'no', NULL, NULL, '2019-07-26', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'อนุมัติลาครึ่งวัน ลามาใหม่ครับ', '2019-07-23 05:34:48', '2019-07-23 06:14:13', NULL);
+INSERT INTO `tb_leave` VALUES (36, 17, 2, 'ไปทำพาสปอร์ต', 'haft', 'no', 'บ่าย', '2019-07-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-23 06:16:21', '2019-07-23 21:44:31', NULL);
+INSERT INTO `tb_leave` VALUES (37, 13, 4, 'ขอลาเพื่อไปทำสัญญาเช่าสถานที่แต่งงาน และไปดูชุดที่สตูดิโอครับ', 'single', 'yes', NULL, NULL, '2019-07-26', '2019-07-27', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-23 10:30:56', '2019-07-23 21:44:18', NULL);
+INSERT INTO `tb_leave` VALUES (40, 5, 1, 'เป็นไข้', 'single', 'yes', NULL, NULL, '2019-07-24', '2019-07-28', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-24 05:55:28', '2019-07-24 06:09:59', NULL);
+INSERT INTO `tb_leave` VALUES (41, 24, 2, 'ไปจัดให้งานศพยาย', 'single', 'yes', NULL, NULL, '2019-07-17', '2019-07-27', NULL, NULL, NULL, NULL, NULL, 'no', 'ไม่ต้องชดเชย ให้ไปแจ้งลาใหม่', '2019-07-24 09:01:01', '2019-07-24 10:32:34', NULL);
+INSERT INTO `tb_leave` VALUES (42, 24, 2, 'ไปจัดให้งานศพยาย', 'single', 'no', NULL, NULL, '2019-07-17', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-25 03:00:27', '2019-07-26 02:48:42', NULL);
+INSERT INTO `tb_leave` VALUES (43, 32, 1, 'ปวดหัวไม่สบายคับ', 'single', 'no', NULL, NULL, '2019-07-29', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'มีการลาถี่ไป ไม่อนุมัติและให้ทำการลาและระบุวันชดเชยมาใหม่', '2019-07-26 01:47:50', '2019-07-26 02:49:47', NULL);
+INSERT INTO `tb_leave` VALUES (44, 32, 1, 'ปวดหัว', 'single', 'yes', NULL, NULL, '2019-07-26', '2019-07-29', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-26 03:08:36', '2019-07-26 23:07:01', NULL);
+INSERT INTO `tb_leave` VALUES (45, 12, 4, 'ลาไปเที่ยวต่างประเทศกับเพื่อน', 'single', 'yes', NULL, NULL, '2019-08-09', '2019-08-17', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-26 04:51:05', '2019-08-08 05:42:43', NULL);
+INSERT INTO `tb_leave` VALUES (46, 40, 2, 'อาจารย์ที่มหาลัยเชิญให้ไปเป็น  Guest Speaker (มีหนังสือเชิญให้ครับ)', 'haft', 'yes', 'เช้า', '2019-08-15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-26 09:40:22', '2019-07-26 23:08:41', NULL);
+INSERT INTO `tb_leave` VALUES (50, 9, 1, 'ปวดหัว มีไข้', 'single', 'yes', NULL, NULL, '2019-07-30', '2019-08-04', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-07-31 03:20:26', '2019-08-05 00:22:46', NULL);
+INSERT INTO `tb_leave` VALUES (51, 29, 4, 'ขอไปทำบัตรประชาชน', 'haft', 'no', 'เช้า', '2019-08-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ให้ลามาใหม่ตามที่ได้คุยกันไว้ครับ ว่าจะไปทำข้างนอกเสาร์อาทิตย์ตามศูนย์ที่เปิดตามห้าง หรือ ลาครึ่งวัน(ใช้เป็นลากิจแทนอื่นๆ)', '2019-08-04 02:55:57', '2019-08-05 03:59:44', NULL);
+INSERT INTO `tb_leave` VALUES (52, 29, 2, 'ไปทำบัตรประชาชน เนื่องจากบัตรประชาชนจางมองภาพไม่ชัด', 'haft', 'no', 'เช้า', '2019-08-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-05 03:59:07', '2019-08-08 05:42:35', NULL);
+INSERT INTO `tb_leave` VALUES (53, 19, 2, 'ลากลับบ้านเนื่องในวันแม่แห่งชาติและวันเทศกาลของอิสลาม(วันอีดิ้ลอัฎฮา)ครับ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-08-09', '2019-08-13', '2019-08-17', '2019-08-24', NULL, 'yes', NULL, '2019-08-05 07:42:32', '2019-08-08 05:42:27', NULL);
+INSERT INTO `tb_leave` VALUES (54, 30, 2, 'ลากลับบ้านเนื่องในวันสำคัญทางศาสนาอิสลาม (อีดิลอัฎฮา) และวันแม่แห่งชาติ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-08-09', '2019-08-13', '2019-08-17', '2019-08-24', NULL, 'yes', NULL, '2019-08-05 07:51:40', '2019-08-08 05:42:19', NULL);
+INSERT INTO `tb_leave` VALUES (55, 46, 3, 'ต้องขับรถยนต์พาแม่ไปทำธุระ ที่บ้านญาติที่กระบี่ครับ ออกเดินทางคืนวันอาทิตย์ และขับรถเดินทางกลับคืนวันอังคาร ถึงกทมพุธเที่ยงๆ วันพุธจะหยุดพักและทำงานที่บ้านแทนครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-08-13', '2019-08-14', NULL, NULL, NULL, 'yes', NULL, '2019-08-06 12:42:40', '2019-08-08 05:42:08', NULL);
+INSERT INTO `tb_leave` VALUES (56, 43, 3, 'ขอกลับบ้าน', 'single', 'no', NULL, NULL, '2019-08-09', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'กรุณาแจ้งพักร้อนล่วงหน้าก่อน 3 วัน หากรับทราบแล้วให้แจ้งมาใหม่ครับ', '2019-08-08 03:45:58', '2019-08-08 05:43:41', NULL);
+INSERT INTO `tb_leave` VALUES (57, 45, 4, 'กลับบ้าน ทำธุระทางราชการ  วันจันทร์  ที่ 19 ส.ค. 2562\r\nขอชดเชย วันเสาร์ ที่ 10 ส.ค. 2562 เวลา 8.00-17.00 น.', 'single', 'yes', NULL, NULL, '2019-08-19', '2019-08-10', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-09 01:42:47', '2019-08-09 02:52:40', NULL);
+INSERT INTO `tb_leave` VALUES (58, 13, 2, 'มีนัดถ่ายภาพพรีเว้ดดิ้งครับ', 'single', 'yes', NULL, NULL, '2019-08-14', '2019-08-17', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-11 14:37:37', '2019-08-13 13:29:10', NULL);
+INSERT INTO `tb_leave` VALUES (59, 29, 3, 'พักร้อนครับ', 'single', 'no', NULL, NULL, '2019-09-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-13 02:48:22', '2019-08-13 13:29:00', NULL);
+INSERT INTO `tb_leave` VALUES (60, 37, 3, 'ไปทำธุรส่วนตัว', 'single', 'no', NULL, NULL, '2019-08-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-13 03:46:13', '2019-08-13 13:28:55', NULL);
+INSERT INTO `tb_leave` VALUES (61, 4, 4, '* ขอลา  พาแฟนย้ายโรงพยาบาลทำเรื่องฝากคลอด', 'single', 'yes', NULL, NULL, '2019-08-16', '2019-08-18', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-14 07:33:53', '2019-08-14 08:14:24', NULL);
+INSERT INTO `tb_leave` VALUES (62, 18, 3, '-', 'single', 'no', NULL, NULL, '2019-09-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-14 07:35:14', '2019-08-19 14:47:39', NULL);
+INSERT INTO `tb_leave` VALUES (63, 25, 3, 'ลาวันที่ 26 ครึ่งวันบ่าย ออกช่วง 15.00 น.\r\nลาวันที่ 27 ทั้งวัน 1 วันครับ\r\nหมายเหตุ : ลาพักร้อนไปเที่ยวเชียงใหม่', 'haft', 'no', 'บ่าย', '2019-08-26', '2019-09-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-15 16:23:09', '2019-08-19 14:48:05', NULL);
+INSERT INTO `tb_leave` VALUES (64, 25, 3, 'ลาวันที่ 26 ครึ่งวันบ่าย ออกช่วง 15.00 น.\r\nลาวันที่ 27 ทั้งวัน 1 วันครับ\r\nหมายเหตุ : ลาพักร้อนไปเที่ยวเชียงใหม่', 'single', 'no', NULL, NULL, '2019-09-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-15 16:23:28', '2019-08-19 14:48:09', NULL);
+INSERT INTO `tb_leave` VALUES (65, 10, 3, 'ไปเที่ยว ต่างจังหวัด ที่เชียงใหม่ เสาร์, อาทิตย์, จันทร์  จึงขอลาพักร้อนวันจันทร์ ที่ 09/09/2019', 'single', 'no', NULL, NULL, '2019-09-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-19 09:03:55', '2019-08-19 14:48:45', NULL);
+INSERT INTO `tb_leave` VALUES (66, 30, 4, 'ลาไปเข้ารับพระราชทานปริญญาบัตร ที่มหาวิทยาลัยสงขลานครินทร์ จังหวัดสงขลา', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-09-02', '2019-09-10', NULL, NULL, 'fileName13491549481566285550.pdf', 'yes', NULL, '2019-08-20 07:19:10', '2019-09-04 07:15:48', NULL);
+INSERT INTO `tb_leave` VALUES (67, 19, 4, 'เข้ารับพระราชทานปริญญาบัตร ประจำปีการศึกษา 2561  ณ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่ จ.สงขลา', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-09-02', '2019-09-10', NULL, NULL, 'fileName20071664231566286041.pdf', 'no', 'แจ้งวันชดเชยด้วยครับ แจ้งลามาใหม่ครับ', '2019-08-20 07:27:21', '2019-08-27 01:18:05', NULL);
+INSERT INTO `tb_leave` VALUES (68, 53, 2, 'พาลุงที่ป่วยเป็นอัมพฤกษ์ไปหาหมอ', 'single', 'no', NULL, NULL, '2019-09-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลากิจ หากไม่เป็นเอกสารสำคัญทางราชการ ขอให้แจ้งลาใหม่และกำหนดวันชดเชยให้ด้วยครับ', '2019-08-20 08:20:39', '2019-08-21 05:47:16', NULL);
+INSERT INTO `tb_leave` VALUES (69, 48, 1, 'ไม่สบาย ตัวร้อน เวียนหัว เพลีย', 'single', 'no', NULL, NULL, '2019-08-21', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-21 02:16:12', '2019-08-21 05:46:44', NULL);
+INSERT INTO `tb_leave` VALUES (70, 27, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2019-09-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-22 06:29:53', '2019-08-27 01:18:27', NULL);
+INSERT INTO `tb_leave` VALUES (71, 43, 2, 'คุณตาเสียชีวิต', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-08-19', '2019-08-21', NULL, NULL, 'fileName7236723181566531951.jpg', 'yes', NULL, '2019-08-23 03:45:52', '2019-09-02 01:34:24', NULL);
+INSERT INTO `tb_leave` VALUES (72, 54, 2, 'ทำฟัน', 'haft', 'no', 'เช้า', '2019-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ให้แจ้งวันชดด้วยแล้วแจ้งมาใหม่นะครับ', '2019-08-26 11:14:57', '2019-08-27 01:19:44', NULL);
+INSERT INTO `tb_leave` VALUES (73, 19, 4, 'เข้ารับพระราชทานปริญญาบัตร ประจำปีการศึกษา 2561 ณ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่ จ.สงขลา', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-09-02', '2019-09-10', '2019-08-31', '2019-10-12', 'fileName18464511551566871153.pdf', 'yes', NULL, '2019-08-27 01:59:13', '2019-09-04 07:15:41', NULL);
+INSERT INTO `tb_leave` VALUES (74, 54, 2, 'ทำฟัน\r\n\r\nชดวันที่ 31/08/19', 'haft', 'no', 'เช้า', '2019-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-27 10:29:10', '2019-08-27 12:18:05', NULL);
+INSERT INTO `tb_leave` VALUES (78, 4, 2, 'พี่กล๊อฟครับผมขออนุญาตลาวันพฤหัสนี้ครับพี่   เนื่องจากพาแฟนไปตรวจครรภ์ และไปหาหมอเบาหวานครับพี่', 'single', 'no', NULL, NULL, '2019-08-29', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '1.  ไม่แจ้งล่วงหน้า3 วัน\r\n2. ไม่ใช่กิจที่มีเอกสารสำคัญทางราชการ\r\n\r\nให้ลาใหม่แล้วแจ้งหาวันมาชดเชยนะครับ', '2019-08-27 15:24:20', '2019-08-27 15:50:04', NULL);
+INSERT INTO `tb_leave` VALUES (79, 4, 4, 'พาแฟนไปโรงพยาบาล', 'single', 'yes', NULL, NULL, '2019-08-29', '2019-09-01', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-27 16:03:17', '2019-08-29 04:40:37', NULL);
+INSERT INTO `tb_leave` VALUES (80, 28, 1, 'หายใจแล้วเจ็บซี่โครงซ้าย', 'single', 'no', NULL, NULL, '2019-08-28', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-28 00:40:02', '2019-08-29 04:40:34', NULL);
+INSERT INTO `tb_leave` VALUES (81, 50, 1, 'ลาป่วย ไปพบแพทย์ที่ โรงพยายาม (  ปริมาณแคลเซียมต่ำทำให้มือเกร็ง และชา )', 'single', 'no', NULL, NULL, '2019-08-28', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-29 02:13:53', '2019-08-29 04:40:31', NULL);
+INSERT INTO `tb_leave` VALUES (82, 22, 3, 'กลับบ้านประจำเดือนไปหาแม่', 'single', 'no', NULL, NULL, '2019-09-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-08-30 04:58:14', '2019-09-02 01:34:37', NULL);
+INSERT INTO `tb_leave` VALUES (83, 5, 4, 'กลับบ้านที่ต่างจังหวัด(นราธิวาส) เป็นวันครบตาเสียครับ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-09-09', '2019-09-13', NULL, NULL, NULL, 'yes', NULL, '2019-09-01 02:34:20', '2019-09-04 07:15:26', NULL);
+INSERT INTO `tb_leave` VALUES (84, 16, 1, 'หมอนัดตรวจความดัน และเจาะเลือดครับ', 'single', 'no', NULL, NULL, '2019-09-05', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-01 12:48:55', '2019-09-02 01:33:34', NULL);
+INSERT INTO `tb_leave` VALUES (85, 50, 1, 'พบแพทย์ ติดตามอาการ ( เมื่อวันพุธที่แล้วว่าผลเลือดดีขึ้นหรือไม่ ) แนบใบนัดให้ตามหลังมาค่ะ', 'haft', 'no', 'เช้า', '2019-09-03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-01 14:49:37', '2019-09-02 01:33:25', NULL);
+INSERT INTO `tb_leave` VALUES (86, 44, 4, 'ไปรับเเม่ที่มาจาก ต่างจังหวัด มาทำธุระที่ กรุงเทพ', 'haft', 'no', 'บ่าย', '2019-09-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'แจ้งลาและขอชดเชยใหม่', '2019-09-01 14:52:09', '2019-09-02 01:33:11', NULL);
+INSERT INTO `tb_leave` VALUES (87, 39, 1, 'ตัวร้อนมีไข้ เนื่องจากตากฝนและพักผ่อนน้อย', 'single', 'yes', NULL, NULL, '2019-09-02', '2019-09-02', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-02 01:21:35', '2019-09-02 01:32:50', NULL);
+INSERT INTO `tb_leave` VALUES (88, 44, 4, 'ไปรับเเม่ที่มาจาก ต่างจังหวัด มาทำธุระที่ กรุงเทพ', 'haft', 'no', 'บ่าย', '2019-09-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-02 02:40:23', '2019-09-04 07:15:31', NULL);
+INSERT INTO `tb_leave` VALUES (89, 44, 4, 'ขอชดเชย วันเสาร์ที่ 7 กันยายน', 'haft', 'yes', 'เช้า', '2019-09-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-02 02:43:17', '2019-09-04 07:15:13', NULL);
+INSERT INTO `tb_leave` VALUES (90, 4, 4, 'ผมขออนุญาติลาไปเคลียค่าใช้จ่ายที่โรงพยาบาลช่วง ประมาณบ่ายสามโมงครึ่งประมาณนี้ครับ เดี๋ยวขอชดเชยวันศุกเข้า 7 โมง เลิก 18.0 ครับผม', 'haft', 'no', 'บ่าย', '2019-09-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-02 22:32:55', '2019-09-04 07:15:05', NULL);
+INSERT INTO `tb_leave` VALUES (91, 53, 1, 'เป็นไข้ เวียนหัว ไอเรื้อรัง', 'single', 'no', NULL, NULL, '2019-09-04', NULL, NULL, NULL, NULL, NULL, 'fileName14680900701567520743.jpg', 'yes', NULL, '2019-09-03 21:25:44', '2019-09-04 07:14:57', NULL);
+INSERT INTO `tb_leave` VALUES (92, 32, 2, 'ขอลาครึ่งวันเนื่องจากรถจักรยานยนต์ เสียต้องยกไปซ้อมที่ศูนย์บริการเพื่อเปลี่ยนอะไหล่ครับ จึงจะขอลาครึ่งวันเช้าครับ', 'haft', 'no', 'เช้า', '2019-09-04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-03 23:00:58', '2019-09-04 07:14:48', NULL);
+INSERT INTO `tb_leave` VALUES (93, 10, 1, 'เนื่องจากมีอาการ ไข้ขึ้นสูงมาก  เจ็บคอ เเละ เริ่ม ไอ', 'haft', 'no', 'บ่าย', '2019-09-04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-04 11:35:03', '2019-09-05 07:22:38', NULL);
+INSERT INTO `tb_leave` VALUES (94, 53, 1, 'เป็นไข้ เวียนหัว ไอเรื้อรัง เจ็บหน้าอก', 'single', 'yes', NULL, NULL, '2019-09-05', '2019-09-08', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-05 07:21:21', '2019-09-05 07:22:33', NULL);
+INSERT INTO `tb_leave` VALUES (95, 39, 1, 'มีไข้', 'single', 'yes', NULL, NULL, '2019-09-02', '2019-09-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-05 08:53:42', '2019-09-09 08:21:28', NULL);
+INSERT INTO `tb_leave` VALUES (96, 23, 3, 'กลับบ้านต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-10-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-06 23:50:56', '2019-09-09 08:21:32', NULL);
+INSERT INTO `tb_leave` VALUES (97, 37, 1, 'ปวดหัว และมีไข้', 'single', 'yes', NULL, NULL, '2019-09-09', '2019-09-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-09 05:51:22', '2019-09-09 08:21:02', NULL);
+INSERT INTO `tb_leave` VALUES (98, 36, 1, 'ปวดหัว ตัวร้อน ไอ เจ็บคอ น้ำหมูกไหล', 'single', 'no', NULL, NULL, '2019-09-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-09 07:04:21', '2019-09-09 08:20:52', NULL);
+INSERT INTO `tb_leave` VALUES (99, 46, 2, 'ลากิจพฤหัสเช้า พาที่บ้านไปส่งที่ต่างจังหวัด เตรียมงานศพ แล้วกลับมาเข้าออฟฟิตช่วงบ่าย', 'haft', 'no', 'เช้า', '2019-09-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-09 08:17:32', '2019-09-09 08:22:02', NULL);
+INSERT INTO `tb_leave` VALUES (100, 6, 2, 'เนื่องจากใบขับขี่หมดอายุเมื่อวันที่ 6 กันยายน ที่ผ่านมาครับ', 'single', 'yes', NULL, NULL, '2019-09-20', '2019-09-28', NULL, NULL, NULL, NULL, 'fileName8012253201567993644.jpg', 'yes', NULL, '2019-09-09 08:47:26', '2019-09-11 07:13:43', NULL);
+INSERT INTO `tb_leave` VALUES (101, 21, 4, 'ไปญี่ปุ่นวันที่ 18 (กลางคืน) -  26 ตุลาคม 2562', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-10-21', '2019-10-22', '2019-09-15', '2019-09-29', NULL, 'no', 'มีลาซ้อนมาแล้ว1ครั้ง พี่จะคุยวันพฤหัสก่อนอนุมัติ', '2019-09-09 12:56:16', '2019-09-11 07:10:10', NULL);
+INSERT INTO `tb_leave` VALUES (102, 21, 4, 'ไปญี่ปุ่นวันที่ 18 (กลางคืน) -  26 ตุลาคม 2562', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', '2019-10-06', '2019-10-14', NULL, 'yes', NULL, '2019-09-09 12:58:37', '2019-09-11 23:05:22', NULL);
+INSERT INTO `tb_leave` VALUES (103, 16, 1, 'หมอนัดฟังผล วันพฤหัส 4 โมง', 'haft', 'no', 'บ่าย', '2019-09-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-10 18:15:35', '2019-09-11 07:09:47', NULL);
+INSERT INTO `tb_leave` VALUES (104, 50, 3, 'กลับบ้านต่างจังหวัด + ไปขอใบส่งตัวที่ต้นสังกัด ( รพ . พหลพล )', 'single', 'no', NULL, NULL, '2019-09-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-10 23:43:03', '2019-09-11 23:05:17', NULL);
+INSERT INTO `tb_leave` VALUES (105, 9, 3, 'เฝ้าพ่อที่ รพ.', 'single', 'no', NULL, NULL, '2019-09-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-11 10:01:34', '2019-09-11 23:05:08', NULL);
+INSERT INTO `tb_leave` VALUES (106, 14, 4, 'ไปงานแต่งพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 11:05:29', '2019-09-12 12:18:26', NULL);
+INSERT INTO `tb_leave` VALUES (107, 20, 4, 'ลาไปงานแต่งงานพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 11:05:37', '2019-09-12 12:18:19', NULL);
+INSERT INTO `tb_leave` VALUES (108, 15, 4, 'ไปงานแต่งพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 11:05:47', '2019-09-12 12:18:14', NULL);
+INSERT INTO `tb_leave` VALUES (109, 17, 4, 'ลาไปงานแต่งพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 11:07:15', '2019-09-12 12:18:07', NULL);
+INSERT INTO `tb_leave` VALUES (110, 16, 4, 'ลาไปงานแต่งพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 11:07:22', '2019-09-12 12:17:59', NULL);
+INSERT INTO `tb_leave` VALUES (111, 21, 4, 'ไปงานแต่งงานพี่อ้น', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-12 12:18:17', '2019-09-12 12:18:30', NULL);
+INSERT INTO `tb_leave` VALUES (112, 38, 2, 'ลาฉุกเฉินเดินทางไปต่างจังหวัดทำธุระทางราชการเกี่ยวกับเอกสารทางราชการ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-09-19', '2019-09-20', '2019-09-29', '2019-10-05', NULL, 'yes', NULL, '2019-09-15 12:14:47', '2019-09-19 12:55:48', NULL);
+INSERT INTO `tb_leave` VALUES (113, 18, 2, 'ไปงานรับปริญญา ที่มหิดลศาลายา', 'single', 'yes', NULL, NULL, '2019-10-02', '2019-10-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-15 18:53:06', '2019-09-25 09:53:54', NULL);
+INSERT INTO `tb_leave` VALUES (114, 18, 3, '-', 'single', 'no', NULL, NULL, '2019-10-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-15 19:19:37', '2019-09-25 09:53:54', NULL);
+INSERT INTO `tb_leave` VALUES (115, 48, 2, 'เนื่องจาก 18/9/2562 21.00 โดยประมาณ ฝนตกหนัก ลมแรงมาก แถวนนนทบุรี บางบ้วทอง ทำให้ส่วนครัวได้รับความเสียหาย ต้องเรียกช่างมาแก้ไข, รั่วต้นไม้ไทรเกาหลีโค่นล้ม ต้องเรียกคนงานในหมู่บ้านมายกแนวรั้วขึ้นมาใหม่', 'single', 'no', NULL, NULL, '2019-09-19', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-19 07:57:55', '2019-09-25 09:53:37', NULL);
+INSERT INTO `tb_leave` VALUES (116, 27, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ระบุสาเหตุการลาให้ชัดเจน', '2019-09-19 12:38:59', '2019-09-19 12:55:18', NULL);
+INSERT INTO `tb_leave` VALUES (117, 55, 1, 'ลาป่วยฉุกเฉิน รถมอเตอร์ไซต์ชนกับรถยนต์ระหว่างเดินทางมาทำงาน', 'single', 'no', NULL, NULL, '2019-09-17', NULL, NULL, NULL, NULL, NULL, 'fileName8398246781568873619.jpg', 'yes', NULL, '2019-09-19 13:13:39', '2019-09-25 09:53:29', NULL);
+INSERT INTO `tb_leave` VALUES (118, 55, 1, 'ลาไปพบแพทย์ตามนัด ครึ่งวันเช้า', 'haft', 'no', 'เช้า', '2019-09-19', NULL, NULL, NULL, NULL, NULL, NULL, 'fileName17450057681568873823.jpg', 'no', 'แจ้งวันมาชดใหม่', '2019-09-19 13:17:03', '2019-09-25 09:52:43', NULL);
+INSERT INTO `tb_leave` VALUES (119, 33, 3, 'มีธุระต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-09-23', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-21 12:38:43', '2019-09-25 09:52:23', NULL);
+INSERT INTO `tb_leave` VALUES (120, 50, 1, 'เจาะเลือดก่อนพบแพทย์ ( แนบใบนัดแพทย์ )', 'haft', 'no', 'บ่าย', '2019-09-27', NULL, NULL, NULL, NULL, NULL, NULL, 'fileName5434095871569378393.jpg', 'no', 'ให้เลือกวันมาชดเชย แล้วแจ้งใหม่', '2019-09-25 09:26:34', '2019-09-25 09:52:12', NULL);
+INSERT INTO `tb_leave` VALUES (121, 50, 1, 'เจาะเลือดก่อนพบแพทย์  ( ชดเชยวันเสาร์ที่ 28 ช่วงเช้า )', 'haft', 'yes', 'บ่าย', '2019-09-27', NULL, NULL, NULL, NULL, NULL, NULL, 'fileName3202460631569391479.jpg', 'yes', NULL, '2019-09-25 13:04:40', '2019-09-25 13:48:42', NULL);
+INSERT INTO `tb_leave` VALUES (122, 30, 1, 'ไม่สบาย​ ท้องเสีย​ เนื่องจากอาหารเป็นพิษ', 'single', 'no', NULL, NULL, '2019-09-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-27 07:42:25', '2019-09-29 16:25:24', NULL);
+INSERT INTO `tb_leave` VALUES (123, 13, 2, 'ซื้อของสำหรับเตรียมงานแต่ง', 'single', 'yes', NULL, NULL, '2019-09-30', '2019-09-05', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-29 12:00:21', '2019-09-29 16:25:33', NULL);
+INSERT INTO `tb_leave` VALUES (124, 13, 4, 'ลาแต่งงาน ผมขอลาก่อนงาน 1 วันเพื่อเตรียมงานด้วยนะครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-10', '2019-10-11', NULL, NULL, NULL, 'yes', NULL, '2019-09-29 12:01:43', '2019-10-01 00:54:49', NULL);
+INSERT INTO `tb_leave` VALUES (125, 40, 1, 'หมอนัดตรวจแผล', 'haft', 'yes', 'เช้า', '2019-10-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-29 15:05:27', '2019-10-01 00:54:43', NULL);
+INSERT INTO `tb_leave` VALUES (126, 36, 2, 'ต้องไปทำธุระที่ธนาคาร สาขาบางเลน นครปฐม', 'haft', 'no', 'เช้า', '2019-09-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-29 19:30:34', '2019-10-01 00:54:39', NULL);
+INSERT INTO `tb_leave` VALUES (127, 50, 1, '- แพทย์นัดติดตามอาการ พบแพทย์ ( เวชศาสตร์นิวเคลียร์ )\r\n- นัดตรวจเลือดของแพทย์คลินิกอายุกรรม', 'single', 'yes', NULL, NULL, '2019-10-01', '2019-10-05', NULL, NULL, NULL, NULL, 'fileName5317985941569779377.docx', 'yes', NULL, '2019-09-30 00:49:38', '2019-10-01 00:54:32', NULL);
+INSERT INTO `tb_leave` VALUES (128, 32, 3, 'ไปรับญาติที่สนามบิน', 'single', 'no', NULL, NULL, '2019-10-02', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-09-30 13:31:12', '2019-10-01 00:54:25', NULL);
+INSERT INTO `tb_leave` VALUES (129, 20, 4, 'ไปดูบ้านเช่า ตอนบ่ายค่ะ พอดีบ้านเช่าที่เช่าอยู่ตอนนี้เจ้าของเดิมจะกลับมาอยู่แล้ว เลยต้องรีบไปดูก่อนค่ะ', 'haft', 'no', 'บ่าย', '2019-10-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-01 15:54:36', '2019-10-07 06:02:10', NULL);
+INSERT INTO `tb_leave` VALUES (130, 17, 3, 'กลับบ้านต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', NULL, NULL, NULL, 'yes', NULL, '2019-10-01 16:09:54', '2019-10-07 06:02:00', NULL);
+INSERT INTO `tb_leave` VALUES (131, 16, 3, 'กลับบ้านต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', NULL, NULL, NULL, 'yes', NULL, '2019-10-01 16:41:00', '2019-10-07 06:01:53', NULL);
+INSERT INTO `tb_leave` VALUES (132, 27, 3, 'ไปงานพี่อ้นครับ', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-01 17:36:14', '2019-10-07 06:01:32', NULL);
+INSERT INTO `tb_leave` VALUES (133, 46, 3, 'ไปญี่ปุ่น 19-26 ตุลาคม 2562 \r\nแจ้งลาพักร้อน 2 วัน วันที่ 21-22 ตค ชดเชยวันที่ 5 กับ 6 ตค ไล่เก็บงานให้เต็มที่', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-10-21', '2019-10-22', '2019-10-05', '2019-10-06', NULL, 'yes', NULL, '2019-10-02 01:18:43', '2019-10-07 06:01:23', NULL);
+INSERT INTO `tb_leave` VALUES (134, 46, 3, 'ไปญี่ปุ่น 19-26 ตุลาคม 2562 \r\nแจ้งลาพักร้อน 2 วัน วันที่ 24-25 ตค ชดเชยวันที่ 12 กับ 13 ตค ไล่เก็บงานให้เต็มที่', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', '2019-10-12', '2019-10-13', NULL, 'yes', NULL, '2019-10-02 01:20:15', '2019-10-07 06:01:17', NULL);
+INSERT INTO `tb_leave` VALUES (135, 46, 4, 'แจ้งลาชดเชยวันที่ 11 ไปงานแต่งพี่อ้น ชดเชยวันที่ 14', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-02 01:21:41', '2019-10-04 16:20:09', NULL);
+INSERT INTO `tb_leave` VALUES (136, 48, 3, 'เดินทางกลับบ้านที่สุราษฎร์ธานี​ เนื่องจากปีใหม่นี้ว่าจะไม่กลับ', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-02 12:34:16', '2019-10-04 16:20:05', NULL);
+INSERT INTO `tb_leave` VALUES (137, 48, 3, 'เดินทางกลับบ้านที่สุราษฎร์ธานี​ เนื่องจากปีใหม่นี้ว่าจะไม่กลับ', 'single', 'no', NULL, NULL, '2019-10-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-02 12:34:53', '2019-10-04 16:20:02', NULL);
+INSERT INTO `tb_leave` VALUES (138, 11, 3, 'ไปงานแต่งพี่อ้น', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-02 14:56:43', '2019-10-04 16:19:57', NULL);
+INSERT INTO `tb_leave` VALUES (139, 11, 1, 'หมอนัดตรวจอาการวันที่ 24/10/2019', 'single', 'no', NULL, NULL, '2019-10-24', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-02 14:57:17', '2019-10-04 16:19:52', NULL);
+INSERT INTO `tb_leave` VALUES (140, 20, 3, 'ไปงานแต่งพี่อ้นค่ะ', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-03 15:46:35', '2019-10-04 16:19:44', NULL);
+INSERT INTO `tb_leave` VALUES (141, 56, 3, 'ลาไปงานพี่อ้นครับ', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-03 17:13:37', '2019-10-04 16:19:35', NULL);
+INSERT INTO `tb_leave` VALUES (142, 10, 4, 'ไปงานเเต่ง พี่อ้น  มาชดเชยวันอาทิตย์ที่ 06/10/2019   เพื่อช่วยพี่ ท๊อฟ เซ็ด ระบบปริ้น เเละ QRCode  งาน สวนน้ำ', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-11', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-04 10:47:56', '2019-10-04 16:19:30', NULL);
+INSERT INTO `tb_leave` VALUES (143, 34, 3, 'ไปงานแต่งพี่อ้น', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-04 14:37:49', '2019-10-04 16:19:14', NULL);
+INSERT INTO `tb_leave` VALUES (144, 13, 4, 'พี่กอฟครับ\r\nผมจะขอลาเพิ่มเติม เพื่อจัดเตรียมงานแต่งครับ (เพราะตอนนี้ยังขนาดอยู่หลายอย่างที่ต้องวิ่งไปเอาของครับ)', 'single', 'no', NULL, NULL, '2019-10-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-07 01:33:04', '2019-10-07 06:02:18', NULL);
+INSERT INTO `tb_leave` VALUES (145, 21, 1, 'ลาป่วย เป็นหวัด', 'single', 'no', NULL, NULL, '2019-10-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-07 07:39:30', '2019-10-07 12:19:50', NULL);
+INSERT INTO `tb_leave` VALUES (146, 22, 3, 'ลากลับบ้านประจำเดือนไปหาแม่', 'single', 'no', NULL, NULL, '2019-10-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-07 09:23:49', '2019-10-07 12:19:43', NULL);
+INSERT INTO `tb_leave` VALUES (147, 24, 3, 'ไปทำบุญครบรอบ 100 วันยายเสีย กับครอบครัว(อาจมีไปต่างจังหวัดบ้านเกิดยายครับ)', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', NULL, NULL, NULL, 'yes', NULL, '2019-10-08 09:48:12', '2019-10-08 21:35:29', NULL);
+INSERT INTO `tb_leave` VALUES (148, 23, 2, 'ขอไปงานแต่งพี่อ้น ชดเชย 23 ตุลาคม 2562', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-11', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-08 17:48:46', '2019-10-08 21:35:19', NULL);
+INSERT INTO `tb_leave` VALUES (149, 37, 1, 'ปวดบริเวณ คอ และศีรษะ และมีไข้', 'single', 'no', NULL, NULL, '2019-10-10', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-10 05:18:03', '2019-10-10 06:43:21', NULL);
+INSERT INTO `tb_leave` VALUES (151, 33, 1, 'หน้ามืดตกบันได มีอาการตามตัวและปวดหัว', 'single', 'no', NULL, NULL, '2019-10-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-10 07:05:49', '2019-10-15 12:55:01', NULL);
+INSERT INTO `tb_leave` VALUES (152, 36, 1, 'ปวดหัว ไม่น่าจะตื่นไปทำงานไหวครับ', 'single', 'no', NULL, NULL, '2019-10-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-11 01:58:50', '2019-10-15 12:54:55', NULL);
+INSERT INTO `tb_leave` VALUES (153, 38, 1, 'อาหารเป็นพิษ อาเจียน', 'single', 'yes', NULL, NULL, '2019-10-11', '2019-10-12', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-11 06:09:49', '2019-10-15 12:54:49', NULL);
+INSERT INTO `tb_leave` VALUES (154, 15, 3, 'ไปธุระที่อำเภอกับแม่', 'single', 'no', NULL, NULL, '2019-10-18', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-15 11:39:57', '2019-10-15 12:54:44', NULL);
+INSERT INTO `tb_leave` VALUES (155, 39, 1, 'ปวดท้อง ท้องเสีย', 'haft', 'yes', 'เช้า', '2019-10-15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-15 13:16:28', '2019-10-15 13:56:21', NULL);
+INSERT INTO `tb_leave` VALUES (156, 29, 1, 'ป่วย ตัวร้อน ปวดหัว มีไข้', 'single', 'no', NULL, NULL, '2019-10-15', NULL, NULL, NULL, NULL, NULL, 'fileName13586255381571202774.jpg', 'yes', NULL, '2019-10-16 12:12:55', '2019-10-16 16:58:38', NULL);
+INSERT INTO `tb_leave` VALUES (157, 35, 1, 'เป็นไข้ ตัวร้อน', 'single', 'no', NULL, NULL, '2019-10-16', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-16 12:23:52', '2019-10-16 16:58:35', NULL);
+INSERT INTO `tb_leave` VALUES (158, 34, 1, 'ลาไปหาหมอ อาการเจ็บคอ ปวดหัว', 'haft', 'no', 'เช้า', '2019-10-15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-16 13:01:25', '2019-10-16 16:58:30', NULL);
+INSERT INTO `tb_leave` VALUES (159, 37, 1, 'ปวดท้อง ท้องเสีย', 'haft', 'no', 'เช้า', '2562-10-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'โทรหาพี่เพื่อแจ้งอาการล่าสุด\r\nวันนี้บ่ายพี่จะเข้าไปบรีฟงานใหม่\r\nมีประชุม Diaresibon บ่ายต้องทำอย่างไร', '2019-10-18 05:12:33', '2019-10-18 07:45:41', NULL);
+INSERT INTO `tb_leave` VALUES (160, 41, 3, '-  กลับไปธุระที่บ้าน', 'single', 'no', NULL, NULL, '2019-10-25', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-18 11:52:08', '2019-10-21 07:46:24', NULL);
+INSERT INTO `tb_leave` VALUES (161, 18, 2, 'ไปต่ออายุใบขับขี่', 'haft', 'no', 'เช้า', '2019-10-28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-18 15:15:43', '2019-10-21 07:46:15', NULL);
+INSERT INTO `tb_leave` VALUES (162, 36, 1, 'ปวดท้อง ท้องเสีย อ้วก', 'single', 'no', NULL, NULL, '2019-10-21', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาป่วยค่อนข้างบ่อย ดูแลเรืองสุขภาพ\r\nขอใบรับรองแพทย์ส่งมาที่ดรีมเพื่อให้อนุมัติ \r\nหรือขอแจ้งลาใหม่แล้วชดเชยวันพุธที่23หรือเสาร์ที่26', '2019-10-21 07:45:14', '2019-10-21 07:47:57', NULL);
+INSERT INTO `tb_leave` VALUES (163, 36, 1, 'ปวดท้อง ท้องเสีย ชดเชยวันพุทธ', 'single', 'yes', NULL, NULL, '2019-10-21', '2019-10-23', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-21 08:23:21', '2019-10-21 09:48:18', NULL);
+INSERT INTO `tb_leave` VALUES (164, 33, 1, 'มีไข้และจามหนักในช่วงเช้า ขอเข้าบ่ายและชดเชย 18.00 - 21.00', 'haft', 'yes', 'เช้า', '2019-10-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-21 09:21:12', '2019-10-21 10:48:14', NULL);
+INSERT INTO `tb_leave` VALUES (165, 13, 1, 'ไข้หวัด', 'single', 'no', NULL, NULL, '2019-10-21', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'แจ้งไปแล้ว1รอบก่อนหน้า', '2019-10-21 13:17:29', '2019-10-24 10:07:25', NULL);
+INSERT INTO `tb_leave` VALUES (166, 32, 1, 'มีอาการปวดตาด้วยขวา ลืมตาไม่ขึ้น เนื่องจากมีอุบัติเหตุลูกฟุตบอลอัดมาจากวันที่ 19 ต.ค.', 'single', 'no', NULL, NULL, '2019-10-22', NULL, NULL, NULL, NULL, NULL, 'fileName8244608001571704280.jpg', 'yes', NULL, '2019-10-22 07:31:20', '2019-11-01 17:16:25', NULL);
+INSERT INTO `tb_leave` VALUES (167, 13, 1, 'ไข้หวัด', 'single', 'no', NULL, NULL, '2019-10-21', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-10-22 15:59:15', '2019-10-24 10:07:02', NULL);
+INSERT INTO `tb_leave` VALUES (168, 37, 1, 'มีไข้ และท้องเสีย', 'single', 'no', NULL, NULL, '2562-10-24', NULL, NULL, NULL, NULL, NULL, 'fileName17689926721571836457.jpeg', 'yes', NULL, '2019-10-23 20:14:17', '2019-10-24 10:08:46', NULL);
+INSERT INTO `tb_leave` VALUES (169, 32, 1, 'มีอาการแสบตาและตาแดง ไม่สามารถจ้องแสง  หรือ เจอแสงแดดได้อะครับ ถ้าอาการดีขึ้นหรือหายดีแล้ว จะไปชดให้แทนครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-24', '2019-10-25', NULL, NULL, NULL, 'yes', NULL, '2019-10-24 07:51:42', '2019-11-01 17:16:18', NULL);
+INSERT INTO `tb_leave` VALUES (170, 41, 3, '-  ลาพักต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-11-04', '2019-11-05', NULL, NULL, NULL, 'yes', NULL, '2019-10-31 06:40:37', '2019-11-01 17:16:14', NULL);
+INSERT INTO `tb_leave` VALUES (171, 12, 2, 'ลาเนื่องจาก พ่อเสียชีวิตครับ และลาช่วยแม่จัดงานศพพ่อ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-10-28', '2019-10-31', NULL, NULL, NULL, 'yes', NULL, '2019-10-31 20:32:47', '2019-11-01 17:16:06', NULL);
+INSERT INTO `tb_leave` VALUES (172, 50, 3, 'เดินทางกลับบ้าน', 'single', 'no', NULL, NULL, '2019-11-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-01 11:01:50', '2019-11-01 17:16:01', NULL);
+INSERT INTO `tb_leave` VALUES (173, 25, 1, 'ปวดกระบอกตาและไมเกรน', 'single', 'no', NULL, NULL, '2019-11-01', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-02 17:52:50', '2019-11-04 10:26:54', NULL);
+INSERT INTO `tb_leave` VALUES (174, 39, 1, 'ไม่สบาย มีไข้ และมีอาการไอหนัก ป่วยมา 2 วันแล้วครับ', 'single', 'yes', NULL, NULL, '2019-11-04', '2019-11-04', NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ', '2019-11-03 22:00:17', '2019-11-04 10:26:42', NULL);
+INSERT INTO `tb_leave` VALUES (175, 39, 1, 'มีไข้ ตัวร้อน มีอาการไอหนัก ป่วยมา 2 วันแล้วครับ', 'single', 'yes', NULL, NULL, '2019-11-04', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ', '2019-11-03 22:03:21', '2019-11-04 10:26:25', NULL);
+INSERT INTO `tb_leave` VALUES (176, 36, 2, 'ทางมหาลัยนัดซ้อมรับปริญญาบัตร', 'single', 'no', NULL, NULL, '2019-11-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-03 22:42:49', '2019-11-04 10:25:59', NULL);
+INSERT INTO `tb_leave` VALUES (177, 36, 2, 'วันซ้อมใหญ่รับปริญญา', 'single', 'no', NULL, NULL, '2019-11-12', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-03 22:44:07', '2019-11-04 10:26:03', NULL);
+INSERT INTO `tb_leave` VALUES (178, 36, 2, 'วันจริงรับปริญญาบัตร', 'single', 'no', NULL, NULL, '2019-11-14', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-03 22:46:05', '2019-11-04 10:26:06', NULL);
+INSERT INTO `tb_leave` VALUES (179, 39, 1, 'มีไข้และไอหนัก', 'single', 'yes', NULL, NULL, '2019-11-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-04 08:35:52', '2019-11-12 06:49:39', NULL);
+INSERT INTO `tb_leave` VALUES (180, 16, 2, 'ไปต่อใบขับขี่ที่ขนส่ง', 'haft', 'no', 'เช้า', '2019-11-07', '2019-11-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-04 10:18:10', '2019-11-12 06:49:36', NULL);
+INSERT INTO `tb_leave` VALUES (181, 22, 3, 'กลับบ้านลอยกระทงกับที่บ้าน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-11-11', '2019-11-12', NULL, NULL, NULL, 'yes', NULL, '2019-11-04 17:58:05', '2019-11-12 06:49:26', NULL);
+INSERT INTO `tb_leave` VALUES (182, 33, 2, 'ลาซ้อมรับปริญญา', 'single', 'no', NULL, NULL, '2019-11-06', NULL, '2019-11-06', NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำในระบบ', '2019-11-04 22:57:05', '2019-11-07 07:40:13', NULL);
+INSERT INTO `tb_leave` VALUES (183, 33, 2, 'ลาซ้อมรับปริญญา', 'single', 'no', NULL, NULL, '2019-11-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำในระบบ', '2019-11-04 22:58:36', '2019-11-07 07:40:58', NULL);
+INSERT INTO `tb_leave` VALUES (184, 39, 1, 'ผมขอลาอีกวันนะครับ เด่ววันนี้จะไปหหาหมอด้วยเลย แม่เขากลัวเป็นไข้หวัดอะไรสักอย่างเนี่ยแหละ อาการมันเริ่มดีขึ้นแล้ว แต่ว่ามันยังมีไอกับมีไข้อยู่', 'single', 'yes', NULL, NULL, '2019-11-05', '2019-11-24', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-05 08:49:09', '2019-11-12 06:49:31', NULL);
+INSERT INTO `tb_leave` VALUES (188, 4, 1, 'ะำหะ', 'single', 'yes', NULL, NULL, '2019-11-04', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ม', '2019-11-05 08:59:16', '2019-11-07 07:39:15', NULL);
+INSERT INTO `tb_leave` VALUES (189, 4, 1, 'test', 'single', 'yes', NULL, NULL, '2019-11-05', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ท', '2019-11-05 09:01:35', '2019-11-07 07:38:43', NULL);
+INSERT INTO `tb_leave` VALUES (190, 4, 1, 'test', 'single', 'yes', NULL, NULL, '2019-11-16', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ทดสอบ', '2019-11-05 09:01:52', '2019-11-07 07:38:05', NULL);
+INSERT INTO `tb_leave` VALUES (191, 33, 2, 'ลาซ้อมรับปริญญา', 'single', 'no', NULL, NULL, '2019-11-06', NULL, NULL, NULL, NULL, NULL, 'fileName277393981572958539.png', 'no', 'มีลาซ้ำมาแล้ว', '2019-11-05 19:55:39', '2019-11-07 07:37:44', NULL);
+INSERT INTO `tb_leave` VALUES (192, 33, 2, 'ลาซ้อมรับปริญญา', 'single', 'no', NULL, NULL, '2019-11-06', NULL, NULL, NULL, NULL, NULL, 'fileName6675168911572973183.png', 'yes', NULL, '2019-11-05 23:59:44', '2019-11-12 06:49:17', NULL);
+INSERT INTO `tb_leave` VALUES (193, 4, 1, 'test', 'single', 'yes', NULL, NULL, '2019-11-30', '2019-12-01', NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:20:45', '2019-11-12 06:48:50', NULL);
+INSERT INTO `tb_leave` VALUES (194, 4, 1, 'test', 'single', 'no', NULL, NULL, '2019-11-16', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:21:37', '2019-11-12 06:48:39', NULL);
+INSERT INTO `tb_leave` VALUES (195, 4, 1, 's', 'single', 'no', NULL, NULL, '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:44:21', '2019-11-12 06:48:14', NULL);
+INSERT INTO `tb_leave` VALUES (196, 4, 1, 's', 'single', 'no', NULL, NULL, '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:47:25', '2019-11-12 06:48:04', NULL);
+INSERT INTO `tb_leave` VALUES (197, 4, 1, 's', 'single', 'no', NULL, NULL, '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:47:28', '2019-11-12 06:47:51', NULL);
+INSERT INTO `tb_leave` VALUES (198, 4, 1, 'asd', 'single', 'no', NULL, NULL, '2019-12-07', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:50:52', '2019-11-12 06:47:02', NULL);
+INSERT INTO `tb_leave` VALUES (199, 4, 1, 'asd', 'single', 'no', NULL, NULL, '2019-12-07', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-07 22:51:38', '2019-11-12 06:47:39', NULL);
+INSERT INTO `tb_leave` VALUES (200, 4, 1, 'asd', 'single', 'no', NULL, NULL, '2019-12-07', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '1', '2019-11-07 22:52:38', '2019-11-10 21:57:43', NULL);
+INSERT INTO `tb_leave` VALUES (201, 4, 4, 'ssasd', 'haft', 'yes', 'บ่าย', '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-11 09:28:49', '2019-11-12 06:47:26', NULL);
+INSERT INTO `tb_leave` VALUES (202, 4, 4, 'ssasd', 'haft', 'yes', 'บ่าย', '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-11 09:29:15', '2019-11-12 06:46:47', NULL);
+INSERT INTO `tb_leave` VALUES (203, 4, 4, 'ssasd', 'haft', 'yes', 'บ่าย', '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-11-11 09:29:19', '2019-11-12 06:47:14', NULL);
+INSERT INTO `tb_leave` VALUES (204, 33, 2, 'ซ้อมรับปริญญา', 'single', 'no', NULL, NULL, '2019-11-12', NULL, NULL, NULL, NULL, NULL, 'fileName1199696091573439769.jpg', 'yes', NULL, '2019-11-11 09:36:10', '2019-11-12 06:46:29', NULL);
+INSERT INTO `tb_leave` VALUES (205, 33, 2, 'รับปริญญา', 'single', 'no', NULL, NULL, '2019-11-14', NULL, NULL, NULL, NULL, NULL, 'fileName6117049851573439859.jpg', 'yes', NULL, '2019-11-11 09:37:39', '2019-11-12 06:46:35', NULL);
+INSERT INTO `tb_leave` VALUES (206, 5, 2, 'ขอลาครึ่งวันเช้าชดวันเสาร์ เพื่อไปทำเอกสารเกี่ยวกับทางบ้าน ที่สำนักงานเขต ครับ', 'haft', 'yes', 'เช้า', '2019-11-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-12 06:29:58', '2019-11-12 16:20:57', NULL);
+INSERT INTO `tb_leave` VALUES (207, 50, 1, 'พบแพทย์ ( เมื่อเสร็จแล้วจะแนบใบรับรองแพทย์ค่ะ )', 'single', 'no', NULL, NULL, '2019-11-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-12 15:31:35', '2019-11-13 17:48:28', NULL);
+INSERT INTO `tb_leave` VALUES (208, 50, 1, 'พบแพทย์ เฉพาะทาง (ไทรอยด์) เมื่อเสร็จแล้วมีใบรับรองแพทย์ค่ะ', 'single', 'no', NULL, NULL, '2019-11-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-12 15:32:54', '2019-11-13 17:48:31', NULL);
+INSERT INTO `tb_leave` VALUES (209, 29, 3, 'กลับต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-11-15', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-13 08:31:41', '2019-11-28 15:57:05', NULL);
+INSERT INTO `tb_leave` VALUES (210, 7, 2, 'เช็คสภาพ + ต่อทะเบียนรถ ที่ขนส่ง', 'single', 'no', NULL, NULL, '2019-12-02', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-13 12:17:14', '2019-11-28 15:57:00', NULL);
+INSERT INTO `tb_leave` VALUES (211, 9, 2, 'งานศพพ่อ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-11-06', '2019-11-11', NULL, NULL, NULL, 'yes', NULL, '2019-11-13 16:36:34', '2019-11-13 17:45:00', NULL);
+INSERT INTO `tb_leave` VALUES (212, 17, 4, 'ไปทำธุระที่บ้าน สงขลา', 'single', 'yes', NULL, NULL, '2019-11-29', '2019-11-16', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-14 21:43:45', '2019-11-26 06:49:12', NULL);
+INSERT INTO `tb_leave` VALUES (213, 13, 3, 'เดินทางไปต่างจังหวัดครับ', 'single', 'no', NULL, NULL, '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ1ครั้ง', '2019-11-17 22:11:10', '2019-11-20 20:34:03', NULL);
+INSERT INTO `tb_leave` VALUES (214, 13, 3, 'เดินทางไปต่างจังหวัดครับ', 'single', 'no', NULL, NULL, '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-17 22:12:07', '2019-11-26 06:49:02', NULL);
+INSERT INTO `tb_leave` VALUES (215, 7, 2, 'เช็คสภาพ + ต่อทะเบียนรถ ที่ขนส่ง', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-19 08:42:24', '2019-11-28 15:56:56', NULL);
+INSERT INTO `tb_leave` VALUES (216, 33, 4, 'ทำธุระเรื่องเอกสารที่มหาวิทยาลัย พฤหัสเช้า', 'haft', 'yes', 'เช้า', '2019-11-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-20 20:27:08', '2019-11-26 06:48:35', NULL);
+INSERT INTO `tb_leave` VALUES (217, 4, 4, 'test', 'single', 'yes', NULL, NULL, '2019-11-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'rtwetwe', '2019-11-21 08:56:55', '2019-11-21 09:00:43', NULL);
+INSERT INTO `tb_leave` VALUES (218, 10, 3, 'ไปเอาเอารถ ที่ศูนย์  ที่เคลมสีไว้ คับ  \r\nตอนเเรกนัดวันเสาร์นี้  เเต่สีที่พ่น แล้วหยดเลยต้องเลื่อนเป็นวันพุธคัรบ \r\nเลยขอพักร้อน 1 วันคัรบ', 'single', 'no', NULL, NULL, '2019-11-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-23 09:22:03', '2019-11-26 06:48:24', NULL);
+INSERT INTO `tb_leave` VALUES (219, 50, 1, 'พบแพทย์', 'single', 'yes', NULL, NULL, '2019-11-25', '2019-11-23', NULL, NULL, NULL, NULL, 'fileName8788677811574616556.jpg', 'yes', NULL, '2019-11-25 00:29:17', '2019-11-26 06:48:30', NULL);
+INSERT INTO `tb_leave` VALUES (220, 7, 3, 'ลาต่อเนื่องปีใหม่\r\nปล. ลากิจวันที่ 2 ธันวาคม  ขอยกเลิกใช้รายการวันที่่ 6 ธันวาคม แทนครับ', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-25 10:56:43', '2019-11-28 15:56:52', NULL);
+INSERT INTO `tb_leave` VALUES (221, 7, 3, 'ลาต่อเนื่องปีใหม่ครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-11-25 10:59:04', '2019-11-28 15:56:47', NULL);
+INSERT INTO `tb_leave` VALUES (222, 33, 4, 'มีนัดคุยปัญหาด่วน กับอาจารย์และธุรการภาควิชา เนื่องจากปัญหาสถานะการจบไม่สมบูรณ์', 'single', 'yes', 'เช้า', NULL, '2019-11-26', '2019-11-30', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-25 22:39:40', '2019-11-26 06:48:51', NULL);
+INSERT INTO `tb_leave` VALUES (223, 41, 3, '-  กลับบ้านสมุทรปราการ ลาถอนฟันคุด ไปใช้สิทธิ์ประกันสังคม', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-26 01:21:45', '2019-11-26 06:48:01', NULL);
+INSERT INTO `tb_leave` VALUES (224, 37, 1, 'ป่วย', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-11-25', '2019-11-26', NULL, NULL, NULL, 'yes', NULL, '2019-11-27 09:52:35', '2019-11-28 15:56:40', NULL);
+INSERT INTO `tb_leave` VALUES (225, 39, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-11-29 09:46:21', '2019-12-02 06:47:01', NULL);
+INSERT INTO `tb_leave` VALUES (226, 58, 2, 'ไปทำธุระกับครอบครัวช่วงเช้า', 'haft', 'no', 'เช้า', '2019-12-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-01 17:48:01', '2019-12-02 06:46:56', NULL);
+INSERT INTO `tb_leave` VALUES (227, 23, 3, 'กลับบ้านต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-12-02 11:30:20', '2019-12-03 13:43:10', NULL);
+INSERT INTO `tb_leave` VALUES (228, 23, 3, 'กลับบ้านต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 11:31:47', '2019-12-03 13:43:33', NULL);
+INSERT INTO `tb_leave` VALUES (229, 45, 3, 'กลับบ้านช่วงปีใหม่คะ', 'single', 'no', NULL, NULL, '2019-12-30', NULL, '2020-01-01', NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 11:32:23', '2019-12-17 06:59:59', NULL);
+INSERT INTO `tb_leave` VALUES (230, 23, 3, 'กลับบ้านต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 11:33:35', '2019-12-17 06:59:55', NULL);
+INSERT INTO `tb_leave` VALUES (231, 45, 3, 'ลาหยุดกลับบ้านช่วงปีใหม่คะ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2019-12-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-02 11:33:55', '2019-12-17 06:59:51', NULL);
+INSERT INTO `tb_leave` VALUES (232, 15, 3, 'ไปเที่ยว ตจว.', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 12:38:39', '2019-12-17 06:59:47', NULL);
+INSERT INTO `tb_leave` VALUES (233, 14, 3, 'ไป ตจว ค่ะ', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 12:38:41', '2019-12-03 13:43:43', NULL);
+INSERT INTO `tb_leave` VALUES (234, 15, 3, 'ไปเที่ยว ตจว.', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', '.', '2019-12-02 12:39:19', '2019-12-03 13:43:52', NULL);
+INSERT INTO `tb_leave` VALUES (235, 24, 3, 'ไปออกรถยนต์วันจันทร์ที่ 9/12/2019', 'single', 'no', NULL, NULL, '2019-12-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 13:56:04', '2019-12-17 06:59:42', NULL);
+INSERT INTO `tb_leave` VALUES (236, 27, 3, 'หยุดปีใหม่', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-02 13:59:10', '2019-12-05 02:00:39', NULL);
+INSERT INTO `tb_leave` VALUES (237, 22, 3, 'หยุดยาวปีใหม่', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 08:37:00', '2019-12-05 02:00:35', NULL);
+INSERT INTO `tb_leave` VALUES (238, 44, 4, 'ลากลับบ้านวันศุกร์ชดเชยวันเสาร์ที่ 14', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ชดเชย', '2019-12-03 09:32:29', '2019-12-03 13:42:50', NULL);
+INSERT INTO `tb_leave` VALUES (239, 44, 4, 'ขอชดเชยจากที่ลาวันศุกร์ที่6', 'single', 'yes', NULL, NULL, '2019-12-06', '2019-12-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 09:34:42', '2019-12-03 13:42:23', NULL);
+INSERT INTO `tb_leave` VALUES (240, 57, 3, 'กลับบ้าน คิดถึงเตี่ยค่ะ', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 13:54:23', '2019-12-17 06:59:39', NULL);
+INSERT INTO `tb_leave` VALUES (241, 45, 3, 'ลากลับบ้านต่างจังหวัดค่ะ', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 14:06:37', '2019-12-17 06:59:34', NULL);
+INSERT INTO `tb_leave` VALUES (242, 23, 4, 'ไปทำธุระกับที่บ้านโอ๊ต วันจันทร์ที่ 9 ขอชดเชยวันเสาร์ที่ 7 ค่ะ', 'single', 'yes', NULL, NULL, '2019-12-09', '2019-12-07', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 14:09:32', '2019-12-17 06:59:29', NULL);
+INSERT INTO `tb_leave` VALUES (243, 15, 3, 'ไปเที่ยว ตจว.', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 14:14:10', '2019-12-05 02:00:26', NULL);
+INSERT INTO `tb_leave` VALUES (244, 24, 3, 'หยุดปีใหม่กลับบ้าน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 17:37:03', '2019-12-04 15:49:49', NULL);
+INSERT INTO `tb_leave` VALUES (245, 34, 3, '-', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-03 22:18:47', '2019-12-04 15:49:45', NULL);
+INSERT INTO `tb_leave` VALUES (246, 12, 3, 'ไปดูคอนเสริต์ครับ', 'single', 'no', NULL, NULL, '2019-12-24', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-04 08:54:09', '2019-12-04 15:49:42', NULL);
+INSERT INTO `tb_leave` VALUES (247, 12, 3, 'มีแพลนไปเที่ยวครับ', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-04 08:55:52', '2019-12-04 15:49:37', NULL);
+INSERT INTO `tb_leave` VALUES (248, 10, 3, 'กลับบ้าน ต่างจังหวัด  ขอลา วันที่ 30 /12/2019     1 วัน คัรบ .', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-04 09:52:56', '2019-12-04 15:49:34', NULL);
+INSERT INTO `tb_leave` VALUES (249, 48, 2, 'ไปต่อใบขับขี่ เสร็จแล้วเอาปั้มน้ำไปซ่อมที่ศูนย์แถวศาลายา', 'single', 'no', NULL, NULL, '2019-12-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-04 16:53:43', '2019-12-05 02:00:22', NULL);
+INSERT INTO `tb_leave` VALUES (250, 30, 4, 'กลับบ้านช่วงปีใหม่', 'single', 'yes', NULL, NULL, '2019-12-30', '2019-12-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-06 09:05:49', '2019-12-19 21:41:56', NULL);
+INSERT INTO `tb_leave` VALUES (251, 30, 4, 'กลับบ้านช่วงปีใหม่', 'single', 'yes', NULL, NULL, '2020-01-02', '2020-01-04', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-06 09:08:08', '2019-12-19 21:41:52', NULL);
+INSERT INTO `tb_leave` VALUES (252, 6, 4, 'กลับบ้านปีใหม่ครับ เนื่องจากวันที่ 30 เป็นวันขั้น วันหยุดเลยขอลาหยุดลาต่อครับ', 'single', 'yes', NULL, NULL, '2019-12-30', '2019-12-07', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-06 09:10:45', '2019-12-19 21:37:31', NULL);
+INSERT INTO `tb_leave` VALUES (253, 6, 4, 'กลับบ้านปีใหม่ครับ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', '2019-12-14', '2019-12-21', NULL, 'yes', NULL, '2019-12-06 09:13:17', '2019-12-19 21:37:26', NULL);
+INSERT INTO `tb_leave` VALUES (254, 31, 1, 'เป็นหวัด , จามบ่อย', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-06 09:38:58', '2019-12-06 17:49:33', NULL);
+INSERT INTO `tb_leave` VALUES (255, 34, 3, '-', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-06 10:11:50', '2019-12-06 17:49:19', NULL);
+INSERT INTO `tb_leave` VALUES (256, 20, 3, 'พักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-06 17:40:17', '2019-12-17 06:58:58', NULL);
+INSERT INTO `tb_leave` VALUES (257, 29, 3, 'ลาพักร้อน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-09 09:15:04', '2019-12-19 21:40:34', NULL);
+INSERT INTO `tb_leave` VALUES (258, 59, 3, 'ขออนุญาต ลา ในช่วงหยุด ปีใหม่น่ะครับ บ้านอยู่ต่างจังหวัด ขออนุญาตลาเหมือนปีที่ผ่านมาน่ะครับ  \r\nลาพักร้อน 3 วัน ได้แก่ วันที่ 30 ธ.ค. 2562 และ วันที่ 2-3 ม.ค. 2563 ครับ ขอบคุณครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2019-12-30', '2019-12-30', NULL, NULL, NULL, 'yes', NULL, '2019-12-09 09:51:15', '2019-12-17 06:58:03', NULL);
+INSERT INTO `tb_leave` VALUES (259, 59, 3, 'ขออนุญาต ลา ในช่วงหยุด ปีใหม่น่ะครับ บ้านอยู่ต่างจังหวัด ขออนุญาตลาเหมือนปีที่ผ่านมาน่ะครับ  \r\nลาพักร้อน 3 วัน ได้แก่ วันที่ 30 ธ.ค. 2562 และ วันที่ 2-3 ม.ค. 2563 ครับ ขอบคุณครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-09 09:52:51', '2019-12-17 06:57:58', NULL);
+INSERT INTO `tb_leave` VALUES (260, 5, 1, 'ป่วยเป็นไซนัสครับ', 'multiple', 'no', NULL, NULL, '2019-12-04', NULL, '2019-12-04', '2019-12-06', NULL, NULL, NULL, 'yes', NULL, '2019-12-09 14:38:49', '2019-12-17 06:57:50', NULL);
+INSERT INTO `tb_leave` VALUES (261, 60, 2, 'กลับต่างจังหวัด', 'single', 'yes', NULL, NULL, '2019-12-21', '2019-12-30', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-09 15:00:53', '2019-12-17 17:56:38', NULL);
+INSERT INTO `tb_leave` VALUES (262, 61, 3, 'กลับบ้านปีใหม่', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-09 15:32:32', '2019-12-17 06:57:43', NULL);
+INSERT INTO `tb_leave` VALUES (263, 62, 1, 'เป็นไข้หวัด', 'single', 'no', NULL, NULL, '2019-12-06', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ตรวจสอบอาการ หากไหวให้พยายามเดินทางมาปฏิบัติงานตามปกติ', '2019-12-09 15:38:19', '2019-12-17 06:57:36', NULL);
+INSERT INTO `tb_leave` VALUES (264, 8, 2, 'ลาพักผ่อนวันปีใหม่', 'single', 'yes', NULL, NULL, '2019-12-30', '2019-12-21', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-09 16:16:19', '2019-12-17 17:29:03', NULL);
+INSERT INTO `tb_leave` VALUES (265, 8, 2, 'ลาพักผ่อนวันปีใหม่ \r\n* ขอชดเชยวันเสาร์ 11 มกราคม และ 18 มกราคม', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-09 16:27:38', '2019-12-17 17:28:58', NULL);
+INSERT INTO `tb_leave` VALUES (266, 60, 2, 'กลับบ้านต่างจังหวัด \r\n* ยกเลิกการลาวันที่ 21 ธันวาคม เนื่องจากใส่วันที่ลาผิด', 'single', 'yes', NULL, NULL, '2019-12-30', '2019-12-21', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-09 16:28:47', '2019-12-17 17:26:55', NULL);
+INSERT INTO `tb_leave` VALUES (267, 63, 1, 'ปวดท้องประจำเดือน', 'single', 'yes', NULL, NULL, '2562-12-10', '2562-12-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-10 14:13:47', '2019-12-17 06:55:26', NULL);
+INSERT INTO `tb_leave` VALUES (268, 38, 2, 'ลาไหว้ครบรอบวันเสียพ่อ', 'haft', 'no', 'เช้า', '2019-12-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-11 00:00:40', '2019-12-17 06:55:21', NULL);
+INSERT INTO `tb_leave` VALUES (269, 39, 1, 'ไอแล้วมีไข้ บวกกับเมื่อคืนผมทำงานไม่ได้นอน อาการเลยแย่ลง', 'single', 'yes', NULL, NULL, '2019-12-12', '2019-12-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-11 22:20:16', '2019-12-17 06:55:12', NULL);
+INSERT INTO `tb_leave` VALUES (270, 58, 2, 'ไปทำธุระเรื่องบ้านกับพ่อ', 'haft', 'no', 'บ่าย', '2019-12-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-12 09:38:22', '2019-12-17 06:55:07', NULL);
+INSERT INTO `tb_leave` VALUES (271, 37, 2, 'เดินทางไปรับเอกสารราชการ', 'haft', 'no', 'เช้า', '2019-12-16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-15 21:44:12', '2019-12-17 06:56:22', NULL);
+INSERT INTO `tb_leave` VALUES (272, 36, 1, 'เป็นหวัด ปวดหัว', 'single', 'no', NULL, NULL, '2019-12-16', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ขอแนบใบรับรองแพทย์ หรือ ทำการแจ้งชดเชย1วัน', '2019-12-16 07:33:08', '2019-12-17 06:57:00', NULL);
+INSERT INTO `tb_leave` VALUES (273, 15, 3, 'พักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-16 13:12:36', '2019-12-17 06:54:45', NULL);
+INSERT INTO `tb_leave` VALUES (274, 14, 3, 'พักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-16 13:14:13', '2019-12-17 06:54:41', NULL);
+INSERT INTO `tb_leave` VALUES (275, 13, 3, 'พักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-16 13:17:22', '2019-12-17 06:54:35', NULL);
+INSERT INTO `tb_leave` VALUES (276, 20, 3, 'พักร้อนค่ะ', 'single', 'no', NULL, NULL, '2019-12-25', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-17 09:57:54', '2019-12-17 17:13:24', NULL);
+INSERT INTO `tb_leave` VALUES (277, 41, 3, '- กลับต่างจังหวัด', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-17 10:12:50', '2019-12-19 21:40:15', NULL);
+INSERT INTO `tb_leave` VALUES (278, 28, 2, 'ไปเขตติดต่อเรื่องเสียภาษีที่อยู่อาศัย', 'single', 'yes', NULL, NULL, '2019-12-20', '2019-12-21', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-17 11:31:25', '2019-12-19 21:37:14', NULL);
+INSERT INTO `tb_leave` VALUES (279, 42, 3, 'ลาพักร้อน 17 ธันวาคม', 'single', 'no', NULL, NULL, '2019-12-17', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-18 09:42:23', '2019-12-19 21:37:10', NULL);
+INSERT INTO `tb_leave` VALUES (280, 42, 3, 'หาหมอ', 'single', 'no', NULL, NULL, '2019-12-24', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-18 14:54:55', '2019-12-19 21:37:06', NULL);
+INSERT INTO `tb_leave` VALUES (281, 42, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-18 14:57:36', '2019-12-19 21:37:02', NULL);
+INSERT INTO `tb_leave` VALUES (282, 43, 2, 'ขอลาไปทำ Passport', 'single', 'no', NULL, NULL, '2019-12-21', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาผิดวัน', '2019-12-18 18:06:54', '2019-12-19 21:36:49', NULL);
+INSERT INTO `tb_leave` VALUES (283, 43, 2, 'ขอลาไปทำ passport', 'single', 'no', NULL, NULL, '2019-12-20', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-18 18:08:16', '2019-12-19 21:36:55', NULL);
+INSERT INTO `tb_leave` VALUES (284, 44, 4, 'ขอชดเชยล่วงหน้าชดเชยวันที่ 21 ธันวาคม ลาวันที่ 30 ธันวาคม', 'single', 'yes', NULL, NULL, '2019-12-30', '2019-12-21', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-20 09:56:30', '2019-12-23 14:43:27', NULL);
+INSERT INTO `tb_leave` VALUES (285, 39, 3, 'ลาหยุดกลับบ้าน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-20 09:57:19', '2019-12-23 16:12:52', NULL);
+INSERT INTO `tb_leave` VALUES (286, 36, 2, 'สอบใบขับขี่', 'single', 'no', NULL, NULL, '2019-12-23', NULL, NULL, NULL, NULL, NULL, 'fileName21462864781576825457.jpg', 'no', 'ไมไ่ด้แจ้งล่วงหน้าก่อนสามวัน', '2019-12-20 14:04:17', '2019-12-23 14:02:01', NULL);
+INSERT INTO `tb_leave` VALUES (287, 35, 2, 'ไปทำบัตรประชาชน', 'haft', 'no', 'เช้า', '2019-12-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-23 13:33:00', '2019-12-23 14:01:22', NULL);
+INSERT INTO `tb_leave` VALUES (288, 49, 2, 'กลับบ้าน ตจว', 'single', 'no', NULL, NULL, '2562-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'แจ้งลาและชดใหม่', '2019-12-23 13:33:59', '2019-12-23 23:12:54', NULL);
+INSERT INTO `tb_leave` VALUES (289, 50, 3, 'ลาพักร้อนปีใหม่', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-23 16:10:05', '2019-12-23 23:12:40', NULL);
+INSERT INTO `tb_leave` VALUES (290, 37, 1, 'ติดเชื้อระบบทางเดินหายใจ', 'single', 'no', NULL, NULL, '2019-12-24', NULL, NULL, NULL, NULL, NULL, 'fileName3307922511577110490.jpg', 'yes', NULL, '2019-12-23 21:14:50', '2019-12-23 22:51:43', NULL);
+INSERT INTO `tb_leave` VALUES (291, 58, 1, 'รู้สึกปวดหัวและอยากนอนพักที่บ้านวันนึ่ง ขอชดเชยวันเสาร์ที่ 4 มกราคม 2563', 'single', 'yes', NULL, NULL, '2019-12-24', '2020-01-04', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-23 22:04:35', '2019-12-23 23:16:17', NULL);
+INSERT INTO `tb_leave` VALUES (292, 48, 3, 'กลับต่างจังหวัด\r\nลงใต้หลังกินเลี้ยงประมาณตี3\r\nขึ้นมาถึงเช้าวันศุกร์', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-24 10:10:01', '2019-12-25 11:53:01', NULL);
+INSERT INTO `tb_leave` VALUES (293, 43, 3, 'กลับบ้าน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, '2019-12-30', NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-24 17:58:32', '2019-12-25 07:37:24', NULL);
+INSERT INTO `tb_leave` VALUES (294, 43, 3, 'กลับบ้าน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-24 17:59:25', '2019-12-25 07:37:21', NULL);
+INSERT INTO `tb_leave` VALUES (295, 32, 3, 'ลากลับบ้านครับ', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-24 18:10:10', '2019-12-25 11:35:55', NULL);
+INSERT INTO `tb_leave` VALUES (296, 53, 2, 'ลากิจกลับบ้านปีใหม่', 'single', 'yes', NULL, NULL, '2019-12-30', '2020-01-04', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-25 19:36:29', '2019-12-30 08:33:47', NULL);
+INSERT INTO `tb_leave` VALUES (297, 10, 3, 'ลากลับบ้านทีใหม่  ต่างจังหวัด ต้องขับกลับสาเอเชีย รถหน้าจะเยอะ ขอลาต่ออีก 2 วัน จะนั่งทำงาน ที่บ้านเลย', 'multiple', 'no', NULL, NULL, NULL, NULL, '2563-01-02', '2563-01-04', NULL, NULL, NULL, 'no', 'ลาผิดวัน', '2019-12-26 07:09:33', '2019-12-26 15:31:41', NULL);
+INSERT INTO `tb_leave` VALUES (298, 10, 3, 'ลากลับบ้านช่วง ปีใหม่   เดินทางกลับ สาย เอเชีย กลัวรถติด คัรบ \r\nเลต้องการลา 2 วันคัรบ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-26 14:53:39', '2019-12-30 08:33:42', NULL);
+INSERT INTO `tb_leave` VALUES (299, 55, 1, 'ลาป่วยกระทันหัน มีอาการเวียนหัว', 'single', 'no', NULL, NULL, '2019-12-16', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-27 09:41:56', '2019-12-30 08:33:36', NULL);
+INSERT INTO `tb_leave` VALUES (300, 55, 2, 'ลาหยุดวันที่ 30 ชดเชยในวันเสาร์ที่ 14 ธ.ค. 62 ไปเรียบร้อยแล้ว', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-27 09:42:57', '2019-12-30 08:33:32', NULL);
+INSERT INTO `tb_leave` VALUES (301, 31, 3, 'พ่อเข้าโรงพยาบาลกระทันหัน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-28 11:07:10', '2019-12-30 08:34:03', NULL);
+INSERT INTO `tb_leave` VALUES (302, 33, 3, 'พักผ่อนร่างกาย', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-30 09:01:38', '2020-01-02 08:56:12', NULL);
+INSERT INTO `tb_leave` VALUES (303, 31, 3, 'ขอลาต่ออีก 2 วันค่ะ เฝ้าพ่อที่โรงพยาบาล\r\n(เส้นเลือดสมองตีบ ร่างกายซีกซ้ายไม่ทำงาน)\r\n(แบบกระทันหันค่ะ อยู่ดีๆก็เป็น) แต่ปกติเป็นโรคหัวใจค่ะ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2019-12-30 13:18:01', '2020-01-05 13:47:19', NULL);
+INSERT INTO `tb_leave` VALUES (304, 25, 3, '-', 'single', 'no', NULL, NULL, '2020-01-03', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2019-12-31 13:57:37', '2020-01-02 08:55:47', NULL);
+INSERT INTO `tb_leave` VALUES (305, 56, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2019-12-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-04 12:35:36', '2020-01-05 13:48:54', NULL);
+INSERT INTO `tb_leave` VALUES (306, 56, 1, 'ป่วยเป็นไข้', 'single', 'no', NULL, NULL, '2020-01-02', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-04 12:36:11', '2020-01-05 13:48:48', NULL);
+INSERT INTO `tb_leave` VALUES (307, 56, 1, 'เป็นไข้หวัด', 'single', 'no', NULL, NULL, '2020-01-02', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำไป1ที', '2020-01-04 12:37:20', '2020-01-05 13:47:58', NULL);
+INSERT INTO `tb_leave` VALUES (308, 56, 3, 'พักร้อนไปเที่ยว จองทริปไว้ครับ', 'single', 'no', NULL, NULL, '2020-01-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-04 12:38:23', '2020-01-05 13:49:00', NULL);
+INSERT INTO `tb_leave` VALUES (309, 33, 4, 'พาสุนัขไปหาหมอ', 'haft', 'yes', 'เช้า', '2020-01-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-06 08:35:45', '2020-01-06 15:34:34', NULL);
+INSERT INTO `tb_leave` VALUES (310, 9, 3, 'กลับต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-02', '2020-01-03', NULL, NULL, NULL, 'yes', NULL, '2020-01-06 14:53:13', '2020-01-06 15:34:30', NULL);
+INSERT INTO `tb_leave` VALUES (311, 59, 1, 'หมอนัด 2 เดือน/ครั้ง ถึงกำหนดวันนัดพอดีน่ะครับ  ขอบคุณครับ', 'single', 'no', NULL, NULL, '2020-01-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-06 15:16:50', '2020-01-06 15:34:24', NULL);
+INSERT INTO `tb_leave` VALUES (312, 64, 1, 'เป็นไข้หวัด นำ้มูลไหล', 'single', 'no', NULL, NULL, '2020-01-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-07 12:03:22', '2020-01-15 06:51:39', NULL);
+INSERT INTO `tb_leave` VALUES (313, 33, 3, 'ไปงานแต่งพี่ชายที่สุรินทร์', 'single', 'no', NULL, NULL, '2020-01-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-07 21:18:25', '2020-01-15 06:51:23', NULL);
+INSERT INTO `tb_leave` VALUES (314, 33, 4, 'ลาขอชดเนื่องจากเดินทางไปสุรินทร์วันที่9 อาจจะขึ้นเครื่องกลับมาทำงานไม่ทันในวันที่10', 'single', 'yes', NULL, NULL, '2020-01-10', '2020-01-11', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-07 21:21:16', '2020-01-15 06:51:29', NULL);
+INSERT INTO `tb_leave` VALUES (315, 35, 2, 'ไปต่างจังหวัด', 'single', 'yes', NULL, NULL, '2020-01-10', '2020-01-18', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-08 10:27:16', '2020-01-10 11:28:06', NULL);
+INSERT INTO `tb_leave` VALUES (316, 59, 2, 'ขออนุญาตลากิจ 1 วัน ไว้ล่วงหน้าครับ จำเป็นต้องได้ไปขึ้นศาลจังหวัดหนองคายตามหนังสือเรียกในวันจันทร์ที่ 13 ม.ค. นี้น่ะครับ   ขอทำงานชดเชย เสาร์ที่ 18 ม.ค. ครับ   ขอบคุณครับ', 'single', 'no', NULL, NULL, '2020-01-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-09 03:53:20', '2020-01-10 11:28:00', NULL);
+INSERT INTO `tb_leave` VALUES (317, 12, 3, 'ไปเที่ยวญี่ปุ่นกับครอบครัวครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-16', '2020-01-17', NULL, NULL, NULL, 'yes', NULL, '2020-01-10 08:24:03', '2020-01-15 06:51:43', NULL);
+INSERT INTO `tb_leave` VALUES (318, 12, 3, 'เดินทางกลับจากญี่ปุ่นครับ', 'single', 'no', NULL, NULL, '2020-01-20', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-10 08:24:57', '2020-01-15 06:51:33', NULL);
+INSERT INTO `tb_leave` VALUES (319, 12, 4, 'เตรียมเดินทางไปสนามบินครับ บินไปญี่ปุ่น', 'haft', 'yes', 'บ่าย', '2020-01-15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ชด1วัน', '2020-01-10 08:27:01', '2020-01-15 06:50:59', NULL);
+INSERT INTO `tb_leave` VALUES (320, 21, 1, 'ท้องเสีย', 'single', 'no', NULL, NULL, '2020-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-14 07:36:20', '2020-01-15 06:51:52', NULL);
+INSERT INTO `tb_leave` VALUES (321, 22, 3, 'ไปทำธรุระครับ', 'single', 'no', NULL, NULL, '2020-01-21', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-14 14:16:36', '2020-01-15 06:51:11', NULL);
+INSERT INTO `tb_leave` VALUES (322, 64, 2, 'ไปทำธุรสำคัญกับแม่ที่ระยองด่วนมาก', 'single', 'no', NULL, NULL, '2020-01-16', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'หาวันมาชดเชยเรียบร้อย', '2020-01-15 12:27:49', '2020-01-27 07:22:17', NULL);
+INSERT INTO `tb_leave` VALUES (323, 62, 1, 'อุบัติเหตุรถจักรยานยนต์ล้ม.', 'haft', 'no', 'บ่าย', '2020-01-14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-15 20:29:16', '2020-01-27 07:19:44', NULL);
+INSERT INTO `tb_leave` VALUES (324, 25, 1, 'ลาป่วยไปหาหมอ', 'haft', 'no', 'บ่าย', '2020-01-16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-16 07:23:15', '2020-01-19 23:20:49', NULL);
+INSERT INTO `tb_leave` VALUES (325, 39, 1, 'ผมไข้ขึ้นครับ ปวดหัวมากช่วงเย็นมาสองวันแล้ว ผมน่าจะพักผ่อนน้อยแล้วเคลียดด้วยครับ วันอังคารก่อนประชุม qpm ผมก็ทำงานแบบไม่นอนเลย', 'single', 'yes', NULL, NULL, '2020-01-17', '2020-01-18', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-16 21:16:41', '2020-01-21 17:58:23', NULL);
+INSERT INTO `tb_leave` VALUES (326, 25, 1, 'เป็นงูสวัด', 'single', 'no', NULL, NULL, '2020-01-17', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-16 22:43:44', '2020-01-19 23:20:37', NULL);
+INSERT INTO `tb_leave` VALUES (327, 27, 1, 'เท้าพลิก', 'single', 'no', NULL, NULL, '2563-01-17', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-17 09:04:07', '2020-01-21 17:58:13', NULL);
+INSERT INTO `tb_leave` VALUES (328, 37, 3, 'ไปต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-02-04', '2020-02-07', NULL, NULL, NULL, 'yes', NULL, '2020-01-18 10:47:58', '2020-01-27 07:22:02', NULL);
+INSERT INTO `tb_leave` VALUES (329, 40, 4, 'ไปต่างประเทศ', 'multiple', 'yes', NULL, NULL, NULL, NULL, '2020-02-04', '2020-02-11', '2020-02-01', '2020-02-15', NULL, 'yes', NULL, '2020-01-21 04:44:39', '2020-01-27 07:21:16', NULL);
+INSERT INTO `tb_leave` VALUES (330, 30, 1, 'ไม่สบาย', 'single', 'no', NULL, NULL, '2020-01-21', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-21 07:32:34', '2020-01-21 17:58:04', NULL);
+INSERT INTO `tb_leave` VALUES (331, 64, 1, 'ไปหาหมอเป็นไข้มา 1 อาทิตย์ กินยาก็ไม่หาย', 'single', 'no', NULL, NULL, '2020-01-24', NULL, NULL, NULL, NULL, NULL, 'fileName18767728371579858458.jpeg', 'no', 'ลาป่วยซ้ำ1ครั้ง', '2020-01-24 16:34:18', '2020-01-27 07:20:36', NULL);
+INSERT INTO `tb_leave` VALUES (332, 64, 1, 'ไปหาหมอเป็นไข้มา 1 อาทิตย์ กินยาก็ไม่หาย', 'single', 'no', NULL, NULL, '2020-01-24', NULL, NULL, NULL, NULL, NULL, 'fileName13876074601579858526.jpeg', 'yes', NULL, '2020-01-24 16:35:26', '2020-01-27 07:21:28', NULL);
+INSERT INTO `tb_leave` VALUES (333, 43, 3, 'มางานรับปริญญาน้องที่เชียงใหม่', 'single', 'no', NULL, NULL, '2020-01-27', NULL, '2020-01-27', '2020-01-28', NULL, NULL, NULL, 'no', 'กำหนดวันชดใหม่', '2020-01-25 22:37:16', '2020-01-27 07:21:47', NULL);
+INSERT INTO `tb_leave` VALUES (334, 37, 1, 'ไอ เจ็บคอ และมีไข้', 'single', 'no', NULL, NULL, '2020-01-27', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'แจ้งใหม่ หาวันมาชดเชยหรือเข้ามาช่วงบ่าย\r\n1. ลาป่วยบ่อยครั้งเกินไป\r\n2. ใกล้จะถึงวันพักร้อน\r\n3. กระทบกับงานที่ยังไม่เสร็จหลายงาน', '2020-01-27 06:09:05', '2020-01-27 07:23:30', NULL);
+INSERT INTO `tb_leave` VALUES (335, 17, 3, 'ไปสงขลา', 'single', 'no', NULL, NULL, '2020-01-30', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-27 09:15:46', '2020-02-03 14:29:37', NULL);
+INSERT INTO `tb_leave` VALUES (336, 17, 2, 'ไปสงขลา', 'single', 'yes', NULL, NULL, '2020-01-31', '2020-02-01', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-27 09:16:45', '2020-02-03 14:29:50', NULL);
+INSERT INTO `tb_leave` VALUES (337, 32, 1, 'ไอเจ็บคอ', 'single', 'no', NULL, NULL, '2020-01-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-28 07:54:31', '2020-01-29 14:04:48', NULL);
+INSERT INTO `tb_leave` VALUES (338, 45, 1, 'ปวดฟัน ที่เกิดจากการผ่าฟันคุด มีไข้', 'single', 'no', NULL, NULL, '2020-01-29', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-29 09:36:36', '2020-01-29 14:04:44', NULL);
+INSERT INTO `tb_leave` VALUES (339, 28, 2, 'ไปธุระนครสวรรค์', 'single', 'no', NULL, NULL, '2020-01-29', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-29 23:01:41', '2020-02-03 14:29:41', NULL);
+INSERT INTO `tb_leave` VALUES (340, 28, 2, 'ไปธุระนครสวรรค์', 'single', 'no', NULL, NULL, '2020-01-31', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-01-30 07:45:56', '2020-02-03 14:29:46', NULL);
+INSERT INTO `tb_leave` VALUES (341, 37, 1, 'ไอ ไข้สูง', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-01-27', '2020-01-30', NULL, NULL, NULL, 'yes', NULL, '2020-01-31 12:49:29', '2020-02-03 14:29:55', NULL);
+INSERT INTO `tb_leave` VALUES (342, 14, 3, 'ไปไต้หวัน', 'single', 'no', NULL, NULL, '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-01 13:55:06', '2020-02-03 14:30:00', NULL);
+INSERT INTO `tb_leave` VALUES (343, 15, 3, 'ไปใต้หวัน', 'single', 'no', NULL, NULL, '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-01 13:56:16', '2020-02-03 14:30:04', NULL);
+INSERT INTO `tb_leave` VALUES (344, 9, 1, 'ปวดหัว เป็นไข้', 'single', 'yes', NULL, NULL, '2020-02-03', '2020-02-15', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-03 07:24:57', '2020-02-03 14:30:16', NULL);
+INSERT INTO `tb_leave` VALUES (345, 47, 4, 'ลารับปริญญา', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-02-17', '2020-02-19', NULL, NULL, NULL, 'no', 'ให้เปลี่ยนเป็นเลือกหมวด ลากิจ', '2020-02-03 09:18:53', '2020-02-06 10:49:10', NULL);
+INSERT INTO `tb_leave` VALUES (346, 17, 2, 'ไปไตหวัน', 'haft', 'no', 'บ่าย', '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-03 09:51:02', '2020-02-05 14:46:32', NULL);
+INSERT INTO `tb_leave` VALUES (347, 16, 2, 'ไปไต้หวัน', 'haft', 'no', 'บ่าย', '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ไม่อนุมัติ ให้ลาพักร้อน', '2020-02-03 09:54:18', '2020-02-03 14:43:19', NULL);
+INSERT INTO `tb_leave` VALUES (348, 20, 3, 'ไปไต้หวันค่ะ', 'single', 'no', NULL, NULL, '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-03 14:43:43', '2020-02-05 14:46:26', NULL);
+INSERT INTO `tb_leave` VALUES (349, 16, 3, 'ไปไต้หวัน', 'single', 'no', NULL, NULL, '2020-02-07', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-03 15:15:23', '2020-02-05 14:46:19', NULL);
+INSERT INTO `tb_leave` VALUES (350, 10, 4, 'ขอลาวันที่ 11 กุมภาพันธิ์ 2563\r\nเนื่องจากเขาใจผิดว่าวันพักร้อน เหลือ 1 วัน เลยจอง ตั๋วเครื่องบินไป ภูเก็ด  08/02/63 - 11/02/63\r\nจะมาชดเชย วัน เสาร์ที่ 15 กุมภาพันธ์ 2563\r\nขอบคุณครับ', 'single', 'yes', NULL, NULL, '2020-02-11', '2020-02-15', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-04 10:11:23', '2020-02-05 14:45:59', NULL);
+INSERT INTO `tb_leave` VALUES (351, 25, 1, 'ปวดกระบอกตาและไมเกรน', 'single', 'no', NULL, NULL, '2020-02-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-05 10:52:20', '2020-02-05 14:46:13', NULL);
+INSERT INTO `tb_leave` VALUES (352, 50, 1, 'พบแพทย์ติดตามอาการ + ตรวจเลือด + x-ray', 'single', 'yes', NULL, NULL, '2020-02-12', '2020-02-10', NULL, NULL, NULL, NULL, 'fileName8023144061580877319.jpg', 'yes', NULL, '2020-02-05 11:35:19', '2020-02-05 14:46:09', NULL);
+INSERT INTO `tb_leave` VALUES (353, 50, 1, 'พบแพทย์ติดตามอาการ ( 2 ท่านเกี่ยวกับไทรอยด์ ) + ตรวจเลือด', 'single', 'no', NULL, NULL, '2020-02-14', NULL, NULL, NULL, NULL, NULL, 'fileName10918617101580877430.jpg', 'yes', NULL, '2020-02-05 11:37:10', '2020-02-05 14:45:39', NULL);
+INSERT INTO `tb_leave` VALUES (354, 26, 4, 'ไปงานรับปริญญา เบนซ์', 'single', 'yes', NULL, NULL, '2020-02-18', '2020-02-22', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-06 09:40:32', '2020-02-06 10:48:43', NULL);
+INSERT INTO `tb_leave` VALUES (355, 47, 2, 'ลารับปริญญา', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-02-17', '2020-02-19', NULL, NULL, NULL, 'yes', NULL, '2020-02-06 10:51:00', '2020-02-13 09:31:07', NULL);
+INSERT INTO `tb_leave` VALUES (356, 56, 2, 'ต่ออายุใบขับขี่ครับ', 'single', 'no', NULL, NULL, '2020-02-06', NULL, NULL, NULL, NULL, NULL, 'fileName10801891991581002057.jpeg', 'no', 'แก้วันลาแล้ว', '2020-02-06 22:14:17', '2020-02-13 09:27:27', NULL);
+INSERT INTO `tb_leave` VALUES (357, 56, 2, 'ต่ออายุใบขับขี่มอเตอร์ไซต์', 'single', 'no', NULL, NULL, '2020-02-14', NULL, NULL, NULL, NULL, NULL, 'fileName20279654391581002132.jpg', 'yes', NULL, '2020-02-06 22:15:32', '2020-02-13 09:26:51', NULL);
+INSERT INTO `tb_leave` VALUES (358, 7, 3, 'ธุระที่ต่างจังหวัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-03-05', '2020-03-06', NULL, NULL, NULL, 'yes', NULL, '2020-02-10 19:14:03', '2020-02-13 09:26:55', NULL);
+INSERT INTO `tb_leave` VALUES (359, 38, 2, 'ไปร่วมงานศพญาติ', 'haft', 'no', 'บ่าย', '2020-02-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-11 07:28:21', '2020-02-13 09:26:42', NULL);
+INSERT INTO `tb_leave` VALUES (360, 31, 1, 'หวัด เจ็บคอ , กลัวเอาหวัดไปติดเพื่อนๆ', 'single', 'no', NULL, NULL, '2020-02-11', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-11 08:44:53', '2020-02-13 09:26:38', NULL);
+INSERT INTO `tb_leave` VALUES (361, 7, 4, 'ลาอุปสมบท วันที่ 1 - 3(3), 6 - 10(5), 16 - 17(2), 20 - 24(5) รวม 15 วัน \r\nวันที่ 27 - 30(4) ใช้ลาพักร้อน 4 วัน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-01', '2020-04-30', NULL, NULL, 'fileName10250933691581491231.jpg', 'no', 'แก้ไข', '2020-02-12 14:07:11', '2020-02-13 09:26:03', NULL);
+INSERT INTO `tb_leave` VALUES (362, 7, 4, 'ลาอุปสมบท วันที่ 1 - 3(3), 6 - 10(5), 16 - 17(2), 20 - 24(5) รวม 15 วัน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-01', '2020-04-24', NULL, NULL, 'fileName7921558891581560959.jpg', 'waiting', NULL, '2020-02-13 09:29:19', '2020-02-13 09:29:19', NULL);
+INSERT INTO `tb_leave` VALUES (363, 7, 3, 'ลาอุปสมบท ต่อเนื่อง วันที่ 27 - 30(4) ใช้ลาพักร้อน 4 วัน', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-27', '2020-04-30', NULL, NULL, NULL, 'waiting', NULL, '2020-02-13 09:29:51', '2020-02-13 09:29:51', NULL);
+INSERT INTO `tb_leave` VALUES (364, 7, 4, 'ลาอุปสมบท วันที่ 1 - 3(3)', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-01', '2020-04-03', NULL, NULL, NULL, 'waiting', NULL, '2020-02-13 09:31:24', '2020-02-13 09:31:24', NULL);
+INSERT INTO `tb_leave` VALUES (365, 7, 4, 'ลาอุปสมบท วันที่ 6 - 10(5)', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-06', '2020-04-10', NULL, NULL, NULL, 'waiting', NULL, '2020-02-13 09:33:33', '2020-02-13 09:33:33', NULL);
+INSERT INTO `tb_leave` VALUES (366, 7, 4, 'ลาอุปสมบท วันที่ 16 - 17(2)', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-16', '2020-04-17', NULL, NULL, NULL, 'waiting', NULL, '2020-02-13 09:34:05', '2020-02-13 09:34:05', NULL);
+INSERT INTO `tb_leave` VALUES (367, 7, 4, 'ลาอุปสมบท วันที่ 20- 24(5)', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-20', '2020-04-24', NULL, NULL, NULL, 'waiting', NULL, '2020-02-13 09:34:35', '2020-02-13 09:34:35', NULL);
+INSERT INTO `tb_leave` VALUES (368, 58, 2, 'รับปริญญาของ มหาวิทยาลัยสยาม ที่ศูนย์นิทรรศการและการประชุมไบเทคบางนา (BITEC)', 'single', 'no', NULL, NULL, '2020-02-18', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-14 09:21:40', '2020-02-20 09:06:44', NULL);
+INSERT INTO `tb_leave` VALUES (369, 25, 3, 'ลาพักร้อน', 'single', 'no', NULL, NULL, '2020-05-04', NULL, NULL, NULL, NULL, NULL, NULL, 'waiting', NULL, '2020-02-16 10:58:37', '2020-02-16 10:58:37', NULL);
+INSERT INTO `tb_leave` VALUES (370, 65, 1, 'ไข้หวัด', 'single', 'no', NULL, NULL, '2020-02-17', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-18 17:59:38', '2020-02-20 09:06:20', NULL);
+INSERT INTO `tb_leave` VALUES (371, 66, 1, 'ท้องเสีย', 'single', 'no', NULL, NULL, '2020-02-18', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-18 21:58:20', '2020-02-20 09:06:15', NULL);
+INSERT INTO `tb_leave` VALUES (372, 17, 2, 'ไปรับญาติมาจากสงขลา ที่หัวลำโพง ญาติไม่เคยมากรุงเทพมาก่อน', 'haft', 'no', 'บ่าย', '2019-02-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ', '2020-02-19 22:08:20', '2020-02-20 09:06:00', NULL);
+INSERT INTO `tb_leave` VALUES (373, 17, 2, 'ไปรับญาติมาจากสงขลา ที่หัวลำโพง ญาติไม่เคยมากรุงเทพมาก่อน', 'haft', 'no', 'บ่าย', '2019-02-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ', '2020-02-19 22:10:56', '2020-02-20 09:05:44', NULL);
+INSERT INTO `tb_leave` VALUES (374, 17, 2, 'ไปรับญาติมาจากสงขลา ที่หัวลำโพง ญาติไม่เคยมากรุงเทพมาก่อน', 'haft', 'no', 'บ่าย', '2020-02-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ไม่อนุมัติ ให้ชดเชยเสาร์บ่ายแทน', '2020-02-19 22:14:42', '2020-02-20 09:05:24', NULL);
+INSERT INTO `tb_leave` VALUES (375, 50, 3, 'ไปบวชชีพราหมณ์กับแม่ ที่วัด', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-02-24', '2020-02-25', NULL, NULL, NULL, 'yes', NULL, '2020-02-20 08:55:35', '2020-02-26 09:00:03', NULL);
+INSERT INTO `tb_leave` VALUES (376, 42, 2, 'หมอตับนัดไว้', 'single', 'no', NULL, NULL, '2020-02-25', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-21 11:48:40', '2020-02-26 09:00:07', NULL);
+INSERT INTO `tb_leave` VALUES (377, 9, 3, 'ไปทำเรื่องกองทุนบำเหน็จ', 'single', 'no', NULL, NULL, '2563-02-24', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-23 19:31:22', '2020-02-26 09:00:13', NULL);
+INSERT INTO `tb_leave` VALUES (378, 16, 1, 'หมอนัดรับยาและตรวจความดันครับ', 'single', 'no', NULL, NULL, '2020-02-27', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-23 19:42:29', '2020-02-26 08:59:21', NULL);
+INSERT INTO `tb_leave` VALUES (379, 9, 3, 'ไปทำเรื่องบำเหน็จ', 'single', 'no', NULL, NULL, '2563-02-24', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำแล้ว', '2020-02-23 23:57:42', '2020-02-26 09:01:03', NULL);
+INSERT INTO `tb_leave` VALUES (380, 9, 3, 'ไปทำเรื่องกองทุนบำเหน็จ', 'single', 'no', NULL, NULL, '2020-02-24', NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'ลาซ้ำ', '2020-02-23 23:58:54', '2020-02-26 09:01:42', NULL);
+INSERT INTO `tb_leave` VALUES (381, 42, 1, 'ปวดหัว', 'single', 'yes', NULL, NULL, '2020-02-24', '2020-02-29', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-24 10:45:44', '2020-02-26 09:02:46', NULL);
+INSERT INTO `tb_leave` VALUES (382, 38, 2, 'ทำธุระธนาคารกะทันหัน', 'haft', 'no', 'เช้า', '2020-02-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-26 07:57:27', '2020-03-02 11:20:03', NULL);
+INSERT INTO `tb_leave` VALUES (383, 26, 3, '-', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-03-05', '2020-03-06', NULL, NULL, NULL, 'yes', NULL, '2020-02-27 09:30:18', '2020-03-02 11:19:58', NULL);
+INSERT INTO `tb_leave` VALUES (384, 42, 1, 'ปวดหัว', 'single', 'yes', NULL, NULL, '2020-02-28', '2020-03-01', NULL, NULL, NULL, NULL, NULL, 'no', 'ชดเสาร์', '2020-02-28 09:03:41', '2020-03-02 11:19:40', NULL);
+INSERT INTO `tb_leave` VALUES (385, 17, 1, 'เป็นไข้', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-02-27', '2020-02-28', NULL, NULL, NULL, 'yes', NULL, '2020-02-28 10:06:39', '2020-03-02 11:14:42', NULL);
+INSERT INTO `tb_leave` VALUES (386, 66, 1, 'ปวดท้องประจำเดือน', 'haft', 'no', 'เช้า', '2020-02-28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-02-28 13:23:16', '2020-03-02 11:14:37', NULL);
+INSERT INTO `tb_leave` VALUES (387, 59, 1, 'หมอนัดตรวจ ขอบคุณครับ', 'single', 'no', NULL, NULL, '2020-03-03', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-02 07:03:02', '2020-03-02 11:14:33', NULL);
+INSERT INTO `tb_leave` VALUES (388, 12, 2, 'พาแม่ไปหาหมอ', 'single', 'no', NULL, NULL, '2020-03-04', NULL, NULL, NULL, NULL, NULL, 'fileName12936892961583117000.jpg', 'yes', NULL, '2020-03-02 09:43:21', '2020-03-02 11:14:29', NULL);
+INSERT INTO `tb_leave` VALUES (389, 40, 2, 'อาจารย์เชิญไปเป็นวิทยากร', 'haft', 'yes', 'บ่าย', '2020-03-10', NULL, NULL, NULL, NULL, NULL, NULL, 'fileName19151418071583120771.pdf', 'yes', NULL, '2020-03-02 10:46:13', '2020-03-02 11:14:09', NULL);
+INSERT INTO `tb_leave` VALUES (390, 42, 3, 'ไปเที่ยว', 'single', 'no', NULL, NULL, '2020-03-13', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-02 19:35:54', '2020-03-04 22:50:24', NULL);
+INSERT INTO `tb_leave` VALUES (391, 172, 1, 'ขอลาวันพฤหัสที่ 5 นี้ ช่วงบ่าย ครับไป รพ จากครั้งที่แล้วหมอเลื่อน', 'haft', 'no', 'บ่าย', '2020-03-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-03 22:12:43', '2020-03-04 22:50:11', NULL);
+INSERT INTO `tb_leave` VALUES (392, 178, 1, 'เนื่องจากมีอาการไอติดต่อกันมาหลายวัน และมีอาการอ่อนเพลีย เมื่อเช้านี้', 'single', 'no', NULL, NULL, '2019-03-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-04 07:08:21', '2020-03-04 22:49:55', NULL);
+INSERT INTO `tb_leave` VALUES (393, 179, 1, 'ไม่สบาย', 'single', 'no', NULL, NULL, '2020-03-04', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-04 07:22:46', '2020-03-04 22:50:03', NULL);
+INSERT INTO `tb_leave` VALUES (394, 188, 1, 'ขอลาป่วย เนื่องจากมีใข้ เเละ อาเจียนตอนเช้า.  เลขอลา 1 วันคัรบ.', 'single', 'no', NULL, NULL, '2020-03-03', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-04 15:39:05', '2020-03-04 22:49:46', NULL);
+INSERT INTO `tb_leave` VALUES (395, 189, 1, 'มีอาการไอและรู้สึกเจ็บคอ และปวดหัวนิดหน่อย ผมขอชดเสาร์หน้า วันที่14 มีนานะครับ เนื่องจากเสาร์นี้ไม่ว่าง ส่วนงานถ้าผมไม่เป็นไรมากเดี๋ยวทำต่อให้ที่บ้านครับ', 'single', 'yes', NULL, NULL, '2020-03-05', '2020-03-14', NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-04 20:26:46', '2020-03-04 22:49:41', NULL);
+INSERT INTO `tb_leave` VALUES (396, 193, 3, 'ขออนุญาตลาพักร้อนช่วงวันต่อจากวันสงกรานต์ครับ วันที่ 16,17 เม.ย. ขอแจ้งลาไว้เนิ่นๆ เนื่องจากว่าจำเป็นต้องได้จองตั๋วรถไฟไว้ล่วงหน้าเพราะช่วงเทศกาลรถค่อนข้างเต็มเร็วน่ะครับ ขอบคุณมากครับ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-16', '2020-04-17', NULL, NULL, NULL, 'waiting', NULL, '2020-03-05 20:38:49', '2020-03-05 20:38:49', NULL);
+INSERT INTO `tb_leave` VALUES (397, 195, 2, 'อาจารย์เชิญไปเป็นวิทยากรของทางคณะ', 'haft', 'no', 'บ่าย', '2020-03-10', NULL, NULL, NULL, NULL, NULL, NULL, 'fileName13820852571583673378.pdf', 'yes', NULL, '2020-03-08 20:16:18', '2020-03-09 23:51:19', NULL);
+INSERT INTO `tb_leave` VALUES (398, 196, 2, 'ทำธุระเรื่องไฟไหม้สวนที่บ้าน', 'single', 'no', NULL, NULL, '2020-03-06', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-09 09:15:16', '2020-03-09 23:51:14', NULL);
+INSERT INTO `tb_leave` VALUES (399, 203, 2, 'ลาไหว้สุสาน ในวันเช้งเม้ง ต่างจังหวัด', 'single', 'yes', NULL, NULL, '2020-04-03', '2020-03-21', NULL, NULL, NULL, NULL, NULL, 'waiting', NULL, '2020-03-09 14:53:38', '2020-03-09 14:53:38', NULL);
+INSERT INTO `tb_leave` VALUES (400, 204, 2, 'ลาไหว้สุสาน ในวันเช้งเม้ง ต่างจังหวัด', 'single', 'yes', NULL, NULL, '2020-04-06', '2020-03-28', NULL, NULL, NULL, NULL, NULL, 'waiting', NULL, '2020-03-09 14:55:52', '2020-03-09 14:55:52', NULL);
+INSERT INTO `tb_leave` VALUES (401, 205, 1, 'มีไข้', 'single', 'no', NULL, NULL, '2563-03-10', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-10 07:47:54', '2020-03-11 22:35:43', NULL);
+INSERT INTO `tb_leave` VALUES (402, 206, 1, 'มีอาการปวดหัวและอ่อนเพลีย', 'haft', 'no', 'เช้า', '2020-03-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-11 07:18:32', '2020-03-11 22:35:31', NULL);
+INSERT INTO `tb_leave` VALUES (403, 210, 1, 'ไปหาหมอ มีไข้ขึ้นสูง และมีอาการไอ', 'single', 'no', NULL, NULL, '2020-03-09', NULL, NULL, NULL, NULL, NULL, NULL, 'yes', NULL, '2020-03-11 18:09:28', '2020-03-11 22:35:27', NULL);
+INSERT INTO `tb_leave` VALUES (404, 172, 3, 'กลับบ้านค่ะ', 'multiple', 'no', NULL, NULL, NULL, NULL, '2020-04-16', '2020-04-17', NULL, NULL, NULL, 'waiting', NULL, '2020-03-12 17:00:28', '2020-03-12 17:00:28', NULL);
+
+-- ----------------------------
+-- Table structure for tb_ot
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_ot`;
+CREATE TABLE `tb_ot`  (
+  `id_ot` int(255) NOT NULL AUTO_INCREMENT,
+  `id_emp_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_department_f` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `date_start` datetime(0) NULL DEFAULT NULL,
+  `date_end` datetime(0) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_ot`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_ot
+-- ----------------------------
+INSERT INTO `tb_ot` VALUES (1, 'วันปีใหม่', '1', '2020-02-29 00:00:00', NULL, NULL, NULL);
+INSERT INTO `tb_ot` VALUES (2, 'gggg', '1', '1970-01-18 00:00:00', NULL, NULL, NULL);
+INSERT INTO `tb_ot` VALUES (3, 'test', '1', '2020-01-17 00:00:00', NULL, NULL, NULL);
+INSERT INTO `tb_ot` VALUES (4, 'test', '1', '2015-01-16 00:00:00', NULL, NULL, NULL);
+INSERT INTO `tb_ot` VALUES (5, 'test', '1', '1970-01-01 00:00:00', NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for tb_payroll_department_show
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_payroll_department_show`;
+CREATE TABLE `tb_payroll_department_show`  (
+  `id_payroll_department` int(255) NOT NULL AUTO_INCREMENT,
+  `department_f` int(255) NULL DEFAULT NULL,
+  `salary` int(255) NULL DEFAULT NULL COMMENT 'เงินเดือน',
+  `position_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าตำแหน่ง',
+  `allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยเลี้ยง',
+  `profession_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าวิชาชีพ',
+  `diligent_allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยขยัน',
+  `ot1_5` int(255) NULL DEFAULT NULL,
+  `ot2` int(255) NULL DEFAULT NULL,
+  `ot1` int(255) NULL DEFAULT NULL COMMENT 'ค่าล่วงเวลา(OT)',
+  `travel_expenses` int(255) NULL DEFAULT NULL COMMENT 'ค่าเดินทาง',
+  `overdue_money` int(255) NULL DEFAULT NULL COMMENT 'เงินตกเบิก',
+  `costofliving` int(255) NULL DEFAULT NULL COMMENT 'ค่าครองชีพ',
+  `costoffood` int(255) NULL DEFAULT NULL COMMENT 'ค่าอาหาร',
+  `shiftfee` int(255) NULL DEFAULT NULL COMMENT 'ค่ากะ',
+  `subsidy` int(255) NULL DEFAULT NULL COMMENT 'เงินอุดหนุน',
+  `welfare` int(255) NULL DEFAULT NULL COMMENT 'เงินสวัสดิการ',
+  `bonus` int(255) NULL DEFAULT NULL COMMENT 'เงินโบนัส',
+  `commission` int(255) NULL DEFAULT NULL COMMENT 'ค่าคอมมิชชั่น',
+  `fuelcost` int(255) NULL DEFAULT NULL COMMENT 'ค่าน้ำมัน',
+  `carwear` int(255) NULL DEFAULT NULL COMMENT 'ค่าสึกหรอรถยนต์',
+  `tex_dis` int(255) NULL DEFAULT NULL,
+  `socialsecurity_dis` int(255) NULL DEFAULT NULL,
+  `leave_dis` int(255) NULL DEFAULT NULL,
+  `absence_dis` int(255) NULL DEFAULT NULL,
+  `leavewithoutpay_dis` int(255) NULL DEFAULT NULL,
+  `withdraw_dis` int(255) NULL DEFAULT NULL,
+  `salary_dis` int(255) NULL DEFAULT NULL,
+  `loan_dis` int(255) NULL DEFAULT NULL,
+  `setzero` int(255) NULL DEFAULT NULL,
+  `fringe_benefit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_payroll_department`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_payroll_department_show
+-- ----------------------------
+INSERT INTO `tb_payroll_department_show` VALUES (0, 134, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0');
+INSERT INTO `tb_payroll_department_show` VALUES (1, 124, 1, 1, 1, 1, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (2, 125, 1, 0, 0, 0, 0, NULL, NULL, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (3, 126, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (4, 128, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (6, 129, 1, 0, 0, 0, 1, NULL, NULL, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (7, 130, 1, 1, 1, 1, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (8, 131, 1, 0, 0, 0, 0, NULL, NULL, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (9, 132, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (10, 133, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (12, 135, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (13, 136, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '1');
+INSERT INTO `tb_payroll_department_show` VALUES (14, 137, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, '1');
+
+-- ----------------------------
+-- Table structure for tb_payroll_department_show_w
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_payroll_department_show_w`;
+CREATE TABLE `tb_payroll_department_show_w`  (
+  `id_payroll_department_w` int(255) NOT NULL AUTO_INCREMENT,
+  `department_f` int(255) NULL DEFAULT NULL,
+  `salary` int(255) NULL DEFAULT NULL COMMENT 'เงินเดือน',
+  `position_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าตำแหน่ง',
+  `allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยเลี้ยง',
+  `profession_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าวิชาชีพ',
+  `diligent_allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยขยัน',
+  `ot1_5` int(255) NULL DEFAULT NULL,
+  `ot2` int(255) NULL DEFAULT NULL,
+  `ot1` int(255) NULL DEFAULT NULL COMMENT 'ค่าล่วงเวลา(OT)',
+  `travel_expenses` int(255) NULL DEFAULT NULL COMMENT 'ค่าเดินทาง',
+  `overdue_money` int(255) NULL DEFAULT NULL COMMENT 'เงินตกเบิก',
+  `costofliving` int(255) NULL DEFAULT NULL COMMENT 'ค่าครองชีพ',
+  `costoffood` int(255) NULL DEFAULT NULL COMMENT 'ค่าอาหาร',
+  `shiftfee` int(255) NULL DEFAULT NULL COMMENT 'ค่ากะ',
+  `subsidy` int(255) NULL DEFAULT NULL COMMENT 'เงินอุดหนุน',
+  `welfare` int(255) NULL DEFAULT NULL COMMENT 'เงินสวัสดิการ',
+  `bonus` int(255) NULL DEFAULT NULL COMMENT 'เงินโบนัส',
+  `commission` int(255) NULL DEFAULT NULL COMMENT 'ค่าคอมมิชชั่น',
+  `fuelcost` int(255) NULL DEFAULT NULL COMMENT 'ค่าน้ำมัน',
+  `carwear` int(255) NULL DEFAULT NULL COMMENT 'ค่าสึกหรอรถยนต์',
+  `tex_dis` int(255) NULL DEFAULT NULL,
+  `socialsecurity_dis` int(255) NULL DEFAULT NULL,
+  `leave_dis` int(255) NULL DEFAULT NULL,
+  `absence_dis` int(255) NULL DEFAULT NULL,
+  `leavewithoutpay_dis` int(255) NULL DEFAULT NULL,
+  `withdraw_dis` int(255) NULL DEFAULT NULL,
+  `salary_dis` int(255) NULL DEFAULT NULL,
+  `loan_dis` int(255) NULL DEFAULT NULL,
+  `setzero` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_payroll_department_w`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_payroll_department_show_w
+-- ----------------------------
+INSERT INTO `tb_payroll_department_show_w` VALUES (1, 124, 1, 1, 1, 1, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (2, 125, 1, 0, 0, 0, 0, NULL, NULL, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (3, 126, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (4, 128, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (6, 129, 1, 0, 0, 0, 1, NULL, NULL, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (7, 130, 1, 1, 1, 1, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (8, 131, 1, 0, 0, 0, 0, NULL, NULL, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (9, 132, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (10, 133, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (12, 135, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (13, 136, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (14, 137, 1, 1, 1, 1, 1, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0);
+INSERT INTO `tb_payroll_department_show_w` VALUES (15, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- ----------------------------
+-- Table structure for tb_payroll_employee
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_payroll_employee`;
+CREATE TABLE `tb_payroll_employee`  (
+  `id_payroll_employee` int(255) NOT NULL AUTO_INCREMENT,
+  `id_employee_f` int(255) NULL DEFAULT NULL,
+  `salary` int(255) NULL DEFAULT 0 COMMENT 'เงินเดือน',
+  `position_allowance` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าตำแหน่ง',
+  `allowance` int(255) NOT NULL DEFAULT 0 COMMENT 'เบี้ยเลี้ยง',
+  `profession_allowance` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าวิชาชีพ',
+  `diligent_allowance` int(255) NOT NULL DEFAULT 0 COMMENT 'เบี้ยขยัน',
+  `ot` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าล่วงเวลา(OT)',
+  `travel_expenses` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าเดินทาง',
+  `overdue_money` int(255) NOT NULL DEFAULT 0 COMMENT 'เงินตกเบิก',
+  `costofliving` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าครองชีพ',
+  `costoffood` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าอาหาร',
+  `shiftfee` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่ากะ',
+  `subsidy` int(255) NOT NULL DEFAULT 0 COMMENT 'เงินอุดหนุน',
+  `welfare` int(255) NOT NULL DEFAULT 0 COMMENT 'เงินสวัสดิการ',
+  `bonus` int(255) NOT NULL DEFAULT 0 COMMENT 'เงินโบนัส',
+  `commission` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าคอมมิชชั่น',
+  `fuelcost` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าน้ำมัน',
+  `carwear` int(255) NOT NULL DEFAULT 0 COMMENT 'ค่าสึกหรอรถยนต์',
+  `tex_dis` int(255) NOT NULL DEFAULT 0,
+  `socialsecurity_dis` int(255) NOT NULL DEFAULT 0,
+  `leave_dis` int(255) NOT NULL DEFAULT 0,
+  `absence_dis` int(255) NOT NULL DEFAULT 0,
+  `leavewithoutpay_dis` int(255) NOT NULL DEFAULT 0,
+  `withdraw_dis` int(255) NOT NULL DEFAULT 0,
+  `salary_dis` int(255) NOT NULL DEFAULT 0,
+  `loan_dis` int(255) NOT NULL DEFAULT 0,
+  `allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `profession_allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fringe_benefit_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `diligent_allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1` int(255) NOT NULL DEFAULT 0,
+  `ot1_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1_hr` int(255) NOT NULL DEFAULT 0,
+  `ot1_5_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1_5_hr` int(255) NOT NULL DEFAULT 0,
+  `ot1_5` int(255) NOT NULL DEFAULT 0,
+  `ot2` int(255) NOT NULL DEFAULT 0,
+  `ot2_hr` int(255) NOT NULL DEFAULT 0,
+  `ot2_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `travel_expenses_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `overdue_money_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `costofliving_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `costoffood_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `shiftfee_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `subsidy_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `welfare_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bonus_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `commission_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fuelcost_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `carwear_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fringe_benefit` int(255) NOT NULL DEFAULT 0,
+  `salary_dis_omment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_payroll_employee`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_payroll_employee
+-- ----------------------------
+INSERT INTO `tb_payroll_employee` VALUES (1, 172, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (2, 178, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (3, 179, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (4, 188, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (6, 189, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (7, 193, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (8, 195, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (9, 196, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (10, 203, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (11, 204, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (15, 211, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (16, 212, 4544, 1, 13, 14444, 0, 1, 5888, 11, 9, 9, 9, 9, 8, 7, 6, 7, 11, 1, 1, 1, 1, 1, 1, 1, 1, '13', 'vvvvbvbv', 'vcvbvbv', 'cvcvcv', 111120, 'vcv', 2, 'cvc', 2, 555, 555, 2, NULL, 'dd', 'dsds', 'dsd', 'sdsd', 'dsdd', 'ds', 'sds', 'dsd', 'dsds', 'dsd', 'sdsd', 555, 'fgfdgdf55555555555555555555888888888888888888888888888888887777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777995959gfffggffgfggfgf');
+INSERT INTO `tb_payroll_employee` VALUES (17, 213, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (18, 217, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (19, 224, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (20, 225, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (21, 226, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (22, 227, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (23, 228, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (24, 229, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (25, 230, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (26, 231, 12345, 300, 200, 200, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 0, 0, '0', '0', '0', '0', 11, '0', 0, '0', 0, 11, 11, 0, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 10, '0');
+INSERT INTO `tb_payroll_employee` VALUES (28, 227, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', NULL, NULL, NULL, 0, '', 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `tb_payroll_employee` VALUES (30, 241, 234, 0, 700, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL);
+
+-- ----------------------------
+-- Table structure for tb_payroll_employee_w
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_payroll_employee_w`;
+CREATE TABLE `tb_payroll_employee_w`  (
+  `id_payroll_employee_w` int(255) NOT NULL AUTO_INCREMENT,
+  `id_employee_f` int(255) NULL DEFAULT NULL,
+  `salary` int(255) NULL DEFAULT NULL COMMENT 'เงินเดือน',
+  `position_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าตำแหน่ง',
+  `allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยเลี้ยง',
+  `profession_allowance` int(255) NULL DEFAULT NULL COMMENT 'ค่าวิชาชีพ',
+  `diligent_allowance` int(255) NULL DEFAULT NULL COMMENT 'เบี้ยขยัน',
+  `ot` int(255) NULL DEFAULT NULL COMMENT 'ค่าล่วงเวลา(OT)',
+  `travel_expenses` int(255) NULL DEFAULT NULL COMMENT 'ค่าเดินทาง',
+  `overdue_money` int(255) NULL DEFAULT NULL COMMENT 'เงินตกเบิก',
+  `costofliving` int(255) NULL DEFAULT NULL COMMENT 'ค่าครองชีพ',
+  `costoffood` int(255) NULL DEFAULT NULL COMMENT 'ค่าอาหาร',
+  `shiftfee` int(255) NULL DEFAULT NULL COMMENT 'ค่ากะ',
+  `subsidy` int(255) NULL DEFAULT NULL COMMENT 'เงินอุดหนุน',
+  `welfare` int(255) NULL DEFAULT NULL COMMENT 'เงินสวัสดิการ',
+  `bonus` int(255) NULL DEFAULT NULL COMMENT 'เงินโบนัส',
+  `commission` int(255) NULL DEFAULT NULL COMMENT 'ค่าคอมมิชชั่น',
+  `fuelcost` int(255) NULL DEFAULT NULL COMMENT 'ค่าน้ำมัน',
+  `carwear` int(255) NULL DEFAULT NULL COMMENT 'ค่าสึกหรอรถยนต์',
+  `tex_dis` int(255) NULL DEFAULT NULL,
+  `socialsecurity_dis` int(255) NULL DEFAULT NULL,
+  `leave_dis` int(255) NULL DEFAULT NULL,
+  `absence_dis` int(255) NULL DEFAULT NULL,
+  `leavewithoutpay_dis` int(255) NULL DEFAULT NULL,
+  `withdraw_dis` int(255) NULL DEFAULT NULL,
+  `salary_dis` int(255) NULL DEFAULT NULL,
+  `loan_dis` int(255) NULL DEFAULT NULL,
+  `allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `profession_allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fringe_benefit_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `diligent_allowance_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1` int(255) NULL DEFAULT NULL,
+  `ot1_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1_hr` int(255) NULL DEFAULT NULL,
+  `ot1_5_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ot1_5_hr` int(255) NULL DEFAULT NULL,
+  `ot1_5` int(255) NULL DEFAULT NULL,
+  `ot2` int(255) NULL DEFAULT NULL,
+  `ot2_hr` int(255) NULL DEFAULT NULL,
+  `ot2_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `travel_expenses_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `overdue_money_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `costofliving_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `costoffood_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `shiftfee_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `subsidy_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `welfare_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bonus_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `commission_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fuelcost_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `carwear_comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fringe_benefit` int(255) NULL DEFAULT NULL,
+  `salary_dis_omment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_payroll_employee_w`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_payroll_employee_w
+-- ----------------------------
+INSERT INTO `tb_payroll_employee_w` VALUES (1, 172, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (2, 178, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (3, 179, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (4, 188, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (6, 189, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (7, 193, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (8, 195, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (9, 196, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (10, 203, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (11, 204, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (15, 211, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (16, 212, 4544, 1, 13, 14444, 0, 1, 5888, 11, 9, 9, 9, 9, 8, 7, 6, 7, 11, 1, 1, 1, 1, 1, 1, 1, 1, '13', 'vvvvbvbv', 'vcvbvbv', 'cvcvcv', 111120, 'vcv', 2, 'cvc', 2, 555, 555, 2, NULL, 'dd', 'dsds', 'dsd', 'sdsd', 'dsdd', 'ds', 'sds', 'dsd', 'dsds', 'dsd', 'sdsd', 555, 'fgfdgdf55555555555555555555888888888888888888888888888888887777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777995959gfffggffgfggfgf');
+INSERT INTO `tb_payroll_employee_w` VALUES (17, 213, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (18, 217, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (20, 240, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_payroll_employee_w` VALUES (21, 241, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for tb_province
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_province`;
+CREATE TABLE `tb_province`  (
+  `id_province` int(255) NOT NULL AUTO_INCREMENT,
+  `name_region` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `color_div` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `province` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_province`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_province
+-- ----------------------------
+INSERT INTO `tb_province` VALUES (1, 'Bangkok', 'orange', NULL);
+INSERT INTO `tb_province` VALUES (2, 'Rayong', 'red', NULL);
+INSERT INTO `tb_province` VALUES (3, 'Nakornpathom', 'blue', NULL);
+INSERT INTO `tb_province` VALUES (4, 'Khonkhen', 'purple', NULL);
+INSERT INTO `tb_province` VALUES (6, 'China', 'black', NULL);
+INSERT INTO `tb_province` VALUES (8, 'orange', 'green', NULL);
+
+-- ----------------------------
+-- Table structure for tb_provinces
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_provinces`;
+CREATE TABLE `tb_provinces`  (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `code` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_th` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `geography_id` int(5) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 78 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_provinces
+-- ----------------------------
+INSERT INTO `tb_provinces` VALUES (1, '10', 'กรุงเทพมหานคร', 'Bangkok', 2);
+INSERT INTO `tb_provinces` VALUES (2, '11', 'สมุทรปราการ', 'Samut Prakan', 2);
+INSERT INTO `tb_provinces` VALUES (3, '12', 'นนทบุรี', 'Nonthaburi', 2);
+INSERT INTO `tb_provinces` VALUES (4, '13', 'ปทุมธานี', 'Pathum Thani', 2);
+INSERT INTO `tb_provinces` VALUES (5, '14', 'พระนครศรีอยุธยา', 'Phra Nakhon Si Ayutthaya', 2);
+INSERT INTO `tb_provinces` VALUES (6, '15', 'อ่างทอง', 'Ang Thong', 2);
+INSERT INTO `tb_provinces` VALUES (7, '16', 'ลพบุรี', 'Loburi', 2);
+INSERT INTO `tb_provinces` VALUES (8, '17', 'สิงห์บุรี', 'Sing Buri', 2);
+INSERT INTO `tb_provinces` VALUES (9, '18', 'ชัยนาท', 'Chai Nat', 2);
+INSERT INTO `tb_provinces` VALUES (10, '19', 'สระบุรี', 'Saraburi', 2);
+INSERT INTO `tb_provinces` VALUES (11, '20', 'ชลบุรี', 'Chon Buri', 5);
+INSERT INTO `tb_provinces` VALUES (12, '21', 'ระยอง', 'Rayong', 5);
+INSERT INTO `tb_provinces` VALUES (13, '22', 'จันทบุรี', 'Chanthaburi', 5);
+INSERT INTO `tb_provinces` VALUES (14, '23', 'ตราด', 'Trat', 5);
+INSERT INTO `tb_provinces` VALUES (15, '24', 'ฉะเชิงเทรา', 'Chachoengsao', 5);
+INSERT INTO `tb_provinces` VALUES (16, '25', 'ปราจีนบุรี', 'Prachin Buri', 5);
+INSERT INTO `tb_provinces` VALUES (17, '26', 'นครนายก', 'Nakhon Nayok', 2);
+INSERT INTO `tb_provinces` VALUES (18, '27', 'สระแก้ว', 'Sa Kaeo', 5);
+INSERT INTO `tb_provinces` VALUES (19, '30', 'นครราชสีมา', 'Nakhon Ratchasima', 3);
+INSERT INTO `tb_provinces` VALUES (20, '31', 'บุรีรัมย์', 'Buri Ram', 3);
+INSERT INTO `tb_provinces` VALUES (21, '32', 'สุรินทร์', 'Surin', 3);
+INSERT INTO `tb_provinces` VALUES (22, '33', 'ศรีสะเกษ', 'Si Sa Ket', 3);
+INSERT INTO `tb_provinces` VALUES (23, '34', 'อุบลราชธานี', 'Ubon Ratchathani', 3);
+INSERT INTO `tb_provinces` VALUES (24, '35', 'ยโสธร', 'Yasothon', 3);
+INSERT INTO `tb_provinces` VALUES (25, '36', 'ชัยภูมิ', 'Chaiyaphum', 3);
+INSERT INTO `tb_provinces` VALUES (26, '37', 'อำนาจเจริญ', 'Amnat Charoen', 3);
+INSERT INTO `tb_provinces` VALUES (27, '39', 'หนองบัวลำภู', 'Nong Bua Lam Phu', 3);
+INSERT INTO `tb_provinces` VALUES (28, '40', 'ขอนแก่น', 'Khon Kaen', 3);
+INSERT INTO `tb_provinces` VALUES (29, '41', 'อุดรธานี', 'Udon Thani', 3);
+INSERT INTO `tb_provinces` VALUES (30, '42', 'เลย', 'Loei', 3);
+INSERT INTO `tb_provinces` VALUES (31, '43', 'หนองคาย', 'Nong Khai', 3);
+INSERT INTO `tb_provinces` VALUES (32, '44', 'มหาสารคาม', 'Maha Sarakham', 3);
+INSERT INTO `tb_provinces` VALUES (33, '45', 'ร้อยเอ็ด', 'Roi Et', 3);
+INSERT INTO `tb_provinces` VALUES (34, '46', 'กาฬสินธุ์', 'Kalasin', 3);
+INSERT INTO `tb_provinces` VALUES (35, '47', 'สกลนคร', 'Sakon Nakhon', 3);
+INSERT INTO `tb_provinces` VALUES (36, '48', 'นครพนม', 'Nakhon Phanom', 3);
+INSERT INTO `tb_provinces` VALUES (37, '49', 'มุกดาหาร', 'Mukdahan', 3);
+INSERT INTO `tb_provinces` VALUES (38, '50', 'เชียงใหม่', 'Chiang Mai', 1);
+INSERT INTO `tb_provinces` VALUES (39, '51', 'ลำพูน', 'Lamphun', 1);
+INSERT INTO `tb_provinces` VALUES (40, '52', 'ลำปาง', 'Lampang', 1);
+INSERT INTO `tb_provinces` VALUES (41, '53', 'อุตรดิตถ์', 'Uttaradit', 1);
+INSERT INTO `tb_provinces` VALUES (42, '54', 'แพร่', 'Phrae', 1);
+INSERT INTO `tb_provinces` VALUES (43, '55', 'น่าน', 'Nan', 1);
+INSERT INTO `tb_provinces` VALUES (44, '56', 'พะเยา', 'Phayao', 1);
+INSERT INTO `tb_provinces` VALUES (45, '57', 'เชียงราย', 'Chiang Rai', 1);
+INSERT INTO `tb_provinces` VALUES (46, '58', 'แม่ฮ่องสอน', 'Mae Hong Son', 1);
+INSERT INTO `tb_provinces` VALUES (47, '60', 'นครสวรรค์', 'Nakhon Sawan', 2);
+INSERT INTO `tb_provinces` VALUES (48, '61', 'อุทัยธานี', 'Uthai Thani', 2);
+INSERT INTO `tb_provinces` VALUES (49, '62', 'กำแพงเพชร', 'Kamphaeng Phet', 2);
+INSERT INTO `tb_provinces` VALUES (50, '63', 'ตาก', 'Tak', 4);
+INSERT INTO `tb_provinces` VALUES (51, '64', 'สุโขทัย', 'Sukhothai', 2);
+INSERT INTO `tb_provinces` VALUES (52, '65', 'พิษณุโลก', 'Phitsanulok', 2);
+INSERT INTO `tb_provinces` VALUES (53, '66', 'พิจิตร', 'Phichit', 2);
+INSERT INTO `tb_provinces` VALUES (54, '67', 'เพชรบูรณ์', 'Phetchabun', 2);
+INSERT INTO `tb_provinces` VALUES (55, '70', 'ราชบุรี', 'Ratchaburi', 4);
+INSERT INTO `tb_provinces` VALUES (56, '71', 'กาญจนบุรี', 'Kanchanaburi', 4);
+INSERT INTO `tb_provinces` VALUES (57, '72', 'สุพรรณบุรี', 'Suphan Buri', 2);
+INSERT INTO `tb_provinces` VALUES (58, '73', 'นครปฐม', 'Nakhon Pathom', 2);
+INSERT INTO `tb_provinces` VALUES (59, '74', 'สมุทรสาคร', 'Samut Sakhon', 2);
+INSERT INTO `tb_provinces` VALUES (60, '75', 'สมุทรสงคราม', 'Samut Songkhram', 2);
+INSERT INTO `tb_provinces` VALUES (61, '76', 'เพชรบุรี', 'Phetchaburi', 4);
+INSERT INTO `tb_provinces` VALUES (62, '77', 'ประจวบคีรีขันธ์', 'Prachuap Khiri Khan', 4);
+INSERT INTO `tb_provinces` VALUES (63, '80', 'นครศรีธรรมราช', 'Nakhon Si Thammarat', 6);
+INSERT INTO `tb_provinces` VALUES (64, '81', 'กระบี่', 'Krabi', 6);
+INSERT INTO `tb_provinces` VALUES (65, '82', 'พังงา', 'Phangnga', 6);
+INSERT INTO `tb_provinces` VALUES (66, '83', 'ภูเก็ต', 'Phuket', 6);
+INSERT INTO `tb_provinces` VALUES (67, '84', 'สุราษฎร์ธานี', 'Surat Thani', 6);
+INSERT INTO `tb_provinces` VALUES (68, '85', 'ระนอง', 'Ranong', 6);
+INSERT INTO `tb_provinces` VALUES (69, '86', 'ชุมพร', 'Chumphon', 6);
+INSERT INTO `tb_provinces` VALUES (70, '90', 'สงขลา', 'Songkhla', 6);
+INSERT INTO `tb_provinces` VALUES (71, '91', 'สตูล', 'Satun', 6);
+INSERT INTO `tb_provinces` VALUES (72, '92', 'ตรัง', 'Trang', 6);
+INSERT INTO `tb_provinces` VALUES (73, '93', 'พัทลุง', 'Phatthalung', 6);
+INSERT INTO `tb_provinces` VALUES (74, '94', 'ปัตตานี', 'Pattani', 6);
+INSERT INTO `tb_provinces` VALUES (75, '95', 'ยะลา', 'Yala', 6);
+INSERT INTO `tb_provinces` VALUES (76, '96', 'นราธิวาส', 'Narathiwat', 6);
+INSERT INTO `tb_provinces` VALUES (77, '97', 'บึงกาฬ', 'buogkan', 3);
+
+-- ----------------------------
+-- Table structure for tb_resume
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_resume`;
+CREATE TABLE `tb_resume`  (
+  `id_resume` int(11) NOT NULL AUTO_INCREMENT,
+  `dpm_id` int(11) NULL DEFAULT NULL,
+  `emp_id` int(11) NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname_eng` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lname_eng` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `company_id` int(11) NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `work_age` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salary` decimal(10, 2) NULL DEFAULT NULL,
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `IDcard` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `img_proflie` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `religion` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `IDline` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `education` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marital_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ability_default` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ability_other` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fname_emergency` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone_emergency` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `start_job` date NULL DEFAULT NULL,
+  `socialsecurity` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tax` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `howtopaysalary` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `certificate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `professionallicense` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `identificationcard` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `houseregistration` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `applicationform` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `employmentcontract` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `type_employee` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_resume`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_resume
+-- ----------------------------
+INSERT INTO `tb_resume` VALUES (1, 1, NULL, NULL, 'กรุณาเลือก', 'ยนตเขต', 'yontakhet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456.00, NULL, NULL, NULL, NULL, NULL, NULL, 'กรุณาเลือก', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 03:04:38', '2020-05-08 03:04:52', NULL, NULL, NULL, NULL, NULL, NULL, 'ทดลองงาน', '1');
+INSERT INTO `tb_resume` VALUES (2, 1, NULL, NULL, 'กรุณาเลือก', 'test', 'testtest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25000.00, NULL, NULL, NULL, NULL, NULL, NULL, 'กรุณาเลือก', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 04:57:10', '2020-05-08 04:57:10', NULL, NULL, NULL, NULL, NULL, NULL, 'พนักงานประจำ', '0');
+INSERT INTO `tb_resume` VALUES (3, 1, NULL, NULL, 'กรุณาเลือก', 'ทดสอบ', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15000.00, NULL, NULL, NULL, NULL, NULL, NULL, 'กรุณาเลือก', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 05:54:48', '2020-05-08 05:54:48', NULL, NULL, NULL, NULL, NULL, NULL, 'ทดลองงาน', '0');
+INSERT INTO `tb_resume` VALUES (4, 1, NULL, NULL, 'กรุณาเลือก', 'ยนตเขต', 'yontakhet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 16000.00, NULL, NULL, NULL, NULL, NULL, NULL, 'กรุณาเลือก', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-08 06:33:22', '2020-05-08 06:33:49', NULL, NULL, NULL, NULL, NULL, NULL, 'ทดลองงาน', '1');
+
+-- ----------------------------
+-- Table structure for tb_satisfaction_department
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_satisfaction_department`;
+CREATE TABLE `tb_satisfaction_department`  (
+  `id_satisfaction` int(255) NOT NULL AUTO_INCREMENT,
+  `id_department_f` int(255) NULL DEFAULT NULL,
+  `point` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_satisfaction`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_satisfaction_department
+-- ----------------------------
+INSERT INTO `tb_satisfaction_department` VALUES (1, 124, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (2, 125, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (3, 126, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (4, 128, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (5, 129, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (6, 130, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (7, 131, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (8, 132, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (9, 133, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (10, 134, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (11, 135, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (12, 136, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (13, 137, 999);
+INSERT INTO `tb_satisfaction_department` VALUES (14, 124, 555);
+
+-- ----------------------------
+-- Table structure for tb_users
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_users`;
+CREATE TABLE `tb_users`  (
+  `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `id_employee_f` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_user`) USING BTREE,
+  UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of tb_users
+-- ----------------------------
+INSERT INTO `tb_users` VALUES (9, 'ดกหด', 'yontakhet@gmail.com', NULL, '$2y$10$V2gYipLnYkVUixN9YHz22eKDdEDuWO.OeiWUQd.kp4kkuuYhQEHwi', NULL, '2020-04-29 08:17:47', '2020-04-29 08:23:21', '2020-04-29 08:23:21', '178', '1');
+INSERT INTO `tb_users` VALUES (10, 'fdsfdsf', 'yontakheffft@gmail.com', NULL, '$2y$10$3kIxlWxnlgD2JX/hmHtXcuQl8r6/0TS1AXlEKqrQsESVvb8O/uOAC', NULL, '2020-04-29 08:29:43', '2020-04-29 08:29:43', NULL, '179', '1');
+INSERT INTO `tb_users` VALUES (16, 'yontakhet', 's58122202083sss@ssru.ac.th', NULL, '$2y$10$2MlA1IWr.2t8uMyU3XCmI.6mrMletniQrXQWhFhLMnWGc5eDYwkiG', NULL, '2020-05-08 02:42:52', '2020-05-08 02:44:51', '2020-05-08 02:44:51', '188', '1');
+INSERT INTO `tb_users` VALUES (17, 'fdsfdsf', 'yontakhefffff@gmail.com', NULL, '$2y$10$fRNpSRWAqd8yaaJGe2RvuudRFXH0kCfTpse8B2r8XH0AvkuzhW75S', NULL, '2020-05-08 02:43:52', '2020-05-08 02:44:29', '2020-05-08 02:44:29', '189', '1');
+INSERT INTO `tb_users` VALUES (18, 'ยนตเขต', 'erpfff@.com', NULL, '$2y$10$u33dl2KuZYQT6Xlz.tRgY.Ij5Rcj.2K.1abAqy6/P72CZ6ER3wKxK', NULL, '2020-05-08 02:54:48', '2020-05-08 02:54:48', NULL, '190', '1');
+INSERT INTO `tb_users` VALUES (19, 'yontakhet', 'erpdsfsf@sd.com', NULL, '$2y$10$ydFdOM6v4EI2X9Irxv0fcuqY8N6hN3h5Kd9Z3b3h8eU.MWWFnfHjG', NULL, '2020-05-08 02:56:59', '2020-05-08 02:56:59', NULL, '191', '1');
+INSERT INTO `tb_users` VALUES (21, 'ยนตเขต', 'erpyontakhet@.com', NULL, '$2y$10$4EGS0Ger22AFvzBq0YZjxuW2YfdIgN8Ohw5YJnQ/f/nHBlIGhKB.a', NULL, '2020-05-08 03:04:52', '2020-05-08 03:04:52', NULL, '193', '1');
+INSERT INTO `tb_users` VALUES (22, 'สมปอง', 'usa555@ssru.ac.th', NULL, '$2y$10$fmjRlby3zy.ti3Qs77yL.uN8LW1xRgG7ncTWrp9xhdfCtm4aeAvDO', NULL, '2020-05-08 05:32:47', '2020-05-08 05:32:47', NULL, '195', '1');
+INSERT INTO `tb_users` VALUES (23, 'ยนตเขต', 'erpyontakhet@hrjs.com', NULL, '$2y$10$p9dxqvw2YAGSVa6F6ZNXd.gZbcLgMZZV55CIACamn8FTqrWuhqQtS', NULL, '2020-05-08 06:33:49', '2020-05-08 06:33:49', NULL, '196', '1');
+INSERT INTO `tb_users` VALUES (26, '11', 'yontakhevvvvt@gmail.com', NULL, '$2y$10$FlABeNbKJk/wleUwHOs9CuQSKrKwgMY5YAK4nCB1ob..9AA1ObygG', NULL, '2020-05-11 04:14:31', '2020-05-11 04:14:31', NULL, '203', '1');
+INSERT INTO `tb_users` VALUES (27, 'vcxv', 'yontakhecccct@gmail.com', NULL, '$2y$10$3bxPJN8P4j0khGvWpPZ1r.2gK6g8DCQ1jmH0SrO/0Fxzyj8/.jwGW', NULL, '2020-05-11 04:16:48', '2020-05-11 04:16:48', NULL, '204', '1');
+INSERT INTO `tb_users` VALUES (28, 'ยนตเขต', 'yontakhetดดด@gmail.com', NULL, '$2y$10$OcggYc9gTRZqAE1UDkH.Vuf3i94GDtIy8ZQCweK36yYIs.QZCrtMi', NULL, '2020-05-15 04:59:14', '2020-06-08 17:48:11', '2020-06-08 17:48:11', '205', '2');
+INSERT INTO `tb_users` VALUES (29, 'yontakhet', 's5812220208dd@ssru.ac.th', NULL, '$2y$10$G2EsoINd3esy9d5wnd/o1uCsmkXwEkpQBWhf5hzPMo7BFwooeDs9O', NULL, '2020-05-15 05:00:49', '2020-06-08 17:48:16', '2020-06-08 17:48:16', '206', '2');
+INSERT INTO `tb_users` VALUES (30, 'c', 'yontakhetvvv@gmail.com', NULL, '$2y$10$RKqfz0KYT1.Vd.8yjmSimeYE1fASG7EsuUjOZ0HKORIDrYCNXZMTO', NULL, '2020-05-15 05:03:03', '2020-06-08 17:48:21', '2020-06-08 17:48:21', '210', '4');
+INSERT INTO `tb_users` VALUES (31, 'กกกก', 's58122202083fff@ssru.ac.th', NULL, '$2y$10$Qw.PNWwNyBFVl7RhTa7.z.DwDcgAKfwU6E6a6XUGw5aCmX0hjcVyu', NULL, '2020-05-17 18:07:37', '2020-05-18 03:54:11', NULL, '211', '3');
+INSERT INTO `tb_users` VALUES (32, 'yontakhet', 's5812220208ddd3@ssru.ac.th', NULL, '$2y$10$Qxz7OmJOA0UYw9ECYdVb1OzEcH/iKvUDSLv0xjQVPdme1jUfp.qDC', NULL, '2020-05-17 18:08:41', '2020-06-08 17:44:49', '2020-06-08 17:44:49', '212', '1');
+INSERT INTO `tb_users` VALUES (33, 'เอกลักษณ์', 'aekaluk@ss.ac.th', NULL, '$2y$10$Bg0wVDzzBleZ2chDfpA.jOfSw./SRq1ZU6Kx7wue/3YLpin6zK/hW', NULL, '2020-05-18 03:33:18', '2020-06-08 17:45:07', '2020-06-08 17:45:07', '213', '2');
+INSERT INTO `tb_users` VALUES (34, 'ลัลดา', 'ladda@gmail.com', NULL, '$2y$10$0SbHNvwT8.5pS7GYeITdp.2/6q1lRGSsKANLV.dtfLIdP.d0Y8YPS', NULL, '2020-05-18 03:34:53', '2020-06-08 17:47:19', '2020-06-08 17:47:19', '214', '2');
+INSERT INTO `tb_users` VALUES (35, 'yontakhet', 'yontakhet111@gmail.com', NULL, '$2y$10$9LZ0aA64/fjT5xjQ4MyuEOHdBoMp7G6qLVSObRIPFbcoqMT7zwTF2', NULL, '2020-05-26 06:43:39', '2020-06-08 17:47:41', '2020-06-08 17:47:41', '215', '1');
+INSERT INTO `tb_users` VALUES (36, 'ทดสอบ', 'yontakhetdd@gmail.com', NULL, '$2y$10$bClof.F9rsfd3fe.0o1yn.rEjeK8T4xq8zcavSgLGzFaBMdQuDtNO', NULL, '2020-05-26 08:01:00', '2020-05-26 08:01:00', NULL, '216', '1');
+INSERT INTO `tb_users` VALUES (37, 'fff', 'u@222.com', NULL, '$2y$10$5outFy4aTrM38U6tdxkO1uhYNji5atKGP/1Ks5ywgBqPRAkWvPfkm', NULL, '2020-06-07 17:53:30', '2020-06-08 17:44:43', '2020-06-08 17:44:43', '217', '1');
+INSERT INTO `tb_users` VALUES (38, '123', 'yontakhedt@gmail.com', NULL, '$2y$10$nW4.14m3evIosrxnDDQ7uuErxe.NHo75aAhhWJHVnw19xfoz4Y3im', NULL, '2020-06-08 17:41:14', '2020-06-08 17:44:35', '2020-06-08 17:44:35', '218', '1');
+INSERT INTO `tb_users` VALUES (40, '123', 'yontakheddddddt@gmail.com', NULL, '$2y$10$/JUWBRGXwCTRDWAwYrv44uKpimrGeGWV7qntd12NOWjq29yX9XYsS', NULL, '2020-06-08 17:41:57', '2020-06-08 17:44:24', '2020-06-08 17:44:24', '220', '1');
+INSERT INTO `tb_users` VALUES (41, 'yontakhet', 's5812220ffffffffffff2083@ssru.ac.th', NULL, '$2y$10$dV3RoL2U9Hc4Yq1z1WGqU.PkLuwxOE2jXXcS3OeI3Kfo1tuvjH3tq', NULL, '2020-06-08 17:43:59', '2020-06-08 17:44:16', '2020-06-08 17:44:16', '221', '1');
+INSERT INTO `tb_users` VALUES (42, 'ดกหด', 's581222020855553@ssru.ac.th', NULL, '$2y$10$xJaixHWb6DSs7oOaqHY2A.7bD8K90fMw.fJFA3b80KyeDkiGrIPza', NULL, '2020-06-09 03:02:23', '2020-06-09 03:05:40', '2020-06-09 03:05:40', '222', '1');
+INSERT INTO `tb_users` VALUES (43, 'ยนนน', 's5812220208www3@ssru.ac.th', NULL, '$2y$10$2r46U8/ssLKJWhyO6nsYAeqsatbObWoKVdOZswuZRXXDoprTQcBUe', NULL, '2020-06-09 03:06:48', '2020-06-09 03:11:00', '2020-06-09 03:11:00', '223', '1');
+INSERT INTO `tb_users` VALUES (44, 'ยนนน', 's5812220208wwvvw3@ssru.ac.th', NULL, '$2y$10$kBTMbGukPMPYhvW65gIsTujYEe0IHuraB4Y2yNEIRUh741KGzSqnW', NULL, '2020-06-09 03:07:15', '2020-06-09 03:10:55', '2020-06-09 03:10:55', '224', '1');
+INSERT INTO `tb_users` VALUES (45, 'ยนนน', 's5812220208wwddvvw3@ssru.ac.th', NULL, '$2y$10$qJLfW4QLy0aGTm5bt.188OUtAa8gIHBSLq4PWaUueadpNlTmhAzky', NULL, '2020-06-09 03:09:04', '2020-06-09 03:10:49', '2020-06-09 03:10:49', '225', '1');
+INSERT INTO `tb_users` VALUES (46, 'ดกหด', 's5812220208dddd3@ssru.ac.th', NULL, '$2y$10$eodKiybxjRijAvKjTz5YXu/EbIXfBPRLmE7x8Pipzz6nvLLjj0IFq', NULL, '2020-06-09 03:10:26', '2020-06-09 03:10:44', '2020-06-09 03:10:44', '226', '1');
+INSERT INTO `tb_users` VALUES (48, 'ดกหด', 's5812220208dggddd3@ssru.ac.th', NULL, '$2y$10$egJz3eKAI9gA65Q148Am8OSDebmprk3JQ8ChwDdqQJGx2WTw3tVIu', NULL, '2020-06-09 03:11:36', '2020-06-09 03:15:32', '2020-06-09 03:15:32', '228', '1');
+INSERT INTO `tb_users` VALUES (49, 'ดกหด', 's5812220208dggdddoo3@ssru.ac.th', NULL, '$2y$10$L3XJqQQAQzQi4rmMEoOrR.tEk5ENee74VCc/JIFkrBCJ2vrxcA8ea', NULL, '2020-06-09 03:14:19', '2020-06-09 03:15:42', '2020-06-09 03:15:42', '229', '1');
+INSERT INTO `tb_users` VALUES (53, 'ดกหด', 's58122202083@ssru.ac.th', NULL, '$2y$10$CWTln2DrtPJvHVMNxwVWquiqhlWdBCKxL2OFuxlbwxIfYrx86tbWa', NULL, '2020-06-09 03:30:51', '2020-06-09 07:13:06', '2020-06-09 07:13:06', '233', '1');
+INSERT INTO `tb_users` VALUES (54, 'ดกหด', 's5812220208hh3@ssru.ac.th', NULL, '$2y$10$XVrACDtb8kCVYIyi1nzyt.deMm53X1h7POzIBi2UxHMnzz/raJYn.', NULL, '2020-06-09 07:05:48', '2020-06-09 07:13:00', '2020-06-09 07:13:00', '234', '1');
+INSERT INTO `tb_users` VALUES (55, 'ดกหด', 's5812220208hhhh@ssru.ac.th', NULL, '$2y$10$Q7GtKLtOMMMV5QEHNOoUUe4UrigCSLpYbCf.GFWoID0HO.VW7U5IK', NULL, '2020-06-09 07:06:18', '2020-06-09 07:19:37', '2020-06-09 07:19:37', '235', '1');
+INSERT INTO `tb_users` VALUES (56, '44', 's58122202083444@ssru.ac.th', NULL, '$2y$10$xOnt.0/TNea5y9xf1IvzLerBKClo4xhQwkOKTN7iLh3szJ0rZvqqK', NULL, '2020-06-09 07:15:47', '2020-06-09 07:17:30', '2020-06-09 07:17:30', '236', '1');
+INSERT INTO `tb_users` VALUES (57, 'ีีีรรรรร', 's58122202083hh@ssru.ac.th', NULL, '$2y$10$JjV0c/dq9Mx8IW/can/QQOTIYzmJi1ipUgT37SU4ipwJdGe0./Ma2', NULL, '2020-06-09 07:18:12', '2020-06-09 07:19:32', '2020-06-09 07:19:32', '238', '1');
+INSERT INTO `tb_users` VALUES (58, 'ีีีรรรรร', 's58122202083hhhh@ssru.ac.th', NULL, '$2y$10$RN/tzhFISB30jg1baTXJuu9sV7YWtf5byeZw.2vzt.4jEDq/kGdF.', NULL, '2020-06-09 07:18:42', '2020-06-09 07:19:23', '2020-06-09 07:19:23', '239', '1');
+INSERT INTO `tb_users` VALUES (59, 'ีีีรรรรร', 's5812220208nnn3hhhh@ssru.ac.th', NULL, '$2y$10$xSzvnFD0GbspgWqMTV6uvOgmwPz5bOnL7KgpPbC9dZdCDMy7xy9I6', NULL, '2020-06-09 07:19:04', '2020-06-09 07:19:18', '2020-06-09 07:19:18', '240', '1');
+INSERT INTO `tb_users` VALUES (60, 'ดกหด', 's58122202083fdfd@ssru.ac.th', NULL, '$2y$10$NMPLVfEGrZM7d60o8NbOv.uTavBG1No4mRFR3aD.YHib5lBZCDO/W', NULL, '2020-06-09 07:21:28', '2020-06-09 07:21:28', NULL, '241', '1');
+
+SET FOREIGN_KEY_CHECKS = 1;
