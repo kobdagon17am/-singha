@@ -676,6 +676,7 @@ class ReportController extends Controller
             // $vat = $beforevat * 0.07;
 
             $vat = ($amount-$discount) - $beforevat;
+
             // $transaction = $booking->transactiondetail->transaction;
             // dd($beforevat,$vat,$transaction->trans_id);
             $type_customer = "ลูกค้าทั่วไป";
@@ -718,24 +719,25 @@ class ReportController extends Controller
                     $vat3 = 0;//ภาษีหัก ณ ที่จ่าย
                 }
 
+
                 $tdhtml .= '<tr class="text" >
-                <td class="text">'.($key+1).'</td>
-                <td class="text">'.$transaction->trans_id.'</td>
-                <td class="text">'.$type_customer.'</td>
-                <td class="text">'. $namebooth.'</td>
-                <td class="text">'.date('d/m/Y', strtotime($booking->booking_detail_date)).'</td>
-                <td class="text">'.$name_customer.'</td>
-                <td class="text">'.date('d/m/Y', strtotime($transaction->payment_success_date)).'</td>
-                <td class="text" algin="left">'.number_format($amount,2,".","").'</td>
-                <td class="text" algin="left">'.number_format($discount,2,".","").'</td>
-                <td class="text" algin="left">'.number_format($beforevat-$discount,2,".","").'</td>
-                <td class="text" algin="left">'.number_format($vat,2,".","").'</td>
-                <td class="text" algin="left">'.number_format($vat3,2,".","").'</td>
-                <td class="text">'.number_format(($beforevat-$discount)+$vat-$vat3,2,".","").'</td>
-                <td class="text">'.$service_charge.'</td>
-                <td class="text">'.number_format((($beforevat-$discount)+$vat-$vat3)+$service_charge,2,".","").'</td>
-                <td class="text">ชำระเงิน</td>
-                <td class="text">'.$transaction->channel.'</td>
+                <td class="text" alt="ลำดับ">'.($key+1).'</td>
+                <td class="text" alt="เลขที่ใบจอง">'.$transaction->trans_id.'</td>
+                <td class="text" alt="ประเภทสมาชิก">'.$type_customer.'</td>
+                <td class="text" alt="ชื่อบูธ">'. $namebooth.'</td>
+                <td class="text" alt="วันที่จัดงาน">'.date('d/m/Y', strtotime($booking->booking_detail_date)).'</td>
+                <td class="text" alt="ลูกค้า">'.$name_customer.'</td>
+                <td class="text" alt="วันที่ชำระเงิน">'.date('d/m/Y', strtotime($transaction->payment_success_date)).'</td>
+                <td class="text" alt="ค่าบริการ" algin="left">'.number_format($amount,2,".","").'</td>
+                <td class="text" alt="ส่วนลด" algin="left">'.number_format($discount,2,".","").'</td>
+                <td class="text" alt="จำนวนเงินก่อน VAT" algin="left">'.number_format($beforevat,2,".","").'</td>
+                <td class="text" alt="VAT 7%" algin="left">'.number_format($vat,2,".","").'</td>
+                <td class="text" alt="ภาษีหัก ณ ที่จ่าย" algin="left">'.number_format($vat3,2,".","").'</td>
+                <td class="text" alt="ยอดที่ชำระ">'.number_format(($beforevat)+$vat-$vat3,2,".","").'</td>
+                <td class="text" alt="ค่าธรรมเนียม">'.$service_charge.'</td>
+                <td class="text" alt="ยอดรวมที่ชำระ">'.number_format((($beforevat)+$vat-$vat3)+$service_charge,2,".","").'</td>
+                <td class="text" alt="สถานะ">ชำระเงิน</td>
+                <td class="text" alt="หมายเหตุ">'.$transaction->channel.'</td>
             </tr>';
             }
             $beforevat_total += $beforevat;
@@ -762,10 +764,11 @@ class ReportController extends Controller
             'after_total'=>$after_total,
             'discount_total'=>$discount_total,
         );
-        return Excel::download(new BookExport("backend/report/pdf/pdf_audit_payment", $data), 'รายงานการชำระเงิน'.date('Y-m-d',time()).'.xlsx');
-        // return view('backend/report/pdf/pdf_audit_payment',$data);
 
-		return $pdf->stream('รายงานการชำระเงิน.pdf');
+        return Excel::download(new BookExport("backend/report/pdf/pdf_audit_payment", $data), 'รายงานการชำระเงิน'.date('Y-m-d',time()).'.xlsx');
+        //return view('backend/report/pdf/pdf_audit_payment',$data);
+
+		//return $pdf->stream('รายงานการชำระเงิน.pdf');
     }
     // ===================================================
 
