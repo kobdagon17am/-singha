@@ -39,7 +39,9 @@ class MarketNameController extends Controller
            $arr[] = $value->marketname_id;
         }
 
+
         $marketname =   MK_MarketName::whereIn('marketname_id',$arr)->orderBy('name_market', 'ASC')->get();
+
         $sQuery	 = Datatables::of($marketname)
 
         // ชื่อตลาด
