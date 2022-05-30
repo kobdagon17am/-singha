@@ -47,6 +47,8 @@ class PartnersController extends Controller
         // }
         // dd($keyall);
 
+
+
         $producttypes = Producttype::all();
         $partnercategorys = ProductCategory::all();
         $products = Product::all();
