@@ -954,6 +954,7 @@ class ReportController extends Controller
     }
     // รายงานการจอง
     public function report_audit_rentroll(){
+
         $marketname = MK_MarketName::all();
         $booth = MK_Booth::all();
         $data = array(
@@ -964,6 +965,7 @@ class ReportController extends Controller
     }
 
     public function report_audit_rentroll_pdf(Request $request){
+
         // $d_start = $request->date_start;
         // $d_end = $request->date_end;
         $month = ($request->month);
@@ -1086,11 +1088,11 @@ class ReportController extends Controller
                                 ->whereMonth('date_start',date('m'))
                                 ->first();
             if($getBooth){
-                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
+                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
                 foreach( $report['booth'] as $i => $b){
                     $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
                     if($booking){
-                        $partner = Partners::find($booking->partners_id); 
+                        $partner = Partners::find($booking->partners_id);
                         $report['partner'][$i]['partner'] = "$partner->name_customer";
                         $report['checkIn'][$i] = $booking->check_in_status;
                         $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
@@ -1110,11 +1112,11 @@ class ReportController extends Controller
             ->whereMonth('date_start',date('m'))
             ->first();
             if($getBooth){
-                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
+                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
                 foreach( $report['booth'] as $i => $b){
                     $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
                     if($booking){
-                        $partner = Partners::find($booking->partners_id); 
+                        $partner = Partners::find($booking->partners_id);
                         $report['partner'][$i]['partner'] = "$partner->name_customer";
                         $report['checkIn'][$i] = $booking->check_in_status;
                         $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();

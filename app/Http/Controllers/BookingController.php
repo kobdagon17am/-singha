@@ -959,7 +959,7 @@ class BookingController extends Controller
 
     public function fileImport(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $status = $request->status;
         $path = $request->file('confirmbook')->getRealPath();
         // // $data = Excel::load($path, function ($reader) {})->get();
@@ -994,7 +994,7 @@ class BookingController extends Controller
             }
         });
         // dd($array);
-        // dd($databookings);
+        //dd($databookings);
         $booking_arr = [];
         $booking_detail_arr = [];
         $runnumber = 0;
@@ -1004,6 +1004,7 @@ class BookingController extends Controller
             $marketname_arr = $databooking[0];
             $boothname_arr = $databooking[1];
 
+
             $marketname = MK_MarketName::find($request->market_id);
 
             $boothname = MK_BoothDetail::where('name', $boothname_arr)->where('booth_id', $request->booth_id)
@@ -1011,7 +1012,7 @@ class BookingController extends Controller
                     $query->where('marketname_id', $marketname->marketname_id);
                 })->first();
 
-
+                //dd($boothname);
             // unset($databooking[0]);
             // unset($databooking[1]);
             // ตัด array ไป array ที่เริ่มและตัด array ไป array ที่สิ้นสุด
