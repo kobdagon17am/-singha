@@ -35,6 +35,7 @@
 
 <body>
     <?php 
+        $date = explode('-',$data['date']);
         $month = ['','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฏาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
     ?>
     <table class="table">
@@ -45,7 +46,7 @@
                 <td colspan="5" align="center">{{ $data['market']->name_market }}</td>
             </tr>
             <tr>
-                <td colspan="5" align="center">ข้อมูล ณ วันที่ {{date('d')}} เดือน {{ $month[date('n')] }} พ.ศ. {{date('Y')+543}}</td>
+                <td colspan="5" align="center">ข้อมูล ณ วันที่ {{ $date[2] }} เดือน {{ $month[$date[1]] }} พ.ศ. {{$date[0]+543}}</td>
             </tr>
             <tr>
                 <td scope="col" align="center">Booth No.</td>

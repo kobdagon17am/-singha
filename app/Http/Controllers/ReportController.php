@@ -17,6 +17,7 @@ use App\Exports\reportCheckIn;
 use App\Model\MK_Booth;
 use App\Model\MK_BoothDetail;
 use App\Model\MK_MarketName;
+use App\Model\MK_Zone;
 use App\Model\Booking;
 use App\Model\Booking_Detail;
 use App\Model\Partners;
@@ -1079,16 +1080,17 @@ class ReportController extends Controller
 
     public function checkInsale(Request $request){
         $market = MK_MarketName::all();
+        $zone = MK_Zone::get()->groupBy('marketname_id');
         $report = array();
         if($request->market_id){
-            $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'status' => 'Y'])
-                                ->whereYear('date_start',date('Y'))
-                                ->whereMonth('date_start',date('m'))
+            $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'zone_id' => $request->zone,'status' => 'Y'])
+                                ->whereYear('date_start',date('Y',strtotime($request->date)))
+                                ->whereMonth('date_start',date('m',strtotime($request->date)))
                                 ->first();
             if($getBooth){
                 $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
                 foreach( $report['booth'] as $i => $b){
-                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
+                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->whereDate('booking_detail_date',$request->date)->orderBy('booking_detail_id','desc')->first();
                     if($booking){
                         $partner = Partners::find($booking->partners_id); 
                         $report['partner'][$i]['partner'] = "$partner->name_customer";
@@ -1105,14 +1107,15 @@ class ReportController extends Controller
         }
         if($request->excel){
             $report['market'] = MK_MarketName::find($request->excel);
-            $getBooth = MK_Booth::where(['marketname_id' => $request->excel,'status' => 'Y'])
+            $report['date'] = $request->date;
+            $getBooth = MK_Booth::where(['marketname_id' => $request->excel,'zone_id' => $request->zone,'status' => 'Y'])
             ->whereYear('date_start',date('Y'))
             ->whereMonth('date_start',date('m'))
             ->first();
             if($getBooth){
                 $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
                 foreach( $report['booth'] as $i => $b){
-                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
+                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->whereDate('booking_detail_date',$request->date)->orderBy('booking_detail_id','desc')->first();
                     if($booking){
                         $partner = Partners::find($booking->partners_id); 
                         $report['partner'][$i]['partner'] = "$partner->name_customer";
@@ -1128,11 +1131,22 @@ class ReportController extends Controller
             }
             return $this->excel->download(new reportCheckIn($report), "CheckInReport.xlsx");
         }
-        // dd($report);
+        $zone_id = $request->zone;
+        foreach($zone as $z){
+            $fillZone[$z[0]->marketname_id] = '';
+            foreach($z as $c){
+                $c->zone_id == $zone_id ? $check = 'selected' : $check = null;
+                $fillZone[$c->marketname_id] .= "<option value='$c->zone_id' $check>$c->name</option>";
+            }
+        }
         $data = array(
             'market' => $market,
             'report' => $report,
-            'mkId' => $request->market_id
+            'mkId' => $request->market_id,
+            'sdate' => $request->date,
+            'zone' => $fillZone,
+            'javaZ' => json_encode($fillZone),
+            'rzone' => $request->zone
         );
         return view('backend/report/report_audit_checkInsale',$data);
     }

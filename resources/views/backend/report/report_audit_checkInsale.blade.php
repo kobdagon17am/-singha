@@ -37,11 +37,12 @@
                                                         <label
                                                             class="col-sm-2 col-form-label text-right">ชื่อตลาด:</label>
                                                         <div class="col-sm-7">
-                                                            <select class="form-control" name="market_id" id="market_id"
+                                                            <select class="form-control" name="market_id" id="market_id" onchange="changeZone('market_id')"
                                                                 required>
                                                                 <option value="">เลือกตลาด</option>
                                                                 @foreach ($market as $item)
-                                                                <option value="{{$item->marketname_id}}" @if($item->marketname_id == $mkId) selected @endif>
+                                                                <option value="{{$item->marketname_id}}" @if($item->
+                                                                    marketname_id == $mkId) selected @endif>
                                                                     {{$item->name_market}}</option>
                                                                 @endforeach
                                                             </select>
@@ -49,17 +50,39 @@
                                                         <button type="submit" class="btn btn-primary"><i
                                                                 class="fa fa-search"></i> ค้นหา</button>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label
+                                                            class="col-sm-2 col-form-label text-right">Zone:</label>
+                                                        <div class="col-sm-3">
+                                                            
+                                                           <select name="zone" class="form-control" id='zone'>
+                                                                @if($mkId !=null) 
+                                                                    {!! $zone[$mkId] !!}
+                                                                @endif
+                                                           </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label
+                                                            class="col-sm-2 col-form-label text-right">วันที่:</label>
+                                                        <div class="col-sm-3">
+                                                            <input type="date" class="form-control" name="date"
+                                                                id="date" value="{{ $sdate }}" required>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-lg-12">
                                         <hr>
                                         @if(count($report)>0)
                                         <form action="" method='post'>
                                             @csrf
-                                            <input type="hidden" name="excel" value="{{$mkId}}">
+                                            <input type="hidden" name='zone'    value="{{ $rzone }}">
+                                            <input type="hidden" name='date'    value="{{ $sdate }}">
+                                            <input type="hidden" name="excel"   value="{{ $mkId }}">
                                             <button class='btn btn-success'>Excel</button>
                                         </form>
                                         <table class="table">
@@ -77,14 +100,18 @@
                                                 @foreach($report['booth'] as $i => $booth)
                                                 <tr>
                                                     <td>{{ $booth->name }}</td>
-                                                    <td>{{ $report['partner'][$i] != null ? $report['partner'][$i]['partner']:'ว่าง' }}</td>
-                                                    <td>{{ $report['partner'][$i] != null ? $report['partner'][$i]['product']:'' }}</td>
+                                                    <td>{{ $report['partner'][$i] != null ? $report['partner'][$i]['partner']:'ว่าง' }}
+                                                    </td>
+                                                    <td>{{ $report['partner'][$i] != null ? $report['partner'][$i]['product']:'' }}
+                                                    </td>
                                                     <td>{!! $report['checkIn'][$i] == "Y" ? 'check in':'' !!}</td>
                                                     <td></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        @else
+                                        <center>ไม่พบข้อมูล</center>
                                         @endif
                                     </div>
                                 </div>
@@ -102,7 +129,11 @@
 @endsection
 
 @section('script')
-
+<?php
+    echo "<script>";
+    echo "var zone = $javaZ;";
+    echo "</script>";
+?>
 <script>
     $(document).ready(function () {
         var route_URL = "{{ route('backend.report.audit.checkInsale') }}"; // URL
@@ -111,6 +142,12 @@
             "pcoded-trigger");
     });
 
+        function changeZone(id){
+            var market = document.getElementById(id).value;
+            if(market>0){
+                document.getElementById('zone').innerHTML = zone[market];
+            }
+        }
 </script>
 
 
