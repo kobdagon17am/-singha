@@ -56,6 +56,7 @@
                                     
                                     <div class="col-lg-12">
                                         <hr>
+                                        @if(count($report)>0)
                                         <form action="" method='post'>
                                             @csrf
                                             <input type="hidden" name="excel" value="{{$mkId}}">
@@ -84,6 +85,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
