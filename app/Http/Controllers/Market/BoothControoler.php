@@ -110,7 +110,9 @@ class BoothControoler extends Controller
         $date_start = new DateTime($request->date_start);
         $date_end = new DateTime($request->date_end);
         $booth = MK_Booth::find($request->id);
-        // dd( $date_start, $date_end ,$request->id);
+
+        if($booth){
+                   // dd( $date_start, $date_end ,$request->id);
         $checkbooth = MK_Booth::where('booth_id','!=',$request->id)->where('marketname_id',$booth->marketname_id)->get();
         // dd( $checkbooth);
         foreach ($checkbooth as $key => $value) {
@@ -127,10 +129,12 @@ class BoothControoler extends Controller
                 $data['icon'] = 'error';
                 return response()->json( $data);
             }
+            }
         }
+
         $booth = new MK_Booth;
         $booth->marketname_id = $request->market_id;
-        $booth->floor_id = $request->floor_booth;
+        // $booth->floor_id = $request->floor_booth;
         $booth->zone_id = $request->zone_booth;
         $booth->booth_type_id = $request->type_booth;
         $booth->name = $request->name_booth;

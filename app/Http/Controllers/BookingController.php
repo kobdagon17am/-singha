@@ -1618,8 +1618,8 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        $today = (new DateTime(date('Y/04/02') . '20:00:30'));
-        $yesterday = (new DateTime(date('Y/03/31', strtotime("-1 days")) . '20:00:30'));
+        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
+        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
         // $today = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         // $yesterday = (new DateTime(date('Y/m/d',strtotime("-2 days")).'20:00:30'));
@@ -2100,7 +2100,7 @@ class BookingController extends Controller
                 $eventdata .= $value[0][0] . $detail;
             }
             $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
-            dd($alltextflie);
+            // dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
@@ -2132,7 +2132,7 @@ class BookingController extends Controller
                 }
             }
             $data_all_limit[] = $eventdata.$hudata1.$hudata2;
-            dd($data_all_limit);
+            // dd($data_all_limit);
 
              foreach($data_all_limit as $value){
 
