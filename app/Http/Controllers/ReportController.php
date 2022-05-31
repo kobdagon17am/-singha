@@ -6,23 +6,30 @@ use Illuminate\Http\Request;
 
 use Auth;
 use PDF;
-use Excel;
+use Maatwebsite\Excel\Excel;
+// use Excel;
 use Yajra\Datatables\Datatables;
 use App\BookExport;
 use DateTime;
 use DB;
 // Model
+use App\Exports\reportCheckIn;
 use App\Model\MK_Booth;
 use App\Model\MK_BoothDetail;
 use App\Model\MK_MarketName;
 use App\Model\Booking;
 use App\Model\Booking_Detail;
 use App\Model\Partners;
+use App\Model\PartnersProduct;
+use App\Model\Product;
 use App\Model\Transaction;
 use App\Model\Transaction_Detail;
 use App\Model\AuditDetailsAccessories;
 class ReportController extends Controller
 {
+    public function __construct(Excel $excel){
+        $this->excel = $excel;
+    }
     // ออกรายงาน
     // ===================================================
 
@@ -1068,5 +1075,65 @@ class ReportController extends Controller
         return Excel::download(new BookExport("backend/report/pdf/pdf_audit_reroll", $data), 'รายงานRentroll'.$market->name_market.date('Y-m-d',time()).'.xlsx');
 
 		return $pdf->stream('รายงานการจอง.pdf');
+    }
+
+    public function checkInsale(Request $request){
+        $market = MK_MarketName::all();
+        $report = array();
+        if($request->market_id){
+            $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'status' => 'Y'])
+                                ->whereYear('date_start',date('Y'))
+                                ->whereMonth('date_start',date('m'))
+                                ->first();
+            if($getBooth){
+                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
+                foreach( $report['booth'] as $i => $b){
+                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
+                    if($booking){
+                        $partner = Partners::find($booking->partners_id); 
+                        $report['partner'][$i]['partner'] = "$partner->name_customer";
+                        $report['checkIn'][$i] = $booking->check_in_status;
+                        $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
+                        $product = Product::find($productId->product_id);
+                        $report['partner'][$i]['product'] = @$product->name;
+                    }else{
+                        $report['partner'][$i] = null;
+                        $report['checkIn'][$i] = null;
+                    }
+                }
+            }
+        }
+        if($request->excel){
+            $report['market'] = MK_MarketName::find($request->excel);
+            $getBooth = MK_Booth::where(['marketname_id' => $request->excel,'status' => 'Y'])
+            ->whereYear('date_start',date('Y'))
+            ->whereMonth('date_start',date('m'))
+            ->first();
+            if($getBooth){
+                $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get(); 
+                foreach( $report['booth'] as $i => $b){
+                    $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->orderBy('booking_detail_id','desc')->first();
+                    if($booking){
+                        $partner = Partners::find($booking->partners_id); 
+                        $report['partner'][$i]['partner'] = "$partner->name_customer";
+                        $report['checkIn'][$i] = $booking->check_in_status;
+                        $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
+                        $product = Product::find($productId->product_id);
+                        $report['partner'][$i]['product'] = @$product->name;
+                    }else{
+                        $report['partner'][$i] = null;
+                        $report['checkIn'][$i] = null;
+                    }
+                }
+            }
+            return $this->excel->download(new reportCheckIn($report), "CheckInReport.xlsx");
+        }
+        // dd($report);
+        $data = array(
+            'market' => $market,
+            'report' => $report,
+            'mkId' => $request->market_id
+        );
+        return view('backend/report/report_audit_checkInsale',$data);
     }
 }

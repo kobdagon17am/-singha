@@ -412,6 +412,13 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('backend.report.audit.checkInsale') }}">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">รายงานการเช็คอินขายสินค้า</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             @endif

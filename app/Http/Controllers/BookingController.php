@@ -1618,8 +1618,9 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        $today = (new DateTime(date('Y/04/01') . '20:00:30'));
+        $today = (new DateTime(date('Y/04/02') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/03/31', strtotime("-1 days")) . '20:00:30'));
+        $date_set = date('d/m/Y');
         // $today = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         // $yesterday = (new DateTime(date('Y/m/d',strtotime("-2 days")).'20:00:30'));
         //dd($yesterday,$today);
@@ -1787,12 +1788,12 @@ class BookingController extends Controller
         // $hudata .= 'H|6600|'.$store_code.'|'.$space_customer_id.'|'.$transidu.'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|C000|'.number_format($totalbeforevatd,2).'|'.number_format($totalvatd,2).'|'.number_format($totalamountd,2).'|'.$bookingu->booking_id.PHP_EOL
         // .$dudata;
         if ($dudata1 != null || $dudata1 != '') {
-            $hudata1 .= 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL
+            $hudata1 .= 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL
                 . $dudata1;
         }
 
         if ($dudata2 != null || $dudata2 != '') {
-            $hudata2 .= 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL
+            $hudata2 .= 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL
                 . $dudata2;
         }
 
@@ -1922,16 +1923,16 @@ class BookingController extends Controller
             $vatdre_arr[$space_customer_id][] = $vatdre;
             $amountdre_arr[$space_customer_id][] = $amountdre;
 
-            $hdatasrt = 'H|6600|' . $store_code . '|' . $space_customer_id . '|T321' . $space_customer_id . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+            $hdatasrt = 'H|6600|' . $store_code . '|' . $space_customer_id . '|T321' . $space_customer_id . '|' .  $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
             if ($booking->partners->space_customer_id == null) {
                 if ($booking->marketname_id == 1) {
-                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 2) {
-                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 6) {
-                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 7) {
-                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 }
             }
                 // .$ddata.
@@ -2049,12 +2050,12 @@ class BookingController extends Controller
             $Evatdre_arr[$space_customer_id][] = $vatdre;
             $Eamountdre_arr[$space_customer_id][] = $amountdre;
 
-            $hEdatasrt = 'H|6600|' . $store_code . '|' . $space_customer_id . '|T321' . $space_customer_id . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+            $hEdatasrt = 'H|6600|' . $store_code . '|' . $space_customer_id . '|T321' . $space_customer_id . '|' . $date_set . '|' . $date_set . '|' . $date_set . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
             if ($bookingE->partners->space_customer_id == null) {
                 if ($bookingE->marketname_id == 6) {
-                    $hEdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hEdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' .$date_set . '|' . $date_set . '|' . $date_set . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($bookingE->marketname_id == 7) {
-                    $hEdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . date('d/m/Y') . '|' .  date('d/m/Y') . '|' .  date('d/m/Y') . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
+                    $hEdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' .$date_set . '|' . $date_set . '|' . $date_set . '|C000|' . array_sum($Ebeforevatdre_arr[$space_customer_id]) . '|' . array_sum($Evatdre_arr[$space_customer_id]) . '|' . round(array_sum($Eamountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 }
             }
                 // .$ddata.
@@ -2131,6 +2132,7 @@ class BookingController extends Controller
                 }
             }
             $data_all_limit[] = $eventdata.$hudata1.$hudata2;
+            dd($data_all_limit);
 
              foreach($data_all_limit as $value){
 

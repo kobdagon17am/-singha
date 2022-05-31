@@ -245,7 +245,8 @@ Route::group(['middleware' => 'auth:admin'], function() {
     Route::post('/pdf/report/audit_summary','ReportController@report_audit_summary_pdf')->name('pdf.report.audit_summary'); // รายงานสรุปยอดขาย
     Route::post('/pdf/report/audit_type','ReportController@report_audit_type_pdf')->name('pdf.report.audit_type'); // รายงานประเภทสินค้าที่ขาย
     Route::post('/pdf/report/audit_rentroll','ReportController@report_audit_rentroll_pdf')->name('pdf.report.audit_rentroll'); // รายงานประเภทสินค้าที่ขาย
-
+    Route::get('/backoffice/report/audit/checkInsale','ReportController@checkInsale')->name('backend.report.audit.checkInsale');
+    Route::post('/backoffice/report/audit/checkInsale','ReportController@checkInsale')->name('backend.report.audit.checkInsale');
     // #### Report | ออกรายงาน
     Route::get('/backoffice/report/booking','ReportController@report_booking')->name('backend.report.booking'); // รายงานการจอง
     Route::get('/backoffice/report/booth','ReportController@report_booth')->name('backend.report.booth'); // รายงาน Booth ว่าง
