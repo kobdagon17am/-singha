@@ -39,7 +39,7 @@
     ?>
     <table class="table">
             <tr>
-                <td colspan="5" align="center">รายงานการเช็คอินขายสินค้า</td>
+                <td colspan="5" align="center">รายงานการเช็คอินขายสินค้า </td>
             </tr>
             <tr>
                 <td colspan="5" align="center">{{ $data['market']->name_market }}</td>
