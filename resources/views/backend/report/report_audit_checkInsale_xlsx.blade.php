@@ -34,28 +34,36 @@
 </style>
 
 <body>
-    <?php 
+
+    <?php
+
         $date = explode('-',$data['date']);
         $month = ['','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฏาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+
     ?>
     <table class="table">
             <tr>
                 <td colspan="5" align="center">รายงานการเช็คอินขายสินค้า </td>
             </tr>
             <tr>
-                <td colspan="5" align="center">{{ $data['market']->name_market }}</td>
+
+                <td colspan="5" align="center">
+
+
+                    {{ $data['market']->name_market }}</td>
             </tr>
             <tr>
-                <td colspan="5" align="center">ข้อมูล ณ วันที่ {{ $date[2] }} เดือน {{ $month[$date[1]] }} พ.ศ. {{$date[0]+543}}</td>
+                <td colspan="5" align="center">ข้อมูล ณ วันที่ {{ $date[2] }} เดือน {{ $month[intval($date[1])] }} พ.ศ. {{$date[0]+543}}</td>
             </tr>
             <tr>
+
                 <td scope="col" align="center">Booth No.</td>
                 <td scope="col" align="center">ชื่อลูกค้า</td>
                 <td scope="col" align="center">สินค้าที่ขาย</td>
                 <td scope="col" align="center">เช็คอิน</td>
                 <td scope="col" align="center">หมายเหตุ</td>
             </tr>
-       
+
             @foreach($data['booth'] as $i => $booth)
             <tr>
                 <td align="center">{{ $booth->name }}</td>
@@ -65,7 +73,7 @@
                 <td></td>
             </tr>
             @endforeach
-        
+
     </table>
 </body>
 
