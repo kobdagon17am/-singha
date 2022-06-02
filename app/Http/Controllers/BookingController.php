@@ -1713,11 +1713,11 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '66PZ1';
+            $cost_center_code = '3PJ01300';
             $sep_code = 'SEP1';
             if ($bookingu->marketname_id == 2) {
                 $store_code = '6602';
-                $cost_center_code = '66PZ2';
+                $cost_center_code = '3PJ01300';
                 $sep_code = 'SEP2';
             }
 
@@ -1836,21 +1836,21 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '66PZ1';
+            $cost_center_code = '3PJ01300';
             $sep_code = 'SEP1';
             $strPSS = 'Plaza space service';
             if ($booking->marketname_id == 2) {
                 $store_code = '6602';
-                $cost_center_code = '66PZ2';
+                $cost_center_code = '3PJ01300';
                 $sep_code = 'SEP2';
             } else if ($booking->marketname_id == 6) {
                 $store_code = '6601';
-                $cost_center_code = '66PZ1';
+                $cost_center_code = '3PJ01300';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             } else if ($booking->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = '66PZ2';
+                $cost_center_code = '3PJ01300';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             }
@@ -1973,12 +1973,12 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '66PZ1';
+            $cost_center_code = '3PJ01300';
             $sep_code = 'SEEV';
             $strPSS = 'Event space service';
             if ($bookingE->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = '66PZ2';
+                $cost_center_code = '3PJ01300';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             }
