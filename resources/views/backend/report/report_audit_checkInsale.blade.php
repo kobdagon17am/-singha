@@ -81,15 +81,18 @@
 
                                     <div class="col-lg-12">
                                         <hr>
-                                        @if(count($report)>0)
+                                        @if(count($reportAll)>0)
                                         <form action="" method='post'>
                                             @csrf
                                             <input type="hidden" name='zone'    value="{{ $rzone }}">
                                             <input type="hidden" name='date'    value="{{ $sdate }}">
                                             <input type="hidden" name="excel"   value="{{ $mkId }}">
+                                            <input type="hidden" name='data' value="{{ json_encode($reportAll) }}">
                                             <button class='btn btn-success'>Excel</button>
                                         </form>
-                                        <table class="table">
+                                            @foreach($reportAll as $i => $report)
+                                            <center><h3>{{$i}}</h3></center>
+                                            <table class="table">
                                             <caption>รายงานการเช็คอินขายสินค้า</caption>
                                             <thead>
                                                 <tr>
@@ -113,7 +116,9 @@
                                                 </tr>
                                                 @endforeach
                                             </tbody>
-                                        </table>
+                                        </table>         
+                                            @endforeach
+                                        
                                         @else
                                         <center>ไม่พบข้อมูล</center>
                                         @endif

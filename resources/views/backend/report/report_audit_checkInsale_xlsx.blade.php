@@ -36,7 +36,6 @@
 <body>
 
     <?php
-
         $date = explode('-',$data['date']);
         $month = ['','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฏาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
 
@@ -55,25 +54,32 @@
             <tr>
                 <td colspan="5" align="center">ข้อมูล ณ วันที่ {{ $date[2] }} เดือน {{ $month[intval($date[1])] }} พ.ศ. {{$date[0]+543}}</td>
             </tr>
-            <tr>
-
-                <td scope="col" align="center">Booth No.</td>
-                <td scope="col" align="center">ชื่อลูกค้า</td>
-                <td scope="col" align="center">สินค้าที่ขาย</td>
-                <td scope="col" align="center">เช็คอิน</td>
-                <td scope="col" align="center">หมายเหตุ</td>
-            </tr>
-
-            @foreach($data['booth'] as $i => $booth)
-            <tr>
-                <td align="center">{{ $booth->name }}</td>
-                <td>{{ $data['partner'][$i] != null ? $data['partner'][$i]['partner']:'ว่าง' }}</td>
-                <td>{{ $data['partner'][$i] != null ? $data['partner'][$i]['product']:'' }}</td>
-                <td align="center">{!! $data['checkIn'][$i] == "Y" ? 'check in':'' !!}</td>
-                <td></td>
-            </tr>
+            @foreach($data['data'] as $name => $info)
+                <tr>
+                    <td colspan="5" align="center">{{$name}}</td>
+                </tr>
+                <tr>
+                    <td scope="col" align="center">Booth No.</td>
+                    <td scope="col" align="center">ชื่อลูกค้า</td>
+                    <td scope="col" align="center">สินค้าที่ขาย</td>
+                    <td scope="col" align="center">เช็คอิน</td>
+                    <td scope="col" align="center">หมายเหตุ</td>
+                </tr>
+               
+               
+                @foreach($info['booth'] as $i => $booth)
+                
+                <tr>
+                    <td align="center">{{ $booth['name'] }}</td>
+                    <td>{{ $info['partner'][$i] != null ? $info['partner'][$i]['partner']:'ว่าง' }}</td>
+                    <td>{{ $info['partner'][$i] != null ? $info['partner'][$i]['product']:'' }}</td>
+                    <td align="center">{!! $info['checkIn'][$i] == "Y" ? 'check in':'' !!}</td>
+                    <td></td>
+                </tr>
+                
+                @endforeach
+               
             @endforeach
-
     </table>
 </body>
 
