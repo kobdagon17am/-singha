@@ -67,7 +67,7 @@
                 </tr>
                
                
-                @foreach($info['booth'] as $i => $booth)
+                @foreach(@$info['booth'] as $i => $booth)
                 
                 <tr>
                     <td align="center">{{ $booth['name'] }}</td>

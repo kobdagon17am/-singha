@@ -104,7 +104,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report['booth'] as $i => $booth)
+                                                @foreach(@$report['booth'] as $i => $booth)
                                                 <tr>
                                                     <td>{{ $booth->name }}</td>
                                                     <td>{{ $report['partner'][$i] != null ? $report['partner'][$i]['partner']:'ว่าง' }}

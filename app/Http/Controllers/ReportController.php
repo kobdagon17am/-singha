@@ -1120,7 +1120,7 @@ class ReportController extends Controller
                 ->get();
             $allData = array();
             foreach($getBoothAll as $getBooth){
-                
+                    $report = array();
                     $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
                     foreach( $report['booth'] as $i => $b){
                         $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->whereDate('booking_detail_date',$request->date)->orderBy('booking_detail_id','desc')->first();
