@@ -1395,12 +1395,17 @@ class BookingController extends Controller
         $arrayLine = (new Bookimport)->toArray($request->file('confirmbook'));
         $databookings_arr = array_slice(array_slice($arrayLine[0], 1), 0);
 
+
+
         $databookings = array_filter($databookings_arr,  function ($booking) {
             # code...
 
             return ($booking[0] !== null || $booking[1] !== null || $booking[2] !== null);
         });
+
+
         $status = $request->status;
+
         $marketname_id = $request->market_id;
         $arrDate = explode('-', $request->date);
         $year = $arrDate[0];
@@ -1417,17 +1422,19 @@ class BookingController extends Controller
             if ($partners != null) {
                 $partners_id = $partners->partners_id;
             }
+
+
             $bookingAll = Booking_Detail::join('booking', 'booking_detail.booking_id', 'booking.booking_id')
-                ->select('booking_detail.partners_id', 'booking_detail.booking_detail_date', 'booking_detail.booth_detail_id', 'booking.booking_type', 'booking.booking_status_id', 'booking.booking_id')
+                ->select('booking_detail.booking_id','booking_detail.partners_id', 'booking_detail.booking_detail_date', 'booking_detail.booth_detail_id', 'booking.booking_type', 'booking.booking_status_id', 'booking.booking_id')
                 ->where('booking_status_id', '=', '2')
-                ->where('booking_type', '=', 'Regular')
+                // ->where('booking_type', '=', 'Regular')
                 ->where('booking_detail.partners_id', $partners_id)
                 ->where('booking_detail.booth_detail_id', '!=', 0)
                 ->whereYear('booking_detail_date', '=', $year)
                 ->whereMonth('booking_detail_date', '=', $month)
                 ->orderBy('booking_detail_date', 'asc')
                 ->get();
-            // dd($bookingAll);
+            //dd($bookingAll->toarray());
 
             if ($status == "insert") {
                 if (count($bookingAll) != 0) {
