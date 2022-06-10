@@ -1100,6 +1100,7 @@ class ReportController extends Controller
         $zone_id == 'All' ? $check = 'selected' : $check = null;
         $fillZone[] = "<option value='All' $check>All</option>";
         $checkArray = array();
+        $allData = array();
         foreach($zone as $i => $z){
             foreach($z as $o){
                 $checkArray[$i][] = $o->zone_id;
@@ -1118,7 +1119,7 @@ class ReportController extends Controller
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->get();
-            $allData = array();
+            
             foreach($getBoothAll as $getBooth){
                     $report = array();
                     $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
