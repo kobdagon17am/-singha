@@ -1118,7 +1118,7 @@ class ReportController extends Controller
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->get();
-                
+            $allData = array();
             foreach($getBoothAll as $getBooth){
                 
                     $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
