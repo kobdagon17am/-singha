@@ -54,11 +54,15 @@
                                                         <label
                                                             class="col-sm-2 col-form-label text-right">Zone:</label>
                                                         <div class="col-sm-3">
-                                                            
-                                                           <select name="zone" class="form-control" id='zone'>
-                                                                @if($mkId !=null) 
+                                                           <!-- <select name="zone" class="form-control" id='zone'>
+                                                                {{--@if($mkId !=null) 
                                                                     {!! $zone[$mkId] !!}
-                                                                @endif
+                                                                @endif--}}
+                                                           </select> -->
+                                                           <select name="zone" class="form-control">
+                                                                @foreach($zone as $z)
+                                                                    {!! $z !!}
+                                                                @endforeach
                                                            </select>
                                                         </div>
                                                     </div>
