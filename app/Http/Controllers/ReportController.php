@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use Auth;
 use PDF;
-use Maatwebsite\Excel\Excel;
-// use Excel;
+use Maatwebsite\Excel\Excel as Excel_yaja;
+use Excel;
 use Yajra\Datatables\Datatables;
 use App\BookExport;
 use DateTime;
@@ -28,10 +28,10 @@ use App\Model\Transaction_Detail;
 use App\Model\AuditDetailsAccessories;
 class ReportController extends Controller
 {
-    public function __construct(Excel $excel){
+    public function __construct(Excel_yaja $excel){
         $this->excel = $excel;
     }
-    // ออกรายงาน
+    //ออกรายงาน
     // ===================================================
 
     // รายงานการจอง
@@ -202,12 +202,12 @@ class ReportController extends Controller
             'month'=>$month,
             'booth' => $boothdetail->count()
         );
-        // dd( $boothdetail);
+        //dd($data);
         // return view('backend/report/pdf/pdf_booking',$data);
         // $pdf = PDF::loadView('backend/report/pdf/pdf_booking',$data);
-        return Excel::download(new BookExport("backend/report/pdf/pdf_booking", $data), 'รายงานแสดงข้อมูลการจอง'.$market->name_market.date('Y-m-d',time()).'.xlsx');
+        return Excel::download(new BookExport("backend/report/pdf/pdf_booking",$data), 'รายงานแสดงข้อมูลการจอง'.$market->name_market.date('Y-m-d',time()).'.xlsx');
 
-		return $pdf->stream('รายงานการจอง.pdf');
+		//return $pdf->stream('รายงานการจอง.pdf');
     }
     public function checkbooking($booth,$date,$status){
         // dd($booth,$date,$status);
@@ -282,7 +282,7 @@ class ReportController extends Controller
         return Excel::download(new BookExport("backend/report/pdf/pdf_booth", $data), 'รายงานBoothว่าง'.$market->name_market.date('Y-m-d',time()).'.xlsx');
 
         $pdf = PDF::loadView('backend/report/pdf/pdf_booth',['d_start'=>$d_start,'d_end'=>$d_end]);
-		return $pdf->stream('รายงาน Booth ว่าง.pdf');
+		// return $pdf->stream('รายงาน Booth ว่าง.pdf');
     }
     // ===================================================
 
@@ -392,8 +392,8 @@ class ReportController extends Controller
         // dd($data);
         // return view('backend/report/pdf/pdf_payment_day', $data);
         return Excel::download(new BookExport("backend/report/pdf/pdf_payment_day", $data), 'รายงานการขายรายวัน'.$market->name_market.date('Y-m-d',time()).'.xlsx');
-        $pdf = PDF::loadView('backend/report/pdf/pdf_payment_day',['d_start'=>$d_start,'d_end'=>$d_end]);
-		return $pdf->stream('รายงานการขายรายวัน.pdf');
+        // $pdf = PDF::loadView('backend/report/pdf/pdf_payment_day',['d_start'=>$d_start,'d_end'=>$d_end]);
+		// // return $pdf->stream('รายงานการขายรายวัน.pdf');
     }
     // ===================================================
 
@@ -417,8 +417,8 @@ class ReportController extends Controller
             'bookings' => $bookings
         );
         return Excel::download(new BookExport("backend/report/pdf/pdf_payment_person", $data), 'รายงานการขายรายวัน'.date('Y-m-d',time()).'.xlsx');
-        $pdf = PDF::loadView('backend/report/pdf/pdf_payment_person',$data);
-		return $pdf->stream('รายงานการจองบุคคล.pdf');
+        // $pdf = PDF::loadView('backend/report/pdf/pdf_payment_person',$data);
+		// return $pdf->stream('รายงานการจองบุคคล.pdf');
     }
     // ===================================================
 
@@ -848,8 +848,8 @@ class ReportController extends Controller
             // 'sumgrand_total' => $sumgrand_total,
         );
         return Excel::download(new BookExport("backend/report/pdf/pdf_audit_summary", $data), 'รายงานสรุปยอดขาย'.date('Y-m-d',time()).'.xlsx');
-        $pdf = PDF::loadView('backend/report/pdf/pdf_audit_summary',['d_start'=>$d_start,'d_end'=>$d_end],[],['format'=>'A4-L']);
-		return $pdf->stream('รายงานสรุปยอดขาย.pdf');
+        // $pdf = PDF::loadView('backend/report/pdf/pdf_audit_summary',['d_start'=>$d_start,'d_end'=>$d_end],[],['format'=>'A4-L']);
+		// return $pdf->stream('รายงานสรุปยอดขาย.pdf');
     }
     // ===================================================
 
@@ -928,7 +928,7 @@ class ReportController extends Controller
 
         return Excel::download(new BookExport("backend/report/pdf/pdf_audit_type", $data), 'รายงานประเภทสินค้า'.date('Y-m-d',time()).'.xlsx');
         // $pdf = PDF::loadView('backend/report/pdf/pdf_audit_type',['d_start'=>$d_start,'d_end'=>$d_end],[],['format'=>'A4']);
-		return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
+		// return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
     }
      // ===================================================
     public function report_booking_exprot(Request $request){
@@ -936,7 +936,7 @@ class ReportController extends Controller
 
         return view('backend/report/tem_export/report_book_all');
         // $pdf = PDF::loadView('backend/report/pdf/pdf_audit_type',['d_start'=>$d_start,'d_end'=>$d_end],[],['format'=>'A4']);
-		return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
+		// return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
     }
     public function report_rent_exprot(Request $request){
 
@@ -948,10 +948,10 @@ class ReportController extends Controller
         );
         // return Excel::download(new InvoicesExport, 'invoices.xlsx');
         return Excel::download(new BookExport("backend.report.tem_export.report_rent_all", $data), 'AssetMasterTables'.date('Y-m-d',time()).'.xlsx');
-        return view('backend/report/tem_export/report_rent_all',$data);
+        // return view('backend/report/tem_export/report_rent_all',$data);
 
         // $pdf = PDF::loadView('backend/report/pdf/pdf_audit_type',['d_start'=>$d_start,'d_end'=>$d_end],[],['format'=>'A4']);
-		return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
+		// return $pdf->stream('รายงานประเภทสินค้าที่ขาย.pdf');
     }
     // รายงานการจอง
     public function report_audit_rentroll(){
@@ -1077,7 +1077,7 @@ class ReportController extends Controller
         // $pdf = PDF::loadView('backend/report/pdf/pdf_booking',$data);
         return Excel::download(new BookExport("backend/report/pdf/pdf_audit_reroll", $data), 'รายงานRentroll'.$market->name_market.date('Y-m-d',time()).'.xlsx');
 
-		return $pdf->stream('รายงานการจอง.pdf');
+		// return $pdf->stream('รายงานการจอง.pdf');
     }
 
     public function checkInsale(Request $request){
