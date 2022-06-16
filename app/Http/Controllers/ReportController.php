@@ -1133,7 +1133,7 @@ class ReportController extends Controller
                             $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])
                             // ->whereYear('created_at',date('Y',strtotime($request->date)))
                             // ->whereMonth('created_at',date('m',strtotime($request->date)))
-                            ->orderBy('booth_detail_id','aesc')->get();
+                            ->orderBy('booth_detail_id','asc')->get();
                             // if($iz == 7){ dd($report['booth']); }
                             foreach( $report['booth'] as $i => $b){ 
                                 $booking = Booking_Detail::find($b->booth_detail_id);
