@@ -1081,20 +1081,24 @@ class ReportController extends Controller
     }
 
     public function checkInsale(Request $request){
-        $market = MK_MarketName::all();
-        $zone = MK_Zone::get()->groupBy('name');
+        $market = MK_MarketName::all(); 
+        $zone = MK_Zone::where('status','Y')->get()->groupBy('name');
         $report = array();
         $idZone = array();
+        $idZoneMk = array();
         foreach($zone as $i => $z){
             if($request->zone == 'All'){
                 foreach($z as $c){
                     $idZone[] = $c->zone_id;
+                    $idZoneMk[$c->marketname_id][] = $c->zone_id;
                 }
             }else if($i == $request->zone){ 
                 foreach($z as $c){
                     $idZone[] = $c->zone_id;
+                    $idZoneMk[$c->marketname_id][] = $c->zone_id;
                 }
             }
+            
         }
         $zone_id = $request->zone;
         $zone_id == 'All' ? $check = 'selected' : $check = null;
@@ -1118,37 +1122,48 @@ class ReportController extends Controller
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->first();
-            // dd($idZone); 
-            foreach($idZone as $iz){ 
-                    $report = array();
-                    $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])->orderBy('booth_detail_id','desc')->get();
-                    foreach( $report['booth'] as $i => $b){ 
-                        $booking = Booking_Detail::find($b->booth_detail_id);
-                        if($booking){
-                            $partner = Partners::find($booking->partners_id);
-                            $report['partner'][$i]['partner'] = "$partner->name_customer";
-                            $report['checkIn'][$i] = $booking->check_in_status;
-                            $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
-                            $product = Product::find($productId->product_id);
-                            $report['partner'][$i]['product'] = @$product->name;
-                        }else{
-                            $report['partner'][$i] = null;
-                            $report['checkIn'][$i] = null;
-                        }
-                    }
-                    if(count($report['booth']) > 0){
-                        $ZoneName = '';
-                        foreach($checkArray as $zn => $arr){
-                            if(in_array($iz,$arr)){
-                                $ZoneName = $zn;
-                                break;
+                // dd($idZoneMk);
+            $onezone = $idZoneMk[$getBooth->marketname_id];
+            if($getBooth){
+                foreach($idZone as $iz){ 
+                    if(in_array($iz,$onezone)){
+                        $report = array();
+                        $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])
+                        // ->whereYear('created_at',date('Y',strtotime($request->date)))
+                        // ->whereMonth('created_at',date('m',strtotime($request->date)))
+                        ->orderBy('booth_detail_id','desc')->get();
+                        // if($iz == 7){ dd($report['booth']); }
+                        foreach( $report['booth'] as $i => $b){ 
+                            $booking = Booking_Detail::find($b->booth_detail_id);
+                            if($booking){
+                                $partner = Partners::find($booking->partners_id);
+                                $report['partner'][$i]['partner'] = "$partner->name_customer";
+                                $report['checkIn'][$i] = $booking->check_in_status;
+                                $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
+                                $product = Product::find($productId->product_id);
+                                $report['partner'][$i]['product'] = @$product->name;
+                            }else{
+                                $report['partner'][$i] = null;
+                                $report['checkIn'][$i] = null;
                             }
                         }
-                        $allData[$ZoneName] = $report;
+                        if(count($report['booth']) > 0){
+                            $ZoneName = '';
+                            foreach($checkArray as $zn => $arr){
+                                if(in_array($iz,$arr)){
+                                    $ZoneName = $zn;
+                                    break;
+                                }
+                            }
+                            $allData[$ZoneName] = $report;
+                        }
                     }
-                   
+                        
+                    
+                }
             }
         }
+        // dd($allData['Event']);
         if($request->excel){ 
             $report['data'] = json_decode($request->data,true);
             $report['market'] = MK_MarketName::find($request->excel);
