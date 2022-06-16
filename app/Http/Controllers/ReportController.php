@@ -1114,17 +1114,16 @@ class ReportController extends Controller
             //                     ->whereYear('date_start',date('Y',strtotime($request->date)))
             //                     ->whereMonth('date_start',date('m',strtotime($request->date)))
             //                     ->first();
-            $getBoothAll = MK_Booth::whereIn('zone_id',$idZone)
-                ->where(['marketname_id' => $request->market_id,'status' => 'Y'])
+            $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'status' => 'Y'])
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
-                ->get();
-            
-            foreach($getBoothAll as $getBooth){
+                ->first();
+            // dd($idZone); 
+            foreach($idZone as $iz){ 
                     $report = array();
-                    $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id, 'status' => 'Y'])->orderBy('name','asc')->get();
-                    foreach( $report['booth'] as $i => $b){
-                        $booking = Booking_Detail::where(['booth_detail_id' => $b->booth_detail_id])->whereDate('booking_detail_date',$request->date)->orderBy('booking_detail_id','desc')->first();
+                    $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])->orderBy('booth_detail_id','desc')->get();
+                    foreach( $report['booth'] as $i => $b){ 
+                        $booking = Booking_Detail::find($b->booth_detail_id);
                         if($booking){
                             $partner = Partners::find($booking->partners_id);
                             $report['partner'][$i]['partner'] = "$partner->name_customer";
@@ -1137,15 +1136,18 @@ class ReportController extends Controller
                             $report['checkIn'][$i] = null;
                         }
                     }
-                $ZoneName = '';
-                foreach($checkArray as $zn => $arr){
-                    if(in_array($getBooth->zone_id,$arr)){
-                        $ZoneName = $zn;
+                    if(count($report['booth']) > 0){
+                        $ZoneName = '';
+                        foreach($checkArray as $zn => $arr){
+                            if(in_array($iz,$arr)){
+                                $ZoneName = $zn;
+                                break;
+                            }
+                        }
+                        $allData[$ZoneName] = $report;
                     }
-                }
-                $allData[$ZoneName] = $report;
+                   
             }
-           
         }
         if($request->excel){ 
             $report['data'] = json_decode($request->data,true);
