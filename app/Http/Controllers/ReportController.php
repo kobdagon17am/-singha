@@ -1123,8 +1123,9 @@ class ReportController extends Controller
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->first();
                 // dd($idZoneMk);
-            isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
             if($getBooth){
+            isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
+
                 if(count($onezone) > 0){
                     foreach($idZone as $iz){ 
                         if(in_array($iz,$onezone)){
