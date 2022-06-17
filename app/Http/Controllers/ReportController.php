@@ -1089,21 +1089,17 @@ class ReportController extends Controller
         $idZoneMk = array();
         $zoneName = array();
         foreach($zone as $i => $z){
-            if($request->zone == 'All'){
-                foreach($z as $c){
+            foreach($z as $c){
+                if($request->zone == 'All'){
                     $idZone[] = $c->zone_id;
                     $idZoneMk[$c->marketname_id][] = $c->zone_id;
-                }
-            }else if($i == $request->zone){ 
-                foreach($z as $c){
+                }else if($c->zone_id == $request->zone){
                     $idZone[] = $c->zone_id;
                     $idZoneMk[$c->marketname_id][] = $c->zone_id;
                 }
             }
-            
         }
         $zone_id = $request->zone;
-        
         $checkArray = array();
         $allData = array();
         foreach($zone as $i => $z){
@@ -1112,22 +1108,17 @@ class ReportController extends Controller
             foreach($z as $o){
                 $checkArray[$i][] = $o->zone_id;
                 $zoneName[$o->zone_id] = $o->name;
-                $i == $zone_id ? $check = 'selected' : $check = null;
+                $o->zone_id == $zone_id ? $check = 'selected' : $check = null;
                 $fillZone[$i] = $fillZone[$i] . "<option value='$o->zone_id' $check>$o->name</option>";
             }
             
         }
         // dd($zoneName);
         if($request->market_id){
-            // $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'zone_id' => $request->zone,'status' => 'Y'])
-            //                     ->whereYear('date_start',date('Y',strtotime($request->date)))
-            //                     ->whereMonth('date_start',date('m',strtotime($request->date)))
-            //                     ->first();
             $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'status' => 'Y'])
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->first();
-                // dd($idZoneMk);
             if($getBooth){
             isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
 
@@ -1136,10 +1127,7 @@ class ReportController extends Controller
                         if(in_array($iz,$onezone)){
                             $report = array();
                             $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])
-                            // ->whereYear('created_at',date('Y',strtotime($request->date)))
-                            // ->whereMonth('created_at',date('m',strtotime($request->date)))
                             ->orderBy('booth_detail_id','asc')->get();
-                            // if($iz == 7){ dd($report['booth']); }
                             foreach( $report['booth'] as $i => $b){ 
                                 $booking = Booking_Detail::find($b->booth_detail_id);
                                 if($booking){
@@ -1155,14 +1143,6 @@ class ReportController extends Controller
                                 }
                             }
                             if(count($report['booth']) > 0){
-                                // $ZoneName = '';
-                                // foreach($checkArray as $zn => $arr){
-                                //     if(in_array($iz,$arr)){
-                                //         $ZoneName = $zn;
-                                //         break;
-                                //     }
-                                // }
-                                // $allData[$ZoneName] = $report;
                                 $allData[$zoneName[$iz]] = $report;
                             }
                         }
@@ -1174,7 +1154,6 @@ class ReportController extends Controller
             $report['data'] = json_decode($request->data,true);
             $report['market'] = MK_MarketName::find($request->excel);
             $report['date'] = $request->date;
-            
             return $this->excel->download(new reportCheckIn($report), "CheckInReport.xlsx");
         }
         
