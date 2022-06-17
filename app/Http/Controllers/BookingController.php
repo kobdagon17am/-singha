@@ -872,7 +872,7 @@ class BookingController extends Controller
     {
         $userToken = 'cuhEMYqWSkeQ0w4WJEx4Ge:APA91bGihNa3KoE6uTEl3RCKEGJO-P91wvLQeao-5zBLKTPNtAxgmlPZ3oBYsrACh4L6CKFe-PXUE70_h2PlWzfcLIs8QOPexdSBIt1P9kbFjFoFSkE3W-z-RR6tCZUCCJx8z85yPA8X';
         $this->send_notification_sentfines($userToken);
-        dd("ss");
+
     }
     function send_notification_sentfines($userToken)
     {
@@ -1007,12 +1007,12 @@ class BookingController extends Controller
 
             $marketname = MK_MarketName::find($request->market_id);
 
-            $boothname = MK_BoothDetail::where('name', $boothname_arr)->where('booth_id', $request->booth_id)
+            $boothname = MK_BoothDetail::where('name',$boothname_arr)->where('booth_id', $request->booth_id)
                 ->whereHas('booth', function ($query)  use ($marketname) {
                     $query->where('marketname_id', $marketname->marketname_id);
                 })->first();
 
-                //dd($boothname);
+                // dd($marketname);
             // unset($databooking[0]);
             // unset($databooking[1]);
             // ตัด array ไป array ที่เริ่มและตัด array ไป array ที่สิ้นสุด
@@ -1720,11 +1720,11 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '3PJ01300';
+            $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEP1';
-            if ($bookingu->marketname_id == 2) {
+            if ($bookingu->marketname_id == 2 || $bookingu->marketname_id == 8) {
                 $store_code = '6602';
-                $cost_center_code = '3PJ01300';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
             }
 
@@ -1843,21 +1843,22 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '3PJ01300';
+            $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEP1';
             $strPSS = 'Plaza space service';
-            if ($booking->marketname_id == 2) {
+            if ($booking->marketname_id == 2 || $booking->marketname_id == 8) {
                 $store_code = '6602';
-                $cost_center_code = '3PJ01300';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
+
             } else if ($booking->marketname_id == 6) {
                 $store_code = '6601';
-                $cost_center_code = '3PJ01300';
+                $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             } else if ($booking->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = '3PJ01300';
+                $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             }
@@ -1980,12 +1981,12 @@ class BookingController extends Controller
                 $trans_id = $transaction->trans_id;
             }
             $store_code = '6601';
-            $cost_center_code = '3PJ01300';
+            $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEEV';
             $strPSS = 'Event space service';
             if ($bookingE->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = '3PJ01300';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space service';
             }
