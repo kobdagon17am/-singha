@@ -1082,10 +1082,12 @@ class ReportController extends Controller
 
     public function checkInsale(Request $request){
         $market = MK_MarketName::all(); 
-        $zone = MK_Zone::where('status','Y')->get()->groupBy('name');
+        // $zone = MK_Zone::where('status','Y')->get()->groupBy('name');
+        $zone = MK_Zone::where('status','Y')->get()->groupBy('marketname_id');
         $report = array();
         $idZone = array();
         $idZoneMk = array();
+        $zoneName = array();
         foreach($zone as $i => $z){
             if($request->zone == 'All'){
                 foreach($z as $c){
@@ -1101,18 +1103,21 @@ class ReportController extends Controller
             
         }
         $zone_id = $request->zone;
-        $zone_id == 'All' ? $check = 'selected' : $check = null;
-        $fillZone[] = "<option value='All' $check>All</option>";
+        
         $checkArray = array();
         $allData = array();
         foreach($zone as $i => $z){
+            $zone_id == 'All' ? $check = 'selected' : $check = null;
+            $fillZone[$i] = "<option value='All' $check>All</option>";
             foreach($z as $o){
                 $checkArray[$i][] = $o->zone_id;
+                $zoneName[$o->zone_id] = $o->name;
+                $i == $zone_id ? $check = 'selected' : $check = null;
+                $fillZone[$i] = $fillZone[$i] . "<option value='$o->zone_id' $check>$o->name</option>";
             }
-            $fillZone[$i] = '';
-            $i == $zone_id ? $check = 'selected' : $check = null;
-            $fillZone[$i] .= "<option value='$i' $check>$i</option>";
+            
         }
+        // dd($zoneName);
         if($request->market_id){
             // $getBooth = MK_Booth::where(['marketname_id' => $request->market_id,'zone_id' => $request->zone,'status' => 'Y'])
             //                     ->whereYear('date_start',date('Y',strtotime($request->date)))
@@ -1150,14 +1155,15 @@ class ReportController extends Controller
                                 }
                             }
                             if(count($report['booth']) > 0){
-                                $ZoneName = '';
-                                foreach($checkArray as $zn => $arr){
-                                    if(in_array($iz,$arr)){
-                                        $ZoneName = $zn;
-                                        break;
-                                    }
-                                }
-                                $allData[$ZoneName] = $report;
+                                // $ZoneName = '';
+                                // foreach($checkArray as $zn => $arr){
+                                //     if(in_array($iz,$arr)){
+                                //         $ZoneName = $zn;
+                                //         break;
+                                //     }
+                                // }
+                                // $allData[$ZoneName] = $report;
+                                $allData[$zoneName[$iz]] = $report;
                             }
                         }
                     }
