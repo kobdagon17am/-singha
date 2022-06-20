@@ -1644,7 +1644,7 @@ class BookingController extends Controller
             })->whereHas('market', function ($query) {
 
                 // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
-                $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2');
+                $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2')->where('prefix_code', '!=', 'PZE2');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
         // ->limit('15')
@@ -1660,7 +1660,7 @@ class BookingController extends Controller
             })->whereHas('market', function ($query) {
 
                 // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
-                $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2');
+                $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2')->where('prefix_code', '!=', 'PZE3');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
 
@@ -1675,13 +1675,13 @@ class BookingController extends Controller
             })->whereHas('market', function ($query) {
 
                 // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
-                $query->where('prefix_code', '=', 'PZE1')->orWhere('prefix_code', '=', 'PZE2');
+                $query->where('prefix_code', '=', 'PZE1')->orWhere('prefix_code', '=', 'PZE2')->orWhere('prefix_code', '=', 'PZE3');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
         // ->whereHas('market', function ($query){
 
         //     // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
-        //     $query->where('prefix_code','!=','PZE1')->where('prefix_code','!=','PZE2');
+        //     $query->where('prefix_code','!=','PZE1')->where('prefix_code','!=','PZE2')->where('prefix_code','!=','PZE2');
         //     // ->whereDate('booking_detail_date', '<=', $date_end);
         // })
         //   ->limit('10')
@@ -1777,14 +1777,14 @@ class BookingController extends Controller
                 if ($bookingu->marketname_id == 1) {
                     # code...
 
-                    $dudata1  .=  'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space service ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
+                    $dudata1  .=  'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
 
                     $totalbeforevatd1 += round($beforevatd, 2);
                     $totalvatd1 += round($vatd, 2);
                     $totalamountd1 += round($amountd, 2);
                 } else if ($bookingu->marketname_id == 2) {
 
-                    $dudata2  .=  'D|' . $transidu2 . '|1|' . $sep_code . '|Plaza space service ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
+                    $dudata2  .=  'D|' . $transidu2 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
 
                     $totalbeforevatd2 += round($beforevatd, 2);
                     $totalvatd2 += round($vatd, 2);
@@ -1845,7 +1845,7 @@ class BookingController extends Controller
             $store_code = '6601';
             $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEP1';
-            $strPSS = 'Plaza space service';
+            $strPSS = 'Plaza space '.$sep_code;
             if ($booking->marketname_id == 2 || $booking->marketname_id == 8) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
@@ -1855,12 +1855,12 @@ class BookingController extends Controller
                 $store_code = '6601';
                 $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
-                $strPSS = 'Event space service';
+                $strPSS = 'Event space '.$sep_code;
             } else if ($booking->marketname_id == 7) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
-                $strPSS = 'Event space service';
+                $strPSS = 'Event space '.$sep_code;
             }
 
             $bookdetails = $booking->bookdetail;
@@ -1983,12 +1983,12 @@ class BookingController extends Controller
             $store_code = '6601';
             $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEEV';
-            $strPSS = 'Event space service';
+            $strPSS = 'Event space '.$sep_code;
             if ($bookingE->marketname_id == 7) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
-                $strPSS = 'Event space service';
+                $strPSS = 'Event space '.$sep_code;
             }
 
             $bookEdetails = $bookingE->bookdetail;
