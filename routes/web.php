@@ -308,7 +308,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
     Route::get('/backoffice/admin/login','Auth\AdminLoginController@showLoginForm')->name('backend.login');
     Route::get('/backoffice/admin/logout','Auth\AdminLoginController@logout')->name('backend.admin.logout');
 
-    // Clear Cachehyy
+    // Clear Cache
     Route::get('/clc', function() {
         Artisan::call('cache:clear');
         // Artisan::call('optimize');
