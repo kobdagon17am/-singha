@@ -1620,7 +1620,7 @@ class BookingController extends Controller
     }
     public function exporttext()
     {
-       
+
 
         //dd( asset('public/upload/'));
         // app()->call('App\Http\Controllers\BookingController@exporttext');
@@ -1630,8 +1630,8 @@ class BookingController extends Controller
         // $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         // $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        $today = (new DateTime(date('2022/04/01') . '20:00:30'));
-        $yesterday = (new DateTime(date('2022/03/31').'20:00:30'));
+        $today = (new DateTime(date('2022/06/24') . '20:00:30'));
+        $yesterday = (new DateTime(date('2022/06/23').'20:00:30'));
         //dd($yesterday,$today);
 
 
@@ -2082,7 +2082,7 @@ class BookingController extends Controller
         //$count_qrray = count($arr);
         $destinationPath = public_path() . "/upload/";
 
-      
+
             $regudata = '';
             foreach ($hdata as $keyall => $value) {
                 # code...
@@ -2110,7 +2110,7 @@ class BookingController extends Controller
                     }
                     $valueNew[$step1[count($step1)-1]][] = $data;
                 }
-                
+
                 if(count($check) > 1){
                     $dif = count($check) - 1;
                     foreach($check as $k => $c){
@@ -2120,7 +2120,7 @@ class BookingController extends Controller
                         $a = substr($step3[4],0,$len);
                         $b = (substr($step3[4],$len,$len)*1) + $k;
                         $new = $a.$b;
-                       
+
                         foreach($valueNew[$c] as $val){
                             $step1 = explode('|',$val);
                             $step2['p1'][] = $step1[6];
@@ -2135,7 +2135,7 @@ class BookingController extends Controller
                                 }
                             }
                         }
-                        
+
                         $step3[2] = $step3[2]-$dif;
                         $step3[4] = $new;
                         $step3[9] = array_sum($step2['p1']);
@@ -2160,8 +2160,8 @@ class BookingController extends Controller
                     }
                     $eventdata .= $value[0][0] . $detail;
                 }
-                
-               
+
+
             }
             $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
             dd($alltextflie);
@@ -2175,7 +2175,7 @@ class BookingController extends Controller
             //return response()->download($destinationPath.$file);
             $status = $this->connectftp($file);
             return $status;
-          
+
     }
     public function connectftp($namefile)
     {
