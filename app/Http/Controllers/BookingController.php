@@ -1620,17 +1620,18 @@ class BookingController extends Controller
     }
     public function exporttext()
     {
+       
 
         //dd( asset('public/upload/'));
         // app()->call('App\Http\Controllers\BookingController@exporttext');
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
-        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
+        // $today = (new DateTime(date('Y/m/d') . '20:00:30'));
+        // $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $today = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
-        // $yesterday = (new DateTime(date('Y/m/d',strtotime("-2 days")).'20:00:30'));
+        $today = (new DateTime(date('2022/04/01') . '20:00:30'));
+        $yesterday = (new DateTime(date('2022/03/31').'20:00:30'));
         //dd($yesterday,$today);
 
 
@@ -2076,12 +2077,12 @@ class BookingController extends Controller
         }
 
 
-        $limit = 50;
+        //$limit = 50;
         $arr = $hdata + $hEventdata;
-        $count_qrray = count($arr);
+        //$count_qrray = count($arr);
         $destinationPath = public_path() . "/upload/";
 
-        if ($count_qrray <= ($limit - 2)) {
+      
             $regudata = '';
             foreach ($hdata as $keyall => $value) {
                 # code...
@@ -2099,17 +2100,71 @@ class BookingController extends Controller
 
             foreach ($hEventdata as $keyall => $value) {
                 # code...
-                //   dd($value[0]);
+                //   dd($value);
                 $detail = '';
+                $check = array();$valueNew = array();
                 foreach ($value[1] as $key => $data) {
-                    # code...
-
-                    $detail .= $data;
+                    $step1 = explode('|',$data);
+                    if(!in_array($step1[count($step1)-1],$check)){
+                        $check[] = $step1[count($step1)-1];
+                    }
+                    $valueNew[$step1[count($step1)-1]][] = $data;
                 }
-                $eventdata .= $value[0][0] . $detail;
+                
+                if(count($check) > 1){
+                    $dif = count($check) - 1;
+                    foreach($check as $k => $c){
+                        $step2 = array();$info = '';
+                        $step3 = explode('|',$value[0][0]);
+                        $len = number_format(round(strlen($step3[4])/2),0) * 1;
+                        $a = substr($step3[4],0,$len);
+                        $b = (substr($step3[4],$len,$len)*1) + $k;
+                        $new = $a.$b;
+                       
+                        foreach($valueNew[$c] as $val){
+                            $step1 = explode('|',$val);
+                            $step2['p1'][] = $step1[6];
+                            $step2['p2'][] = $step1[8];
+                            $step2['p3'][] = $step1[9];
+                            $step1[1] = $new;
+                            foreach($step1 as $x1 => $s1){
+                                if($x1+1 == count($step1)){
+                                    $info .= $s1;
+                                }else{
+                                    $info .= "$s1|";
+                                }
+                            }
+                        }
+                        
+                        $step3[2] = $step3[2]-$dif;
+                        $step3[4] = $new;
+                        $step3[9] = array_sum($step2['p1']);
+                        $step3[10] = array_sum($step2['p2']);
+                        $step3[11] = array_sum($step2['p3']);
+                        $step4 = '';
+                        foreach($step3 as $x3 => $s3){
+                            if($x3+1 == count($step3)){
+                                $step4 .= $s3;
+                            }else{
+                                $step4 .= "$s3|";
+                            }
+                        }
+                        $eventdata .= $step4.$info;
+                        $dif--;
+                    }
+                }else{
+                    foreach ($value[1] as $key => $data) {
+                        # code...
+                        $step1 = explode('|',$data);
+                        $detail .= $data;
+                    }
+                    $eventdata .= $value[0][0] . $detail;
+                }
+                
+               
             }
             $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
-            // dd($alltextflie);
+            dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
@@ -2120,46 +2175,7 @@ class BookingController extends Controller
             //return response()->download($destinationPath.$file);
             $status = $this->connectftp($file);
             return $status;
-        } else {
-            $eventdata='';
-            $i=0;
-
-            $data_all_limit = array();
-
-            foreach ($arr as $keyall => $value) {
-                $i++;
-                $detail = '';
-                    foreach ($value[1] as $key => $data) {
-                        # code...
-                        $detail .= $data;
-                    }
-                $eventdata .= $value[0][0].$detail;
-
-                 if($i%$limit == 0){
-                    $data_all_limit[] = $eventdata;
-                    $eventdata = '';
-                }
-            }
-            $data_all_limit[] = $eventdata.$hudata1.$hudata2;
-            // dd($data_all_limit);
-
-             foreach($data_all_limit as $value){
-
-                $file = time() . rand() . '_file.text';
-                $destinationPath = public_path() . "/upload/";
-                if (!is_dir($destinationPath)) {
-                    mkdir($destinationPath, 0777, true);
-                }
-                File::put($destinationPath.$file,$value);
-
-                //return response()->download($destinationPath.$file);
-                $status = $this->connectftp($file);
-
-
-             }
-             return $status;
-
-        }
+          
     }
     public function connectftp($namefile)
     {
