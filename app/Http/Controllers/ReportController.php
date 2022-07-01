@@ -137,7 +137,7 @@ class ReportController extends Controller
                             $lastname = $databook->partners->lastname;
                             $product = $databook->partners->prtnersproduct->product->name ?? '';
                         }
-
+                        $textDesc = '';
                         $cstyle = 'background-color:#ffcc66 ';
                         if($databook->booking->booking_status_id == 3){
                             $cstyle = 'background-color: #99ff99;';
@@ -1081,7 +1081,7 @@ class ReportController extends Controller
     }
 
     public function checkInsale(Request $request){
-        $market = MK_MarketName::all(); 
+        $market = MK_MarketName::all();
         // $zone = MK_Zone::where('status','Y')->get()->groupBy('name');
         $zone = MK_Zone::where('status','Y')->get()->groupBy('marketname_id');
         $report = array();
@@ -1111,7 +1111,7 @@ class ReportController extends Controller
                 $o->zone_id == $zone_id ? $check = 'selected' : $check = null;
                 $fillZone[$i] = $fillZone[$i] . "<option value='$o->zone_id' $check>$o->name</option>";
             }
-            
+
         }
         // dd($zoneName);
         if($request->market_id){
@@ -1123,12 +1123,12 @@ class ReportController extends Controller
             isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
 
                 if(count($onezone) > 0){
-                    foreach($idZone as $iz){ 
+                    foreach($idZone as $iz){
                         if(in_array($iz,$onezone)){
                             $report = array();
                             $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])
                             ->orderBy('booth_detail_id','asc')->get();
-                            foreach( $report['booth'] as $i => $b){ 
+                            foreach( $report['booth'] as $i => $b){
                                 $booking = Booking_Detail::find($b->booth_detail_id);
                                 if($booking){
                                     $partner = Partners::find($booking->partners_id);
@@ -1150,13 +1150,13 @@ class ReportController extends Controller
                 }
             }
         }
-        if($request->excel){ 
+        if($request->excel){
             $report['data'] = json_decode($request->data,true);
             $report['market'] = MK_MarketName::find($request->excel);
             $report['date'] = $request->date;
             return $this->excel->download(new reportCheckIn($report), "CheckInReport.xlsx");
         }
-        
+
         $data = array(
             'market' => $market,
             'reportAll' => $allData,
