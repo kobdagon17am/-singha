@@ -1868,7 +1868,7 @@ class BookingController extends Controller
                 $newDataLimit .= $step4.$info;
             }
         }
-        dd($arrayData,$newDataLimit);
+        // dd($arrayData,$newDataLimit);
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hdata = '';
         $hdata = [];
@@ -2226,8 +2226,10 @@ class BookingController extends Controller
 
 
             }
-            // dd(explode('',$hudata1));
-            $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
+            // dd(explode('',$hudata1));$newDataLimit
+            // $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
+            $alltextflie = $regudata . $eventdata . $newDataLimit;
+
             dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
