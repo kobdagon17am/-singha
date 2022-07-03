@@ -1852,7 +1852,7 @@ class BookingController extends Controller
                 }
             }
             if($info != ''){
-                $step[2] = $step[2]+1;
+                $step[2] = $c == 0 ? $step[2]+0 : $step[2]+1;
                 $step[4] = $a.($b+$c);//PHP_EOL
                 $step[9] = array_sum($step2['p1']);
                 $step[10] = array_sum($step2['p2']);
