@@ -1633,7 +1633,7 @@ class BookingController extends Controller
         $today = (new DateTime(date('2022/06/24') . '20:00:30'));
         $yesterday = (new DateTime(date('2022/06/23').'20:00:30'));
         //dd($yesterday,$today);
-
+        $arrayData = array();
 
         $bookingsre = Booking::where('booking_status_id', 3)
             ->where('booking_type', 'Regular')
@@ -1705,7 +1705,7 @@ class BookingController extends Controller
 
 
         // dd($transidu);
-
+        
         foreach ($bookingsuser as $key => $bookingu) {
 
             $space_customer_id = 'A0000699';
@@ -1734,7 +1734,6 @@ class BookingController extends Controller
             if ($bookingu->booking_coupon != null) {
                 $discountd = $bookingu->booking_coupon;
             }
-
             foreach ($bookdetailuss as $key => $bookdetailus) {
                 $countbookinu = Booking_Detail::where('booking_id', $bookingu->booking_id)->count();
                 $namebooth = '';
@@ -1779,14 +1778,14 @@ class BookingController extends Controller
                     # code...
 
                     $dudata1  .=  'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
-
+                    $arrayData['D'][$transidu1][] = 'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
                     $totalbeforevatd1 += round($beforevatd, 2);
                     $totalvatd1 += round($vatd, 2);
                     $totalamountd1 += round($amountd, 2);
                 } else if ($bookingu->marketname_id == 2) {
 
                     $dudata2  .=  'D|' . $transidu2 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
-
+                    $arrayData['D'][$transidu2][] = 'D|' . $transidu2 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
                     $totalbeforevatd2 += round($beforevatd, 2);
                     $totalvatd2 += round($vatd, 2);
                     $totalamountd2 += round($amountd, 2);
@@ -1799,15 +1798,77 @@ class BookingController extends Controller
         if ($dudata1 != null || $dudata1 != '') {
             $hudata1 .= 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL
                 . $dudata1;
+            $arrayData['H'][$transidu1] = 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL;
         }
 
         if ($dudata2 != null || $dudata2 != '') {
             $hudata2 .= 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL
                 . $dudata2;
+            $arrayData['H'][$transidu2] = 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL;               
         }
 
         // dd($hudata1, $hudata2);
-
+        $newDataLimit = '';
+        foreach($arrayData['H'] as $xh => $ah){
+            $step = explode('|',$ah);
+            $len = number_format(round(strlen($step[4])/2),0) * 1;
+            $a = substr($step[4],0,$len+1);
+            $b = (substr($step[4],$len+1,$len)*1);
+            $c = 0;
+            $info = '';
+            foreach($arrayData['D'][$xh] as $x => $ad){
+                $step1 = explode('|',$ad);
+                $step2['p1'][] = $step1[6];
+                $step2['p2'][] = $step1[8];
+                $step2['p3'][] = $step1[9];
+                $step1[1] = $a.($b+$c);
+                foreach($step1 as $x1 => $s1){
+                    if($x1+1 == count($step1)){
+                        $info .= $s1;
+                    }else{
+                        $info .= "$s1|";
+                    }
+                }
+                if(($x+1)%50 == 0){
+                   
+                    $step[2] = $step[2]+1;
+                    $step[4] = $a.($b+$c);
+                    $step[9] = array_sum($step2['p1']);
+                    $step[10] = array_sum($step2['p2']);
+                    $step[11] = array_sum($step2['p3']);
+                    $step4 = '';
+                    foreach($step as $x3 => $s3){
+                        if($x3+1 == count($step)){
+                            $step4 .= $a.($b+$c).PHP_EOL;
+                        }else{
+                            $step4 .= "$s3|";
+                        }
+                    }
+                    $newDataLimit .= $step4.$info;
+                    $c++; $info = '';
+                    $step2['p1'] = array();
+                    $step2['p2'] = array();
+                    $step2['p3'] = array();
+                }
+            }
+            if($info != ''){
+                $step[2] = $step[2]+1;
+                $step[4] = $a.($b+$c);//PHP_EOL
+                $step[9] = array_sum($step2['p1']);
+                $step[10] = array_sum($step2['p2']);
+                $step[11] = array_sum($step2['p3']);
+                $step4 = '';
+                foreach($step as $x3 => $s3){
+                    if($x3+1 == count($step)){
+                        $step4 .= $a.($b+$c).PHP_EOL;
+                    }else{
+                        $step4 .= "$s3|";
+                    }
+                }
+                $newDataLimit .= $step4.$info;
+            }
+        }
+        dd($arrayData,$newDataLimit);
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hdata = '';
         $hdata = [];
@@ -2088,14 +2149,16 @@ class BookingController extends Controller
                 # code...
                 //   dd($value[0]);
                 $detail = '';
-                foreach ($value[1] as $key => $data) {
-                    # code...
-
-                    $detail .= $data;
+                if(count($value[1])>50){
+                    dd($value);
+                }else{
+                    foreach ($value[1] as $key => $data) {
+                        $detail .= $data;
+                    }
+                    $regudata .= $value[0][0] . $detail;
                 }
-                $regudata .= $value[0][0] . $detail;
+                
             }
-
             $eventdata = '';
 
             foreach ($hEventdata as $keyall => $value) {
@@ -2163,6 +2226,7 @@ class BookingController extends Controller
 
 
             }
+            // dd(explode('',$hudata1));
             $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
             dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
