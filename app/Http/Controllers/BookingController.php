@@ -1627,11 +1627,11 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        // $today = (new DateTime(date('Y/m/d') . '20:00:30'));
-        // $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
+        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
+        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        $today = (new DateTime(date('2022/06/24') . '20:00:30'));
-        $yesterday = (new DateTime(date('2022/06/23').'20:00:30'));
+        // $today = (new DateTime(date('2022/06/24') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/06/23').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1705,7 +1705,7 @@ class BookingController extends Controller
 
 
         // dd($transidu);
-        
+
         foreach ($bookingsuser as $key => $bookingu) {
 
             $space_customer_id = 'A0000699';
@@ -1804,7 +1804,7 @@ class BookingController extends Controller
         if ($dudata2 != null || $dudata2 != '') {
             $hudata2 .= 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL
                 . $dudata2;
-            $arrayData['H'][$transidu2] = 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL;               
+            $arrayData['H'][$transidu2] = 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL;
         }
 
         // dd($hudata1, $hudata2);
@@ -1830,7 +1830,7 @@ class BookingController extends Controller
                     }
                 }
                 if(($x+1)%50 == 0){
-                   
+
                     $step[2] = $step[2]+1;
                     $step[4] = $a.($b+$c);
                     $step[9] = array_sum($step2['p1']);
@@ -2157,7 +2157,7 @@ class BookingController extends Controller
                     }
                     $regudata .= $value[0][0] . $detail;
                 }
-                
+
             }
             $eventdata = '';
 
@@ -2230,7 +2230,7 @@ class BookingController extends Controller
             // $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            dd($alltextflie);
+            // dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
