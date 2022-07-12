@@ -1627,11 +1627,11 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        // $today = (new DateTime(date('Y/m/d') . '20:00:30'));
-        // $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
+        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
+        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        $today = (new DateTime(date('2022/07/05') . '20:00:30'));
-        $yesterday = (new DateTime(date('2022/07/04').'20:00:30'));
+        // $today = (new DateTime(date('2022/07/05') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/07/04').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1886,9 +1886,12 @@ class BookingController extends Controller
                     }
                 }
                 $newDataLimit .= $step4.$info;
+                $step2['p1'] = array();
+                $step2['p2'] = array();
+                $step2['p3'] = array();
             }
         }
-        // dd($arrayData,$newDataLimit);
+        dd($newDataLimit);
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hdata = '';
         $hdata = [];
@@ -2252,10 +2255,10 @@ class BookingController extends Controller
 
             }
             // dd(explode('',$hudata1));$newDataLimit
-            $alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
-            //$alltextflie = $regudata . $eventdata . $newDataLimit;
+            //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
+            $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-             //dd($alltextflie);
+            //  dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
