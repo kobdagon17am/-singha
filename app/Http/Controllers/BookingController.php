@@ -1627,9 +1627,9 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
-        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
-        $date_set = date('d/m/Y');
+        $today = (new DateTime(date('Y/m/12') . '20:00:30'));
+        $yesterday = (new DateTime(date('Y/m/11', strtotime("-1 days")) . '20:00:30'));
+        $date_set = date('12/m/Y');
         // $today = (new DateTime(date('2022/07/05') . '20:00:30'));
         // $yesterday = (new DateTime(date('2022/07/04').'20:00:30'));
         //dd($yesterday,$today);
@@ -1937,6 +1937,7 @@ class BookingController extends Controller
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
+                $strPSS = 'Plaza space '.$sep_code;
 
             } else if ($booking->marketname_id == 6) {
                 $store_code = '6601';
@@ -2258,7 +2259,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            //  dd($alltextflie);
+            // dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
