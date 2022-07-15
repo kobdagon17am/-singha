@@ -1891,7 +1891,7 @@ class BookingController extends Controller
                 $step2['p3'] = array();
             }
         }
-        dd($newDataLimit);
+
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hdata = '';
         $hdata = [];
