@@ -1627,9 +1627,9 @@ class BookingController extends Controller
         // dd("55");
         // $bookings = Booking::limit(1)->get();
         // $bookings = Booking::all();
-        $today = (new DateTime(date('Y/m/12') . '20:00:30'));
-        $yesterday = (new DateTime(date('Y/m/11', strtotime("-1 days")) . '20:00:30'));
-        $date_set = date('12/m/Y');
+        $today = (new DateTime(date('Y/m/d') . '20:00:30'));
+        $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
+        $date_set = date('d/m/Y');
         // $today = (new DateTime(date('2022/07/05') . '20:00:30'));
         // $yesterday = (new DateTime(date('2022/07/04').'20:00:30'));
         //dd($yesterday,$today);
@@ -1851,7 +1851,7 @@ class BookingController extends Controller
                 }
                 if(($x+1)%50 == 0){
 
-                    $step[2] = $step[2]+1;
+                    $step[2] = $step[2];
                     $step[4] = $a.($b+$c);
                     $step[9] = array_sum($step2['p1']);
                     $step[10] = array_sum($step2['p2']);
@@ -1872,7 +1872,7 @@ class BookingController extends Controller
                 }
             }
             if($info != ''){
-                $step[2] = $c == 0 ? $step[2]+0 : $step[2]+1;
+                $step[2] = $c == 0 ? $step[2]+0 : $step[2];
                 $step[4] = $a.($b+$c);//PHP_EOL
                 $step[9] = array_sum($step2['p1']);
                 $step[10] = array_sum($step2['p2']);
@@ -2228,7 +2228,7 @@ class BookingController extends Controller
                             }
                         }
 
-                        $step3[2] = $step3[2]-$dif;
+                        $step3[2] = $step3[2];
                         $step3[4] = $new;
                         $step3[9] = array_sum($step2['p1']);
                         $step3[10] = array_sum($step2['p2']);
