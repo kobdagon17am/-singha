@@ -350,6 +350,26 @@ class BookingController extends Controller
                 return $html;
             })
 
+            ->addColumn('notification_date', function ($data) {
+                // $html = $data->htmldate;
+                $html = '';
+
+                        $html .= date('d-m-Y', strtotime($data->notification_date));
+
+                return $html;
+            })
+
+            ->addColumn('timeout_date', function ($data) {
+                // $html = $data->htmldate;
+                $html = '';
+
+                        $html .= date('d-m-Y', strtotime($data->timeout_date));
+
+                return $html;
+            })
+
+
+
             ->addColumn('booking_status', function ($data) {
                 // $data = $data->status->booking_status_name;
                 $status = $data->booking_status_id;
@@ -604,10 +624,13 @@ class BookingController extends Controller
         } else {
             $trdetail =  '';
             foreach ($bookdetail as $key => $value) {
+
                 $trdetail .=  '<tr>
                     <td>' . $value->boothdetail->booth->market->name_market . '</td>
                     <td>' . $value->boothdetail->name . '</td>
-                    <td>' . $value->booking_detail_date . '</td>
+                    <td>' .  date('d-m-Y', strtotime($value->booking_detail_date)). '</td>
+                    <td>' . date('d-m-Y', strtotime($booking->notification_date)). '</td>
+                    <td>' . date('d-m-Y', strtotime($booking->timeout_date)). '</td>
                     <td>' . $value->boothdetail->price . '</td>
                 </tr>';
 
@@ -618,6 +641,8 @@ class BookingController extends Controller
                         <th class="text-center">ตลาด</th>
                         <th class="text-center">ชื่อบูธ</th>
                         <th class="text-center">วันที่จอง</th>
+                        <th class="text-center">วันที่แจ้งเตือน</th>
+                        <th class="text-center">วันที่วันหมดอายุชำระเงิน</th>
                         <th class="text-center">ราคา</th>
                     </tr>
                 </thead>

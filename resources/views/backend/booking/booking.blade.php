@@ -113,6 +113,8 @@
                                             <th class="text-center">เลขที่ใบจอง</th>
                                             <th class="text-center" width="10%">ชื่อบูธ</th>
                                             <th class="text-center">วันที่การจอง</th>
+                                            <th class="text-center">วันที่แจ้งเตือน</th>
+                                            <th class="text-center">วันหมดอายุชำระเงิน</th>
                                             <th class="text-center">สถานะ</th>
                                             <th class="text-center">ชื่อผู้จอง</th>
                                             {{-- <th class="text-center">วันที่ทำรายการ</th> --}}
@@ -658,6 +660,16 @@ $(".pcoded-left-item>li a[href='"+route_URL+"']").parent().addClass("active");
                     'className': "text-center",
                     data: 'datebooking',
                     name: 'datebooking'
+                },
+                {
+                    'className': "text-center",
+                    data: 'notification_date',
+                    name: 'notification_date'
+                },
+                {
+                    'className': "text-center",
+                    data: 'timeout_date',
+                    name: 'timeout_date'
                 },
                 {
                     'className': "text-center",
