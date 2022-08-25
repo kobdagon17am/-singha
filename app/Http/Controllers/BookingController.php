@@ -2116,7 +2116,7 @@ class BookingController extends Controller
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
-                $strPSS = 'Event space '.$sep_code;
+                $strPSS = 'Plaza space '.$sep_code;
             }
 
 
