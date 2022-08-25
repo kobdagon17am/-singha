@@ -2092,7 +2092,7 @@ class BookingController extends Controller
             } else if ($bookingE->partners->space_customer_id == null) {
                 if ($bookingE->marketname_id == 6) {
                     $space_customer_id = 'PZ100699';
-                } else if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 7) {
+                } else if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 8) {
                     $space_customer_id = 'PZ200699';
                 }
             }
@@ -2104,12 +2104,22 @@ class BookingController extends Controller
             $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEEV';
             $strPSS = 'Event space '.$sep_code;
-            if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 8) {
+            if ($bookingE->marketname_id == 7 ) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space '.$sep_code;
             }
+
+            if($bookingE->marketname_id == 8){
+
+                $store_code = '6602';
+                $cost_center_code = 'MF_PZ2';
+                $sep_code = 'SEP2';
+                $strPSS = 'Event space '.$sep_code;
+            }
+
+
 
             $bookEdetails = $bookingE->bookdetail;
 
@@ -2196,7 +2206,6 @@ class BookingController extends Controller
             $hEdataarr[0] = $hEdatasrt;
             $hEventdata[$space_customer_id] = [$hEdataarr, $dEventarr[$space_customer_id], array_sum($Ebeforevatdre_arr[$space_customer_id]), array_sum($Evatdre_arr[$space_customer_id]), array_sum($Eamountdre_arr[$space_customer_id])];
         }
-
 
         //$limit = 50;
         $arr = $hdata + $hEventdata;
