@@ -1655,8 +1655,8 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $today = (new DateTime(date('2022/07/05') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/07/04').'20:00:30'));
+        // $today = (new DateTime(date('2022/08/18') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/08/17').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1854,30 +1854,53 @@ class BookingController extends Controller
 
         // dd($hudata1, $hudata2,'q'.$hudata3);
         $newDataLimit = '';
-        foreach($arrayData['H'] as $xh => $ah){
-            $step = explode('|',$ah);
-            $len = number_format(round(strlen($step[4])/2),0) * 1;
-            $a = substr($step[4],0,$len+1);
-            $b = (substr($step[4],$len+1,$len)*1);
-            $c = 0;
-            $info = '';
-            foreach($arrayData['D'][$xh] as $x => $ad){
-                $step1 = explode('|',$ad);
-                $step2['p1'][] = $step1[6];
-                $step2['p2'][] = $step1[8];
-                $step2['p3'][] = $step1[9];
-                $step1[1] = $a.($b+$c);
-                foreach($step1 as $x1 => $s1){
-                    if($x1+1 == count($step1)){
-                        $info .= $s1;
-                    }else{
-                        $info .= "$s1|";
+
+        if($arrayData){
+            foreach($arrayData['H'] as $xh => $ah){
+                $step = explode('|',$ah);
+                $len = number_format(round(strlen($step[4])/2),0) * 1;
+                $a = substr($step[4],0,$len+1);
+                $b = (substr($step[4],$len+1,$len)*1);
+                $c = 0;
+                $info = '';
+                foreach($arrayData['D'][$xh] as $x => $ad){
+                    $step1 = explode('|',$ad);
+                    $step2['p1'][] = $step1[6];
+                    $step2['p2'][] = $step1[8];
+                    $step2['p3'][] = $step1[9];
+                    $step1[1] = $a.($b+$c);
+                    foreach($step1 as $x1 => $s1){
+                        if($x1+1 == count($step1)){
+                            $info .= $s1;
+                        }else{
+                            $info .= "$s1|";
+                        }
+                    }
+                    if(($x+1)%50 == 0){
+
+                        $step[2] = $step[2];
+                        $step[4] = $a.($b+$c);
+                        $step[9] = array_sum($step2['p1']);
+                        $step[10] = array_sum($step2['p2']);
+                        $step[11] = array_sum($step2['p3']);
+                        $step4 = '';
+                        foreach($step as $x3 => $s3){
+                            if($x3+1 == count($step)){
+                                $step4 .= $a.($b+$c).PHP_EOL;
+                            }else{
+                                $step4 .= "$s3|";
+                            }
+                        }
+                        $newDataLimit .= $step4.$info;
+                        $c++; $info = '';
+                        $step2['p1'] = array();
+                        $step2['p2'] = array();
+                        $step2['p3'] = array();
                     }
                 }
-                if(($x+1)%50 == 0){
-
-                    $step[2] = $step[2];
-                    $step[4] = $a.($b+$c);
+                if($info != ''){
+                    $step[2] = $c == 0 ? $step[2]+0 : $step[2];
+                    $step[4] = $a.($b+$c);//PHP_EOL
                     $step[9] = array_sum($step2['p1']);
                     $step[10] = array_sum($step2['p2']);
                     $step[11] = array_sum($step2['p3']);
@@ -1890,32 +1913,13 @@ class BookingController extends Controller
                         }
                     }
                     $newDataLimit .= $step4.$info;
-                    $c++; $info = '';
                     $step2['p1'] = array();
                     $step2['p2'] = array();
                     $step2['p3'] = array();
                 }
             }
-            if($info != ''){
-                $step[2] = $c == 0 ? $step[2]+0 : $step[2];
-                $step[4] = $a.($b+$c);//PHP_EOL
-                $step[9] = array_sum($step2['p1']);
-                $step[10] = array_sum($step2['p2']);
-                $step[11] = array_sum($step2['p3']);
-                $step4 = '';
-                foreach($step as $x3 => $s3){
-                    if($x3+1 == count($step)){
-                        $step4 .= $a.($b+$c).PHP_EOL;
-                    }else{
-                        $step4 .= "$s3|";
-                    }
-                }
-                $newDataLimit .= $step4.$info;
-                $step2['p1'] = array();
-                $step2['p2'] = array();
-                $step2['p3'] = array();
-            }
         }
+
 
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hdata = '';
@@ -2088,7 +2092,7 @@ class BookingController extends Controller
             } else if ($bookingE->partners->space_customer_id == null) {
                 if ($bookingE->marketname_id == 6) {
                     $space_customer_id = 'PZ100699';
-                } else if ($bookingE->marketname_id == 7) {
+                } else if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 7) {
                     $space_customer_id = 'PZ200699';
                 }
             }
@@ -2100,7 +2104,7 @@ class BookingController extends Controller
             $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEEV';
             $strPSS = 'Event space '.$sep_code;
-            if ($bookingE->marketname_id == 7) {
+            if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 8) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
