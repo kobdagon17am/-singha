@@ -1655,8 +1655,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $today = (new DateTime(date('2022/08/18') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/08/17').'20:00:30'));
+        // $date_set = date('25/08/Y');
+        // $today = (new DateTime(date('2022/08/25') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/08/24').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1855,7 +1856,6 @@ class BookingController extends Controller
         // dd($hudata1, $hudata2,'q'.$hudata3);
         $newDataLimit = '';
 
-        if($arrayData){
             foreach($arrayData['H'] as $xh => $ah){
                 $step = explode('|',$ah);
                 $len = number_format(round(strlen($step[4])/2),0) * 1;
@@ -1918,7 +1918,7 @@ class BookingController extends Controller
                     $step2['p3'] = array();
                 }
             }
-        }
+
 
 
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
