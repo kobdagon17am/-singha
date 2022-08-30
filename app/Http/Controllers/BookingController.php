@@ -1655,9 +1655,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('25/08/Y');
-        // $today = (new DateTime(date('2022/08/25') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/08/24').'20:00:30'));
+        // $date_set = date('29/08/Y');
+        // $today = (new DateTime(date('2022/08/29') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/08/28').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1950,8 +1950,6 @@ class BookingController extends Controller
                     $space_customer_id = 'PZ100699';
                 } else if ($booking->marketname_id == 7) {
                     $space_customer_id = 'PZ200699';
-                }else if ($booking->marketname_id == 8) {
-                    $space_customer_id = 'PZ200699';
                 }
             }
             $trans_id = 'T011111111';
@@ -2092,7 +2090,7 @@ class BookingController extends Controller
             } else if ($bookingE->partners->space_customer_id == null) {
                 if ($bookingE->marketname_id == 6) {
                     $space_customer_id = 'PZ100699';
-                } else if ($bookingE->marketname_id == 7 || $bookingE->marketname_id == 8) {
+                } else if ($bookingE->marketname_id == 7 ) {
                     $space_customer_id = 'PZ200699';
                 }
             }
@@ -2297,7 +2295,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            // dd($alltextflie);
+            dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
