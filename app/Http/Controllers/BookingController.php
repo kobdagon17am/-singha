@@ -2295,7 +2295,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            dd($alltextflie);
+            //dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
