@@ -23,6 +23,7 @@ class OfficersController extends Controller
         $officer = Officers::all();
 
 
+
         $data = array(
             'officer' => $officer,
         );

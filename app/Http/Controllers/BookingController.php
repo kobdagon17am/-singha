@@ -56,6 +56,7 @@ class BookingController extends Controller
     // }
     public function booking_regular()
     {
+
         // $boothdetail = MK_BoothDetail::where('booth_id',2)->get();
         // foreach ($boothdetail as $key => $value) {
         //     $value->price = (($value->price)+200);
@@ -1655,9 +1656,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('29/08/Y');
-        // $today = (new DateTime(date('2022/08/29') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/08/28').'20:00:30'));
+        // $date_set = date('07/10/Y');
+        // $today = (new DateTime(date('2022/10/07') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/10/06').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -2214,16 +2215,84 @@ class BookingController extends Controller
             $regudata = '';
             foreach ($hdata as $keyall => $value) {
                 # code...
-                //   dd($value[0]);
-                $detail = '';
+                if(count($value[1]) >= 50){
+                    $h_even = explode('|',$value[0][0]);
+                    $len = number_format(round(strlen($h_even[4])/2),0) * 1;
+                    $a = substr($h_even[4],0,$len+1);
+                    $b = (substr($h_even[4],$len+1,$len)*1);
+                    $c = 0;
+                    $info = '';
+                    foreach($value[1] as $x => $ad){
+                        $step1 = explode('|',$ad);
+                        $step2['p1'][] = $step1[6];
+                        $step2['p2'][] = $step1[8];
+                        $step2['p3'][] = $step1[9];
+                        $step1[1] = $a.($b+$c);
+                        foreach($step1 as $x1 => $s1){
+                            if($x1+1 == count($step1)){
+                                $info .= $s1;
+                            }else{
+                                $info .= "$s1|";
+                            }
+                        }
+                        if(($x+1)%50 == 0){
+
+                            $step[2] = $step[2];
+                            $step[4] = $a.($b+$c);
+                            $step[9] = array_sum($step2['p1']);
+                            $step[10] = array_sum($step2['p2']);
+                            $step[11] = array_sum($step2['p3']);
+                            $step4 = '';
+                            foreach($step as $x3 => $s3){
+                                if($x3+1 == count($step)){
+                                    $step4 .= $a.($b+$c).PHP_EOL;
+                                }else{
+                                    $step4 .= "$s3|";
+                                }
+                            }
+                            $regudata .= $step4.$info;
+                            $c++; $info = '';
+                            $step2['p1'] = array();
+                            $step2['p2'] = array();
+                            $step2['p3'] = array();
+                        }
+                    }
+
+                    if($info != ''){
+                        $step[2] = $c == 0 ? $step[2]+0 : $step[2];
+                        $step[4] = $a.($b+$c);//PHP_EOL
+                        $step[9] = array_sum($step2['p1']);
+                        $step[10] = array_sum($step2['p2']);
+                        $step[11] = array_sum($step2['p3']);
+                        $step4 = '';
+                        foreach($step as $x3 => $s3){
+                            if($x3+1 == count($step)){
+                                $step4 .= $a.($b+$c).PHP_EOL;
+                            }else{
+                                $step4 .= "$s3|";
+                            }
+                        }
+                        $regudata .= $step4.$info;
+                        $step2['p1'] = array();
+                        $step2['p2'] = array();
+                        $step2['p3'] = array();
+                    }
+
+                }else{
+                    $detail = '';
 
                     foreach ($value[1] as $key => $data) {
                         $detail .= $data;
                     }
                     $regudata .= $value[0][0] . $detail;
+                }
+                // dd($value);
+
+
 
 
             }
+            // dd($regudata);
             $eventdata = '';
 
             foreach ($hEventdata as $keyall => $value) {
@@ -2261,7 +2330,32 @@ class BookingController extends Controller
                                 }else{
                                     $info .= "$s1|";
                                 }
+                                // dd($info);
+
+                                if(($x1+1)%50 == 0){
+
+                                    // $step[2] = $step[2];
+                                    // $step[4] = $a.($b+$c);
+                                    // $step[9] = array_sum($step2['p1']);
+                                    // $step[10] = array_sum($step2['p2']);
+                                    // $step[11] = array_sum($step2['p3']);
+                                    // $step4 = '';
+                                    // foreach($step as $x3 => $s3){
+                                    //     if($x3+1 == count($step)){
+                                    //         $step4 .= $a.($b+$c).PHP_EOL;
+                                    //     }else{
+                                    //         $step4 .= "$s3|";
+                                    //     }
+                                    // }
+                                    // $newDataLimit .= $step4.$info;
+                                    // $c++; $info = '';
+                                    // $step2['p1'] = array();
+                                    // $step2['p2'] = array();
+                                    // $step2['p3'] = array();
+                                }
                             }
+
+
                         }
 
                         $step3[2] = $step3[2];
@@ -2295,7 +2389,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            //dd($alltextflie);
+            // dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
