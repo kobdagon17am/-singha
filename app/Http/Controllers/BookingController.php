@@ -1656,9 +1656,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('07/10/Y');
-        // $today = (new DateTime(date('2022/10/07') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/10/06').'20:00:30'));
+        // $date_set = date('14/12/Y');
+        // $today = (new DateTime(date('2022/12/14') . '20:00:30'));
+        // $yesterday = (new DateTime(date('2022/12/13').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
