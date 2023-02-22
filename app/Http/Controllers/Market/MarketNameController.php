@@ -38,6 +38,7 @@ class MarketNameController extends Controller
         foreach ($adminrule as $key => $value) {
            $arr[] = $value->marketname_id;
         }
+        // dd($arr);
 
 
         $marketname =   MK_MarketName::whereIn('marketname_id',$arr)->orderBy('name_market', 'ASC')->get();

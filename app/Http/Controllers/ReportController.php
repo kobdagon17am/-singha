@@ -1081,6 +1081,7 @@ class ReportController extends Controller
     }
 
     public function checkInsale(Request $request){
+
         $market = MK_MarketName::all();
         // $zone = MK_Zone::where('status','Y')->get()->groupBy('name');
         $zone = MK_Zone::where('status','Y')->get()->groupBy('marketname_id');
@@ -1119,6 +1120,9 @@ class ReportController extends Controller
                 ->whereYear('date_start',date('Y',strtotime($request->date)))
                 ->whereMonth('date_start',date('m',strtotime($request->date)))
                 ->first();
+
+
+
             if($getBooth){
             isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
 
@@ -1130,11 +1134,13 @@ class ReportController extends Controller
                             ->orderBy('booth_detail_id','asc')->get();
                             foreach( $report['booth'] as $i => $b){
                                 $booking = Booking_Detail::find($b->booth_detail_id);
+
                                 if($booking){
                                     $partner = Partners::find($booking->partners_id);
                                     $report['partner'][$i]['partner'] = "$partner->name_customer";
                                     $report['checkIn'][$i] = $booking->check_in_status;
-                                    $productId = PartnersProduct::where('partners_id',$partner->partners_id)->first();
+                                    $productId = PartnersProduct::where('partners_id',$partner->partners_id)
+                                    ->first();
                                     $product = Product::find($productId->product_id);
                                     $report['partner'][$i]['product'] = @$product->name;
                                 }else{
@@ -1166,6 +1172,7 @@ class ReportController extends Controller
             'javaZ' => json_encode($fillZone),
             'rzone' => $request->zone
         );
+        // dd($data);
         return view('backend/report/report_audit_checkInsale',$data);
     }
 }

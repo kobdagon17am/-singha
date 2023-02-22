@@ -1656,9 +1656,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('14/12/Y');
-        // $today = (new DateTime(date('2022/12/14') . '20:00:30'));
-        // $yesterday = (new DateTime(date('2022/12/13').'20:00:30'));
+        // $date_set = date('28/01/Y');
+        // $today = (new DateTime(date('Y/01/28') . '20:00:30'));
+        // $yesterday = (new DateTime(date('Y/01/27').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1675,6 +1675,7 @@ class BookingController extends Controller
                 $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2')->where('prefix_code', '!=', 'PZE2');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
+            // dd($bookingsre);
         // ->limit('15')
 
         $bookingsuser = Booking::where('booking_status_id', 3)
@@ -1761,6 +1762,16 @@ class BookingController extends Controller
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
+            }else if ($bookingu->marketname_id == 6) {
+                $store_code = '6601';
+                $cost_center_code = 'MF_PZ1';
+                $sep_code = 'SEEV';
+                $strPSS = 'Event space '.$sep_code;
+            } else if ($bookingu->marketname_id == 7) {
+                $store_code = '6602';
+                $cost_center_code = 'MF_PZ1';
+                $sep_code = 'SEEV';
+                $strPSS = 'Event space '.$sep_code;
             }
 
             $bookdetailuss = $bookingu->bookdetail;
@@ -1808,7 +1819,9 @@ class BookingController extends Controller
                 $beforevatd =  round((($amountd * 100) / 107), 2);
                 $vatd =  round($amountd - $beforevatd, 2);
 
-                if ($bookingu->marketname_id == 1) {
+
+
+                if ($bookingu->marketname_id == 1 || $bookingu->marketname_id == 6) {
                     # code...
 
                     $dudata1  .=  'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
@@ -1823,13 +1836,21 @@ class BookingController extends Controller
                     $totalbeforevatd2 += round($beforevatd, 2);
                     $totalvatd2 += round($vatd, 2);
                     $totalamountd2 += round($amountd, 2);
-                }else if ($bookingu->marketname_id == 8) {
+                }else if ($bookingu->marketname_id == 8 || $bookingu->marketname_id == 7)  {
 
                     $dudata3  .=  'D|' . $transidu3 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
                     $arrayData['D'][$transidu3][] = 'D|' . $transidu3 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
                     $totalbeforevatd3 += round($beforevatd, 2);
                     $totalvatd3 += round($vatd, 2);
                     $totalamountd3 += round($amountd, 2);
+                }else{
+
+                    $dudata1  .=  'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
+                    $arrayData['D'][$transidu1][] = 'D|' . $transidu1 . '|1|' . $sep_code . '|Plaza space ' . $sep_code . ' ' . $namebooth . ' ' . date('d/m/Y', strtotime($bookdetailus->booking_detail_date)) . ' |1|' . round($beforevatd, 2) . '|' . $beforevatd . '|' . $vatd . '|' . round($amountd, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
+                    $totalbeforevatd1 += round($beforevatd, 2);
+                    $totalvatd1 += round($vatd, 2);
+                    $totalamountd1 += round($amountd, 2);
+
                 }
             }
         }
@@ -1837,6 +1858,7 @@ class BookingController extends Controller
         // $hudata .= 'H|6600|'.$store_code.'|'.$space_customer_id.'|'.$transidu.'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|C000|'.number_format($totalbeforevatd,2).'|'.number_format($totalvatd,2).'|'.number_format($totalamountd,2).'|'.$bookingu->booking_id.PHP_EOL
         // .$dudata;
         if ($dudata1 != null || $dudata1 != '') {
+
             $hudata1 .= 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL
                 . $dudata1;
             $arrayData['H'][$transidu1] = 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL;
@@ -2031,6 +2053,10 @@ class BookingController extends Controller
             $vatdre_arr[$space_customer_id][] = $vatdre;
             $amountdre_arr[$space_customer_id][] = $amountdre;
 
+            // if( $space_customer_id == 'PZ2699'){
+            //     dd('dddd');
+            // }
+            // //ตัวที่พัง
                 $ddata .=  'D|T321' . $space_customer_id . '|1|' . $sep_code . '|' . $strPSS . ' ' . $namebooth . ' ' . $datebookdetail . ' |1|' . $beforevatdre . '|' . $beforevatdre . '|' . $vatdre . '|' . round($amountdre, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
             }
             // $sumamountdre =  Booking::whereHas('partners', function ($query) use($space_customer_id){
@@ -2052,24 +2078,28 @@ class BookingController extends Controller
             $hdatasrt = 'H|6600|' . $store_code . '|' . $space_customer_id . '|T321' . $space_customer_id . '|' .  $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
             if ($booking->partners->space_customer_id == null) {
                 if ($booking->marketname_id == 1) {
+                    $store_code = '6601';
                     $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 2) {
+                    $store_code = '6602';
                     $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 6) {
+                    $store_code = '6601';
                     $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 } else if ($booking->marketname_id == 7) {
+                    $store_code = '6602';
                     $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 }else if ($booking->marketname_id == 8) {
+                    $store_code = '6602';
                     $hdatasrt = 'H|6600|' . $store_code . '|A0000699|T321' . $space_customer_id . '|' . $date_set . '|' .  $date_set . '|' .  $date_set . '|C000|' . array_sum($beforevatdre_arr[$space_customer_id]) . '|' . array_sum($vatdre_arr[$space_customer_id]) . '|' . round(array_sum($amountdre_arr[$space_customer_id]), 2) . '|' . $space_customer_id . PHP_EOL;
                 }
             }
-                // .$ddata.
-            ;
-            $ddaraarr[$space_customer_id][] = $ddata;
 
+            $ddaraarr[$space_customer_id][] = $ddata;
             $hdataarr[0] = $hdatasrt;
             $hdata[$space_customer_id] = [$hdataarr, $ddaraarr[$space_customer_id], array_sum($beforevatdre_arr[$space_customer_id]), array_sum($vatdre_arr[$space_customer_id]), array_sum($amountdre_arr[$space_customer_id])];
         }
+
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hEventdata = '';
         $hEventdata = [];
@@ -2103,21 +2133,24 @@ class BookingController extends Controller
             $cost_center_code = 'MF_PZ1';
             $sep_code = 'SEEV';
             $strPSS = 'Event space '.$sep_code;
-            if ($bookingE->marketname_id == 7 ) {
-                $store_code = '6602';
-                $cost_center_code = 'MF_PZ2';
-                $sep_code = 'SEEV';
-                $strPSS = 'Event space '.$sep_code;
-            }
 
-            if($bookingE->marketname_id == 8){
-
+            if ($booking->marketname_id == 2 || $booking->marketname_id == 8) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
                 $strPSS = 'Plaza space '.$sep_code;
-            }
 
+            } else if ($booking->marketname_id == 6) {
+                $store_code = '6601';
+                $cost_center_code = 'MF_PZ1';
+                $sep_code = 'SEEV';
+                $strPSS = 'Event space '.$sep_code;
+            } else if ($booking->marketname_id == 7) {
+                $store_code = '6602';
+                $cost_center_code = 'MF_PZ1';
+                $sep_code = 'SEEV';
+                $strPSS = 'Event space '.$sep_code;
+            }
 
 
             $bookEdetails = $bookingE->bookdetail;
@@ -2171,6 +2204,8 @@ class BookingController extends Controller
                 $Evatdre_arr[$space_customer_id][] = $vatdre;
                 $Eamountdre_arr[$space_customer_id][] = $amountdre;
 
+
+
                 $Edata .=  'D|T321' . $space_customer_id . '|1|' . $sep_code . '|' . $strPSS . ' ' . $namebooth . ' ' . $datebookdetail . ' |1|' . $beforevatdre . '|' . $beforevatdre . '|' . $vatdre . '|' . round($amountdre, 2) . '|7|DS|' . $cost_center_code . PHP_EOL;
             }
             // $sumamountdre =  Booking::whereHas('partners', function ($query) use($space_customer_id){
@@ -2212,16 +2247,20 @@ class BookingController extends Controller
         $destinationPath = public_path() . "/upload/";
 
 
+
             $regudata = '';
             foreach ($hdata as $keyall => $value) {
                 # code...
                 if(count($value[1]) >= 50){
+
                     $h_even = explode('|',$value[0][0]);
+
                     $len = number_format(round(strlen($h_even[4])/2),0) * 1;
                     $a = substr($h_even[4],0,$len+1);
                     $b = (substr($h_even[4],$len+1,$len)*1);
                     $c = 0;
                     $info = '';
+
                     foreach($value[1] as $x => $ad){
                         $step1 = explode('|',$ad);
                         $step2['p1'][] = $step1[6];
@@ -2237,19 +2276,20 @@ class BookingController extends Controller
                         }
                         if(($x+1)%50 == 0){
 
-                            $step[2] = $step[2];
-                            $step[4] = $a.($b+$c);
-                            $step[9] = array_sum($step2['p1']);
-                            $step[10] = array_sum($step2['p2']);
-                            $step[11] = array_sum($step2['p3']);
+                            $h_even[2] = $h_even[2];
+                            $h_even[4] = $a.($b+$c);
+                            $h_even[9] = array_sum($step2['p1']);
+                            $h_even[10] = array_sum($step2['p2']);
+                            $h_even[11] = array_sum($step2['p3']);
                             $step4 = '';
-                            foreach($step as $x3 => $s3){
-                                if($x3+1 == count($step)){
+                            foreach($h_even as $x3 => $s3){
+                                if($x3+1 == count($h_even)){
                                     $step4 .= $a.($b+$c).PHP_EOL;
                                 }else{
                                     $step4 .= "$s3|";
                                 }
                             }
+
                             $regudata .= $step4.$info;
                             $c++; $info = '';
                             $step2['p1'] = array();
@@ -2258,25 +2298,31 @@ class BookingController extends Controller
                         }
                     }
 
+
+
                     if($info != ''){
-                        $step[2] = $c == 0 ? $step[2]+0 : $step[2];
-                        $step[4] = $a.($b+$c);//PHP_EOL
-                        $step[9] = array_sum($step2['p1']);
-                        $step[10] = array_sum($step2['p2']);
-                        $step[11] = array_sum($step2['p3']);
+
+                        $h_even[2] = $c == 0 ? $h_even[2]+0 : $h_even[2];
+
+                        $h_even[4] = $a.($b+$c);//PHP_EOL
+                        $h_even[9] = array_sum($step2['p1']);
+                        $h_even[10] = array_sum($step2['p2']);
+                        $h_even[11] = array_sum($step2['p3']);
                         $step4 = '';
-                        foreach($step as $x3 => $s3){
-                            if($x3+1 == count($step)){
+                        foreach($h_even as $x3 => $s3){
+                            if($x3+1 == count($h_even)){
                                 $step4 .= $a.($b+$c).PHP_EOL;
                             }else{
                                 $step4 .= "$s3|";
                             }
                         }
+                        // dd($step4);
                         $regudata .= $step4.$info;
                         $step2['p1'] = array();
                         $step2['p2'] = array();
                         $step2['p3'] = array();
                     }
+
 
                 }else{
                     $detail = '';
@@ -2288,11 +2334,7 @@ class BookingController extends Controller
                 }
                 // dd($value);
 
-
-
-
             }
-            // dd($regudata);
             $eventdata = '';
 
             foreach ($hEventdata as $keyall => $value) {
