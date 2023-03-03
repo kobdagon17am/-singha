@@ -1656,14 +1656,16 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('28/01/Y');
-        // $today = (new DateTime(date('Y/01/28') . '20:00:30'));
-        // $yesterday = (new DateTime(date('Y/01/27').'20:00:30'));
+        // $date_set = date('26/01/Y');
+        // $today = (new DateTime(date('Y/01/25') . '20:00:30'));
+        // $yesterday = (new DateTime(date('Y/01/24').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
         $bookingsre = Booking::where('booking_status_id', 3)
             ->where('booking_type', 'Regular')
+            // ->where('marketname_id', 6)
+
             ->whereHas('bookdetail', function ($query) use ($today, $yesterday) {
                 // $query->whereDate('booking_payment_date',date("Y/m/d"));
                 $query->where('booking_payment_date', '>=', $yesterday)->where('booking_payment_date', '<=', $today);
@@ -1680,6 +1682,7 @@ class BookingController extends Controller
 
         $bookingsuser = Booking::where('booking_status_id', 3)
             ->where("booking_type", "!=", "Regular")
+            // ->where('marketname_id', 6)
             ->whereHas('bookdetail', function ($query) use ($today, $yesterday) {
                 // $query->whereDate('booking_payment_date',date("Y/m/d"));
                 // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
@@ -1695,6 +1698,7 @@ class BookingController extends Controller
 
         $bookingEvents = Booking::where('booking_status_id', 3)
             ->where("booking_type", "!=", "Regular")
+            // ->where('marketname_id', 6)
             ->whereHas('bookdetail', function ($query) use ($today, $yesterday) {
                 // $query->whereDate('booking_payment_date',date("Y/m/d"));
                 // $query->whereDate('booking_payment_date',date("Y/m/d"))->where('booth_detail_id', '!=',0);
@@ -2113,6 +2117,7 @@ class BookingController extends Controller
                 ->where('transaction_details.booking_id', $bookingE->booking_id)
                 ->first();
 
+
             $Edata = '';
 
             $space_customer_id = 'A0000699';
@@ -2134,21 +2139,23 @@ class BookingController extends Controller
             $sep_code = 'SEEV';
             $strPSS = 'Event space '.$sep_code;
 
-            if ($booking->marketname_id == 2 || $booking->marketname_id == 8) {
+            if ($bookingE->marketname_id == 2 || $bookingE->marketname_id == 8) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEP2';
                 $strPSS = 'Plaza space '.$sep_code;
 
-            } else if ($booking->marketname_id == 6) {
+            } else if ($bookingE->marketname_id == 6) {
                 $store_code = '6601';
                 $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space '.$sep_code;
-            } else if ($booking->marketname_id == 7) {
+
+            } else if ($bookingE->marketname_id == 7) {
                 $store_code = '6602';
                 $cost_center_code = 'MF_PZ1';
                 $sep_code = 'SEEV';
+
                 $strPSS = 'Event space '.$sep_code;
             }
 
@@ -2159,6 +2166,7 @@ class BookingController extends Controller
 
 
             foreach ($bookEdetails as $keyin => $bookEdetail) {
+
                 $price = 0;
                 $namebooth = '';
                 $datebookdetail = '';
@@ -2241,6 +2249,7 @@ class BookingController extends Controller
             $hEventdata[$space_customer_id] = [$hEdataarr, $dEventarr[$space_customer_id], array_sum($Ebeforevatdre_arr[$space_customer_id]), array_sum($Evatdre_arr[$space_customer_id]), array_sum($Eamountdre_arr[$space_customer_id])];
         }
 
+
         //$limit = 50;
         $arr = $hdata + $hEventdata;
         //$count_qrray = count($arr);
@@ -2249,6 +2258,7 @@ class BookingController extends Controller
 
 
             $regudata = '';
+
             foreach ($hdata as $keyall => $value) {
                 # code...
                 if(count($value[1]) >= 50){
@@ -2431,7 +2441,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            // dd($alltextflie);
+            //  dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
