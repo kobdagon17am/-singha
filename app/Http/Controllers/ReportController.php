@@ -1123,6 +1123,7 @@ class ReportController extends Controller
 
 
 
+
             if($getBooth){
             isset($idZoneMk[$getBooth->marketname_id]) ? $onezone = $idZoneMk[$getBooth->marketname_id] : $onezone = array();
 
@@ -1130,23 +1131,30 @@ class ReportController extends Controller
                     foreach($idZone as $iz){
                         if(in_array($iz,$onezone)){
                             $report = array();
+
                             $report['booth'] = MK_BoothDetail::where(['booth_id' => $getBooth->booth_id,'zone_id' => $iz, 'status' => 'Y'])
                             ->orderBy('booth_detail_id','asc')->get();
                             foreach( $report['booth'] as $i => $b){
-                                $booking = Booking_Detail::find($b->booth_detail_id);
 
-                                if($booking){
-                                    $partner = Partners::find($booking->partners_id);
-                                    $report['partner'][$i]['partner'] = "$partner->name_customer";
-                                    $report['checkIn'][$i] = $booking->check_in_status;
-                                    $productId = PartnersProduct::where('partners_id',$partner->partners_id)
-                                    ->first();
-                                    $product = Product::find($productId->product_id);
-                                    $report['partner'][$i]['product'] = @$product->name;
-                                }else{
+                                $booking = Booking_Detail::where('booth_detail_id','=',$b->booth_detail_id)->get();
+
+                                foreach($booking as $value){
+
+                                        $partner = Partners::find($value->partners_id);
+                                        $report['partner'][$i]['partner'] = "$partner->name_customer";
+                                        $report['checkIn'][$i] = $value->check_in_status;
+                                        $productId = PartnersProduct::where('partners_id',$partner->partners_id)
+                                        ->first();
+                                        $product = Product::find($productId->product_id);
+                                        $report['partner'][$i]['product'] = @$product->name;
+
+                                }
+
+                                if(count($booking) <= 0){
                                     $report['partner'][$i] = null;
                                     $report['checkIn'][$i] = null;
                                 }
+
                             }
                             if(count($report['booth']) > 0){
                                 $allData[$zoneName[$iz]] = $report;
@@ -1172,7 +1180,7 @@ class ReportController extends Controller
             'javaZ' => json_encode($fillZone),
             'rzone' => $request->zone
         );
-        // dd($data);
+    //  dd($data);
         return view('backend/report/report_audit_checkInsale',$data);
     }
 }

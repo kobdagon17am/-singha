@@ -55,7 +55,7 @@
                                                             class="col-sm-2 col-form-label text-right">Zone:</label>
                                                         <div class="col-sm-3">
                                                            <select name="zone" class="form-control" id='zone'>
-                                                                @if($mkId !=null) 
+                                                                @if($mkId !=null)
                                                                     {!! $zone[$mkId] !!}
                                                                 @endif
                                                            </select>
@@ -116,9 +116,9 @@
                                                 </tr>
                                                 @endforeach
                                             </tbody>
-                                        </table>         
+                                        </table>
                                             @endforeach
-                                        
+
                                         @else
                                         <center>ไม่พบข้อมูล</center>
                                         @endif
