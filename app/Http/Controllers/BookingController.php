@@ -1656,9 +1656,9 @@ class BookingController extends Controller
         $today = (new DateTime(date('Y/m/d') . '20:00:30'));
         $yesterday = (new DateTime(date('Y/m/d', strtotime("-1 days")) . '20:00:30'));
         $date_set = date('d/m/Y');
-        // $date_set = date('26/01/Y');
-        // $today = (new DateTime(date('Y/01/25') . '20:00:30'));
-        // $yesterday = (new DateTime(date('Y/01/24').'20:00:30'));
+        // $date_set = date('05/03/Y');
+        // $today = (new DateTime(date('Y/03/05') . '20:00:30'));
+        // $yesterday = (new DateTime(date('Y/03/04').'20:00:30'));
         //dd($yesterday,$today);
         $arrayData = array();
 
@@ -1677,8 +1677,10 @@ class BookingController extends Controller
                 $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2')->where('prefix_code', '!=', 'PZE2');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
-            // dd($bookingsre);
+            //  dd($bookingsre);
         // ->limit('15')
+
+
 
         $bookingsuser = Booking::where('booking_status_id', 3)
             ->where("booking_type", "!=", "Regular")
@@ -1695,6 +1697,8 @@ class BookingController extends Controller
                 $query->where('prefix_code', '!=', 'PZE1')->where('prefix_code', '!=', 'PZE2')->where('prefix_code', '!=', 'PZE3');
                 // ->whereDate('booking_detail_date', '<=', $date_end);
             })->get();
+
+
 
         $bookingEvents = Booking::where('booking_status_id', 3)
             ->where("booking_type", "!=", "Regular")
@@ -1719,7 +1723,7 @@ class BookingController extends Controller
         // })
         //   ->limit('10')
 
-        // dd($bookingEvents);
+
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
         $hudata1 = '';
         $totalbeforevatd1 = 0;
@@ -1747,6 +1751,7 @@ class BookingController extends Controller
 
         foreach ($bookingsuser as $key => $bookingu) {
 
+
             $space_customer_id = 'A0000699';
 
             $transaction = Transaction::where('status', "Y")
@@ -1773,7 +1778,7 @@ class BookingController extends Controller
                 $strPSS = 'Event space '.$sep_code;
             } else if ($bookingu->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = 'MF_PZ1';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space '.$sep_code;
             }
@@ -1859,6 +1864,7 @@ class BookingController extends Controller
             }
         }
 
+
         // $hudata .= 'H|6600|'.$store_code.'|'.$space_customer_id.'|'.$transidu.'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|'. date('d/m/Y',strtotime($transaction->payment_success_date)).'|C000|'.number_format($totalbeforevatd,2).'|'.number_format($totalvatd,2).'|'.number_format($totalamountd,2).'|'.$bookingu->booking_id.PHP_EOL
         // .$dudata;
         if ($dudata1 != null || $dudata1 != '') {
@@ -1867,6 +1873,7 @@ class BookingController extends Controller
                 . $dudata1;
             $arrayData['H'][$transidu1] = 'H|6600|6601|' . $space_customer_id . '|' . $transidu1 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd1, 2) . '|' . round($totalvatd1, 2) . '|' . round($totalamountd1, 2) . '|' . $transidu1 . PHP_EOL;
         }
+
 
         if ($dudata2 != null || $dudata2 != '') {
             $hudata2 .= 'H|6600|6602|' . $space_customer_id . '|' . $transidu2 . '|' .  $date_set . '|' .   $date_set . '|' .   $date_set . '|C000|' . round($totalbeforevatd2, 2) . '|' . round($totalvatd2, 2) . '|' . round($totalamountd2, 2) . '|' . $transidu2 . PHP_EOL
@@ -1882,6 +1889,7 @@ class BookingController extends Controller
 
         // dd($hudata1, $hudata2,'q'.$hudata3);
         $newDataLimit = '';
+        if($arrayData){
 
             foreach($arrayData['H'] as $xh => $ah){
                 $step = explode('|',$ah);
@@ -1945,7 +1953,7 @@ class BookingController extends Controller
                     $step2['p3'] = array();
                 }
             }
-
+        }
 
 
         ///////////////////////////////////////////////// /////////////////////////////////////////////////
@@ -1954,6 +1962,7 @@ class BookingController extends Controller
 
         $ddaraarr = [];
         $sumbeforevatdre = 0;
+
 
         foreach ($bookingsre as $keyout => $booking) {
 
@@ -2000,7 +2009,7 @@ class BookingController extends Controller
                 $strPSS = 'Event space '.$sep_code;
             } else if ($booking->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = 'MF_PZ1';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
                 $strPSS = 'Event space '.$sep_code;
             }
@@ -2153,7 +2162,7 @@ class BookingController extends Controller
 
             } else if ($bookingE->marketname_id == 7) {
                 $store_code = '6602';
-                $cost_center_code = 'MF_PZ1';
+                $cost_center_code = 'MF_PZ2';
                 $sep_code = 'SEEV';
 
                 $strPSS = 'Event space '.$sep_code;
@@ -2441,7 +2450,7 @@ class BookingController extends Controller
             //$alltextflie = $regudata . $eventdata . $hudata1 . $hudata2 .$hudata3;
             $alltextflie = $regudata . $eventdata . $newDataLimit;
 
-            //  dd($alltextflie);
+            // dd($alltextflie);
             //date('d/m/Y',$transaction->payment_success_date)
             $file = time() . rand() . '_file.text';
             $destinationPath = public_path() . "/upload/";
